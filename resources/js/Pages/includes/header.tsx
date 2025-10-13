@@ -20,7 +20,7 @@ function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto p-2">
                         <Nav className="m-2">
-                            {/* <Link className="btn btn-dark" href={route("main")}>Главная страница</Link> */}
+                            <Link className="btn btn-dark" href={route("main")}>Главная страница</Link>
                         </Nav>
                         {/* {user !== undefined && user !== null ? (
                             <>

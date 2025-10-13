@@ -11,7 +11,7 @@ import { User } from "../Layout";
 function Header() {
     const { props } = usePage<{ auth: { user: User } }>();
     const user = props.auth?.user;
-console.log(user)
+// console.log(user)
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
@@ -29,6 +29,15 @@ console.log(user)
                         </Nav>
                         {user !== undefined && user !== null ? (
                             <>
+                                <Nav className="m-2">
+                                    <Link
+                                        className="btn btn-dark "
+                                        // method="get"
+                                        href={route("home")}
+                                    >
+                                        Домашняя страница
+                                    </Link>
+                                </Nav>
                                 <Nav className="m-2">
                                     <Link
                                         className="btn btn-danger "

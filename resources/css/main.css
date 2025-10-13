@@ -30,3 +30,8 @@ main .main__wrapper {
     border-radius: 5px;
     width: 80%
 }
+
+.non-border
+{
+    border-bottom: none;
+}

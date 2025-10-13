@@ -9,12 +9,14 @@ interface RegisterInterface {
     email: string;
     password: string;
     password_confirmation: string;
+    name: string;
 }
 
 function Register() {
     const { errors } = usePage<{ errors: Error }>().props;
 
     const [values, setValues] = useState<RegisterInterface>({
+        name: "",
         email: "",
         password: "",
         password_confirmation: "",
@@ -45,6 +47,17 @@ function Register() {
         <Layout>
             <Form className="m-3 bg-form" onSubmit={handleSubmit}>
                 <h5 className="text-center">Регистрация</h5>
+
+                <Form.Group className="mb-3" controlId="name">
+                    <Form.Label>Ваше имя</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Введите ваше имя"
+                        onChange={handleChange}
+                        value={values.name}
+                    />
+                    <p className="red">{errors.name}</p>
+                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Ваша почта</Form.Label>

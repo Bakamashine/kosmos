@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Link, usePage } from "@inertiajs/react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -9,29 +9,41 @@ import { router } from "@inertiajs/react";
 import { User } from "../Layout";
 
 function Header() {
-    // const { props } = usePage<{ auth: { user: User } }>();
-    // const user = props.auth.user;
+    const { props } = usePage<{ auth: { user: User } }>();
+    const user = props.auth?.user;
+console.log(user)
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Link className="non-border" href={route("main")}>
+                    <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+                </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto p-2">
                         <Nav className="m-2">
-                            <Link className="btn btn-dark" href={route("main")}>Главная страница</Link>
+                            <Link className="btn btn-dark" href={route("main")}>
+                                Главная страница
+                            </Link>
                         </Nav>
-                        {/* {user !== undefined && user !== null ? (
+                        {user !== undefined && user !== null ? (
                             <>
                                 <Nav className="m-2">
-                                    <Link className="btn btn-danger " method="post" href={route("logout")}>
+                                    <Link
+                                        className="btn btn-danger "
+                                        method="post"
+                                        href={route("logout")}
+                                    >
                                         Выход
                                     </Link>
                                 </Nav>
                                 {user.role_name === "admin" && (
                                     <Nav className="m-2">
-                                        <Link className="btn btn-dark" href={route("admin")}>
+                                        <Link
+                                            className="btn btn-dark"
+                                            href={route("admin")}
+                                        >
                                             Административная страница
                                         </Link>
                                     </Nav>
@@ -40,18 +52,24 @@ function Header() {
                         ) : (
                             <>
                                 <Nav className="m-2">
-                                    <Link className="btn btn-dark" href={route("login")}>
+                                    <Link
+                                        className="btn btn-dark"
+                                        href={route("login")}
+                                    >
                                         Авторизоваться
                                     </Link>
                                 </Nav>
                                 <Nav className="m-2">
-                                    <Link className="btn btn-dark" href={route("register")}>
+                                    <Link
+                                        className="btn btn-dark"
+                                        href={route("register")}
+                                    >
                                         Регистрация
                                     </Link>
                                 </Nav>
                             </>
-                        )} */}
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                        )}
+                        {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">
                                 Action
                             </NavDropdown.Item>
@@ -65,7 +83,7 @@ function Header() {
                             <NavDropdown.Item href="#action/3.4">
                                 Separated link
                             </NavDropdown.Item>
-                        </NavDropdown>
+                        </NavDropdown> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

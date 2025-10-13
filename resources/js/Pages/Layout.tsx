@@ -12,13 +12,9 @@ const Layout = ({ children }: { children: ReactNode }) => (
         <header>
             <Header />
         </header>
-        <body>
-            <main>
-                <section className="main__wrapper">
-                {children}
-                </section>
-                </main>
-        </body>
+        <main>
+            <section className="main__wrapper">{children}</section>
+        </main>
     </>
 );
 

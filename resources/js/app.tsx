@@ -5,7 +5,7 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../css/app.css'
-import '../css/main.css'
+// import '../css/main.css'
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 

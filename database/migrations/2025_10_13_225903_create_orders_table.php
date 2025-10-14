@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->enum("status", ['Новый', 'В рассмотрении', 'Принятый']);
+            $table->enum("status", ['Новый', 'В рассмотрении', 'Принятый'])->default("Новый");
             $table->string("text");
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
             $table->timestamps();

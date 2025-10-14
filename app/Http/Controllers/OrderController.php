@@ -29,7 +29,7 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+        $request->user()->orders()->create($request->all());
     }
 
     /**

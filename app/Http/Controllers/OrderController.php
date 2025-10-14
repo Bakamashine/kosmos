@@ -53,7 +53,8 @@ class OrderController extends Controller
      */
     public function update(UpdateOrderRequest $request, Order $order)
     {
-        //
+        $order->status = $request->status;
+        $order->save();
     }
 
     /**

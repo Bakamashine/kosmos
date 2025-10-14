@@ -21,6 +21,7 @@ Route::middleware(["auth"])->group(function () {
     });
     Route::controller(OrderController::class)->group(function () {
         Route::post("/order", 'store')->name("order.store");
+        Route::patch("/order/{order}", 'update')->name("order.update");
     });
     Route::get("/home", [HomeController::class, 'index'])->name("home");
     Route::middleware(AdminMiddleware::class)->group(function () {

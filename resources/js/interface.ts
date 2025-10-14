@@ -4,6 +4,7 @@ export interface Feedback{
 
 export interface Order
 {
+    id: number;
     status: string;
     text: string;
     user_id: number;

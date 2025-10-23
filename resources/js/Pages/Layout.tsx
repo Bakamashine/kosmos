@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Header from "./includes/header";
+import Header from "../includes/header";
 
 export interface User {
     name: string;

@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { route } from "ziggy-js";
-import { User } from "../Layout";
+import { User } from "../Pages/Layout";
 
 function Header() {
     const { props } = usePage<{ auth: { user: User }, appName: string }>();

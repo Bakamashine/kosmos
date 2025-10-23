@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repository\FlyingRepository;
 use App\Http\Requests\StoreFlyingRequest;
 use App\Http\Requests\UpdateFlyingRequest;
 use App\Models\Flying;
@@ -13,7 +14,8 @@ class FlyingController extends Controller
      */
     public function index()
     {
-        //
+        $flying = FlyingRepository::Get();
+        return inertia("flying/index", ['flying' => $flying]);
     }
 
     /**

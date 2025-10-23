@@ -1,48 +1,23 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { Head, usePage } from "@inertiajs/react";
+import { Head, useForm, usePage } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
 import Layout from "../Layout";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { route } from "ziggy-js";
 
-interface RegisterInterface {
-    email: string;
-    password: string;
-    password_confirmation: string;
-    name: string;
-}
-
-function Register() {
-    const { errors } = usePage<{ errors: Error }>().props;
-
-    const [values, setValues] = useState<RegisterInterface>({
+export default function Register() {
+    const { data, setData, post, errors } = useForm({
         name: "",
         email: "",
         password: "",
         password_confirmation: "",
     });
 
-    /**
-     * Изменение значений в компоненте
-     * @param e
-     */
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
-        const { id, value } = e.target;
-        setValues((prevValues) => ({
-            ...prevValues,
-            [id]: value,
-        }));
-    }
-
-    /**
-     * Отправка формы
-     * @param e
-     */
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        router.post("/register", values as Record<string, any>);
+        post(route("register.store"));
     }
-
     return (
         <Layout>
             <Head title="Регистрация" />
@@ -54,10 +29,10 @@ function Register() {
                     <Form.Control
                         type="text"
                         placeholder="Введите ваше имя"
-                        onChange={handleChange}
-                        value={values.name}
+                        onChange={(e) => setData("name", e.target.value)}
+                        value={data.name}
                     />
-                    <p className="red">{errors.name}</p>
+                    {errors.name && <p className="red">{errors.name}</p>}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="email">
@@ -65,34 +40,40 @@ function Register() {
                     <Form.Control
                         type="email"
                         placeholder="Введите почту"
-                        onChange={handleChange}
-                        value={values.email}
+                        onChange={(e) => setData("email", e.target.value)}
+                        value={data.email}
                     />
-                    <p className="red">{errors.email}</p>
+                    {errors.email && <p className="red">{errors.email}</p>}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Пароль</Form.Label>
                     <Form.Control
-                        type="text"
+                        type="password"
                         placeholder="Введите пароль"
-                        onChange={handleChange}
-                        value={values.password}
+                        onChange={(e) => setData("password", e.target.value)}
+                        value={data.password}
                     />
+                    {errors.password && (
+                        <p className="red">{errors.password}</p>
+                    )}
                 </Form.Group>
-                <p className="red">{errors.password}</p>
-
 
                 <Form.Group className="mb-3" controlId="password_confirmation">
                     <Form.Label>Повторите пароль</Form.Label>
                     <Form.Control
-                        type="text"
+                        type="password"
                         placeholder="Введите пароль"
-                        onChange={handleChange}
-                        value={values.password_confirmation}
+                        onChange={(e) =>
+                            setData("password_confirmation", e.target.value)
+                        }
+                        value={data.password_confirmation}
+
                     />
+                    {errors.password_confirmation && (
+                        <p className="red">{errors.password_confirmation}</p>
+                    )}
                 </Form.Group>
-                <p className="red">{errors.password_confirmation}</p>
                 <Button variant="primary" type="submit">
                     Регистрация
                 </Button>
@@ -100,5 +81,3 @@ function Register() {
         </Layout>
     );
 }
-
-export default Register;

@@ -2,42 +2,18 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import Layout from "../Layout";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { FormDataVisitorHelpers } from "axios";
-import { Head, router, usePage } from "@inertiajs/react";
+import { Head, router, useForm, usePage } from "@inertiajs/react";
 import { route } from "ziggy-js";
 
-interface LoginInterface {
-    email: string;
-    password: string;
-}
-
-function Auth() {
-    const { errors } = usePage<{ errors: Error }>().props;
-
-    const [values, setValues] = useState<LoginInterface>({
+export default function Auth() {
+    const { data, setData, post, errors } = useForm({
         email: "",
         password: "",
     });
 
-    /**
-     * Изменение значений в компоненте
-     * @param e
-     */
-    function handleChange(e: ChangeEvent<HTMLInputElement>) {
-        const { id, value } = e.target;
-        setValues((prevValues) => ({
-            ...prevValues,
-            [id]: value,
-        }));
-    }
-
-    /**
-     * Отправка формы
-     * @param e
-     */
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        router.post("/login", values as Record<string, any>);
+        post(route("login.store"));
     }
 
     return (
@@ -51,22 +27,24 @@ function Auth() {
                     <Form.Control
                         type="email"
                         placeholder="Введите почту"
-                        onChange={handleChange}
-                        value={values.email}
+                        onChange={(e) => setData("email", e.target.value)}
+                        value={data.email}
                     />
-                    <p className="red">{errors.email}</p>
+                    {errors.email && <p className="red">{errors.email}</p>}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Пароль</Form.Label>
                     <Form.Control
-                        type="text"
+                        type="password"
                         placeholder="Введите пароль"
-                        onChange={handleChange}
-                        value={values.password}
+                        onChange={(e) => setData("password", e.target.value)}
+                        value={data.password}
                     />
+                    {errors.password && (
+                        <p className="red">{errors.password}</p>
+                    )}
                 </Form.Group>
-                    <p className="red">{errors.password}</p>
                 <Button variant="primary" type="submit">
                     Авторизоваться
                 </Button>
@@ -74,5 +52,3 @@ function Auth() {
         </Layout>
     );
 }
-
-export default Auth;

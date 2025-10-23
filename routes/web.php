@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\FlyingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\NewsController;
@@ -37,6 +38,7 @@ Route::middleware(["auth"])->group(function () {
             Route::post("/news/store", 'store')->name("news.store");
             Route::delete("/news/{news}/destroy", 'destroy')->name("news.destroy");
         });
+        Route::resource('flying', FlyingController::class);
     });
 });
 

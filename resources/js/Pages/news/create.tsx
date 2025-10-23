@@ -26,38 +26,6 @@ export default function CreateNews() {
             <h5 className="text-center">{title}</h5>
 
             <NewsForm method={HttpMethod.POST} url={route("news.store")} />
-            {/*<Form className="m-3 bg-form" onSubmit={submit}>
-                 <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Заголовок</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="Введите заголовок"
-                        onChange={(e) => setData("title", e.target.value)}
-                        value={data.title}
-                    />
-                    {errors.title && (
-                        <p className="invalid-feedback">{errors.title}</p>
-                    )}
-                </Form.Group>
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Описание</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        placeholder="Описание..."
-                        onChange={(data) =>
-                            setData("description", data.target.value)
-                        }
-                        style={{ height: "100px" }}
-                    />
-                    {errors.description && (
-                        <p className="invalid-feedback">{errors.description}</p>
-                    )}
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Создать новость
-                </Button>
-            </Form> */}
         </Layout>
     );
 }

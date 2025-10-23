@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import Layout from "../Layout";
 import { route } from "ziggy-js";
 import { Button, FloatingLabel, Form, ListGroup } from "react-bootstrap";
-import { router, useForm, usePage } from "@inertiajs/react";
+import { Head, router, useForm, usePage } from "@inertiajs/react";
 import { Feedback } from "../../interface";
 import CreateFeedback from "../../forms/CreateFeedback";
 import CreateOrder from "../../forms/CreateOrder";
@@ -14,6 +14,7 @@ export default function Home() {
 
     return (
         <Layout>
+            <Head title="Домашняя страница" />
             <h1 className="text-center">Домашняя страница</h1>
 
             {feedbacks && (

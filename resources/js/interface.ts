@@ -35,6 +35,23 @@ export interface Pag {
     to: number;
     total: number;
 }
+
 export interface NewsPag extends Pag {
     data: News[];
+}
+
+export interface Flying extends News
+{
+    price: number
+}
+
+export interface FlyingPag extends Pag
+{
+    data: Flying[]
+}
+
+
+export interface NewsCardProps extends News {
+    marginBottom?: string;
+    redact?: boolean;
 }

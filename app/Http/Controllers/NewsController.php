@@ -16,7 +16,7 @@ class NewsController extends Controller
     public function index()
     {
         $news = NewsRepository::Get();
-        return inertia("news/management", ['news' => $news]);
+        return inertia("news/index", ['news' => $news]);
     }
 
     /**

@@ -1,20 +1,16 @@
 import React from "react";
-import { News } from "../interface";
+import { News, NewsCardProps } from "../interface";
 import { Card, ListGroup } from "react-bootstrap";
 import { route } from "ziggy-js";
 import { Link, router } from "@inertiajs/react";
 
-interface NewsWindowProps extends News {
-    marginBottom?: string;
-    redact?: boolean;
-}
 export default function NewsCard({
     title,
     description,
     id,
     marginBottom = "10px",
     redact = false,
-}: NewsWindowProps) {
+}: NewsCardProps) {
     return (
         <Card style={{ width: "18rem", marginBottom }}>
             <Card.Body>

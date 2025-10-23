@@ -17,6 +17,9 @@ export default function Admin() {
             <Link href={route("news")} className="btn btn-dark">
                 Управление новостями
             </Link>
+            <Link href={route("flying.index")} className="btn btn-dark">
+                Управление полётами
+            </Link>
         </Layout>
     );
 }

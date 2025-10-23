@@ -3,7 +3,7 @@ import Layout from "../Layout";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FormDataVisitorHelpers } from "axios";
-import { router, usePage } from "@inertiajs/react";
+import { Head, router, usePage } from "@inertiajs/react";
 import { route } from "ziggy-js";
 
 interface LoginInterface {
@@ -42,6 +42,7 @@ function Auth() {
 
     return (
         <Layout>
+            <Head title="Авторизация" />
             <Form className="m-3 bg-form" onSubmit={handleSubmit}>
                 <h5 className="text-center">Авторизация</h5>
 

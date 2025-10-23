@@ -1,7 +1,7 @@
 import React, { FormEvent } from "react";
 import Layout from "../Layout";
 import { Button, Form, Table } from "react-bootstrap";
-import { useForm, usePage } from "@inertiajs/react";
+import { Head, useForm, usePage } from "@inertiajs/react";
 import { Order } from "../../interface";
 import { route } from "ziggy-js";
 
@@ -21,6 +21,7 @@ export default function Admin() {
 
     return (
         <Layout>
+            <Head title="Административная страница" />
             <h1 className="text-center">
                 Добро пожаловать на административную страницу
             </h1>

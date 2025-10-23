@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { usePage } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
 import Layout from "../Layout";
 import Button from "react-bootstrap/Button";
@@ -45,6 +45,7 @@ function Register() {
 
     return (
         <Layout>
+            <Head title="Регистрация" />
             <Form className="m-3 bg-form" onSubmit={handleSubmit}>
                 <h5 className="text-center">Регистрация</h5>
 

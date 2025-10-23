@@ -1,84 +1,86 @@
 import React from "react";
-import { Link, usePage } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { route } from "ziggy-js";
-import { router } from "@inertiajs/react";
 import { User } from "../Layout";
 
 function Header() {
-    const { props } = usePage<{ auth: { user: User } }>();
-    const user = props.auth?.user;
-// console.log(user)
+    const { props } = usePage<{ auth: { user: User }, appName: string }>();
+    const user = props.auth.user;
+    console.log(props.appName);
+    // console.log(user)
 
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
-            <Container>
-                <Link className="non-border" href={route("main")}>
-                    <Navbar.Brand>React-Bootstrap</Navbar.Brand>
-                </Link>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto p-2">
-                        <Nav className="m-2">
-                            <Link className="btn btn-dark" href={route("main")}>
-                                Главная страница
-                            </Link>
-                        </Nav>
-                        {user !== undefined && user !== null ? (
-                            <>
-                                <Nav className="m-2">
-                                    <Link
-                                        className="btn btn-dark "
-                                        // method="get"
-                                        href={route("home")}
-                                    >
-                                        Домашняя страница
-                                    </Link>
-                                </Nav>
-                                <Nav className="m-2">
-                                    <Link
-                                        className="btn btn-danger "
-                                        method="post"
-                                        href={route("logout")}
-                                    >
-                                        Выход
-                                    </Link>
-                                </Nav>
-                                {user.role_name === "admin" && (
+        <>
+            <Navbar expand="lg" className="bg-body-tertiary">
+                <Container>
+                    <Link className="non-border" href={route("main")}>
+                        <Navbar.Brand>{props.appName}</Navbar.Brand>
+                    </Link>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto p-2">
+                            <Nav className="m-2">
+                                <Link
+                                    className="btn btn-dark"
+                                    href={route("main")}
+                                >
+                                    Главная страница
+                                </Link>
+                            </Nav>
+                            {user !== undefined && user !== null ? (
+                                <>
+                                    <Nav className="m-2">
+                                        <Link
+                                            className="btn btn-dark "
+                                            href={route("home")}
+                                        >
+                                            Домашняя страница
+                                        </Link>
+                                    </Nav>
+                                    <Nav className="m-2">
+                                        <Link
+                                            className="btn btn-danger "
+                                            method="post"
+                                            href={route("logout")}
+                                        >
+                                            Выход
+                                        </Link>
+                                    </Nav>
+                                    {user.role_name === "admin" && (
+                                        <Nav className="m-2">
+                                            <Link
+                                                className="btn btn-dark"
+                                                href={route("admin")}
+                                            >
+                                                Административная страница
+                                            </Link>
+                                        </Nav>
+                                    )}
+                                </>
+                            ) : (
+                                <>
                                     <Nav className="m-2">
                                         <Link
                                             className="btn btn-dark"
-                                            href={route("admin")}
+                                            href={route("login")}
                                         >
-                                            Административная страница
+                                            Авторизоваться
                                         </Link>
                                     </Nav>
-                                )}
-                            </>
-                        ) : (
-                            <>
-                                <Nav className="m-2">
-                                    <Link
-                                        className="btn btn-dark"
-                                        href={route("login")}
-                                    >
-                                        Авторизоваться
-                                    </Link>
-                                </Nav>
-                                <Nav className="m-2">
-                                    <Link
-                                        className="btn btn-dark"
-                                        href={route("register")}
-                                    >
-                                        Регистрация
-                                    </Link>
-                                </Nav>
-                            </>
-                        )}
-                        {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                                    <Nav className="m-2">
+                                        <Link
+                                            className="btn btn-dark"
+                                            href={route("register")}
+                                        >
+                                            Регистрация
+                                        </Link>
+                                    </Nav>
+                                </>
+                            )}
+                            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">
                                 Action
                             </NavDropdown.Item>
@@ -93,10 +95,11 @@ function Header() {
                                 Separated link
                             </NavDropdown.Item>
                         </NavDropdown> */}
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </>
     );
 }
 

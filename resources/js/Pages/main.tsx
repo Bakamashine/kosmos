@@ -22,7 +22,8 @@ export default function Main() {
             </div>
 
             {news !== undefined ? (
-                <div>
+                <div className="">
+                    <h3 className="text-center">Наши новости</h3>
                     <div className="d-flex flex-wrap justify-content-between">
                         {news.data.map((item, index) => (
                             <NewsCard

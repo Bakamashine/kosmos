@@ -23,7 +23,7 @@ class FlyingController extends Controller
      */
     public function create()
     {
-        //
+        return inertia("flying/create");
     }
 
     /**
@@ -31,7 +31,8 @@ class FlyingController extends Controller
      */
     public function store(StoreFlyingRequest $request)
     {
-        //
+        Flying::create($request->all());
+        return redirect()->route("flying.index");
     }
 
     /**
@@ -47,7 +48,7 @@ class FlyingController extends Controller
      */
     public function edit(Flying $flying)
     {
-        //
+        return inertia("flying/edit", ['flying' => $flying]);
     }
 
     /**
@@ -55,7 +56,8 @@ class FlyingController extends Controller
      */
     public function update(UpdateFlyingRequest $request, Flying $flying)
     {
-        //
+        $flying->update($request->all());
+        return redirect()->route("flying.index");
     }
 
     /**
@@ -63,6 +65,6 @@ class FlyingController extends Controller
      */
     public function destroy(Flying $flying)
     {
-        //
+        $flying->delete();
     }
 }

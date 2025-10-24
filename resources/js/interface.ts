@@ -1,3 +1,5 @@
+import { HttpMethod } from "./helper/enum";
+
 export interface Feedback {
     feedback: string;
 }
@@ -40,18 +42,23 @@ export interface NewsPag extends Pag {
     data: News[];
 }
 
-export interface Flying extends News
-{
-    price: number
+export interface Flying extends News {
+    price: number;
 }
 
-export interface FlyingPag extends Pag
-{
-    data: Flying[]
+export interface FlyingPag extends Pag {
+    data: Flying[];
 }
-
 
 export interface NewsCardProps extends News {
     marginBottom?: string;
     redact?: boolean;
+}
+
+export interface FlyingFormProps {
+    title?: string;
+    description?: string;
+    price?: number;
+    method: HttpMethod;
+    url: string;
 }

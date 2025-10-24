@@ -11,7 +11,7 @@ class FlyingRepository
      * @param mixed $count
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public static function Get($count = 0)
+    public static function Get($count = 5)
     {
         return Flying::paginate($count);
     }

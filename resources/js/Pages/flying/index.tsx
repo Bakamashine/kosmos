@@ -6,6 +6,7 @@ import { Table } from "react-bootstrap";
 import NotFoundRecords from "../../components/NotFoundRecords";
 import Paginate from "../../components/Paginate";
 import { route } from "ziggy-js";
+import { Ruble } from "../../constants/Ruble";
 
 export default function ManagementFlying() {
     const flying = usePage().props.flying as FlyingPag;
@@ -34,10 +35,27 @@ export default function ManagementFlying() {
                                     <td>
                                         {item.title}
                                         <br />
-                                        <Link href={route("flying.edit", {flying: item.id})}>Redact</Link>
+                                        <Link
+                                            href={route("flying.edit", {
+                                                flying: item.id,
+                                            })}
+                                        >
+                                            Redact
+                                        </Link>
+                                        <br />
+                                        <Link
+                                            method="delete"
+                                            href={route("flying.destroy", {
+                                                flying: item.id,
+                                            })}
+                                        >
+                                            Delete
+                                        </Link>
                                     </td>
                                     <td>{item.description}</td>
-                                    <td>{item.price}</td>
+                                    <td>
+                                        {item.price} {Ruble}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -49,7 +67,9 @@ export default function ManagementFlying() {
             ) : (
                 <NotFoundRecords text="Полёты не найдены" />
             )}
-            <Link className="btn btn-dark" href={route("flying.create")}>Создать полёт</Link>
+            <Link className="btn btn-dark" href={route("flying.create")}>
+                Создать полёт
+            </Link>
         </Layout>
     );
 }

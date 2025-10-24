@@ -4,7 +4,7 @@ export interface Feedback {
     feedback: string;
 }
 
-export interface Order {
+export interface Order extends OrderUser {
     id: number;
     status: string;
     text: string;
@@ -61,4 +61,19 @@ export interface FlyingFormProps {
     price?: number;
     method: HttpMethod;
     url: string;
+}
+
+export interface FlyingOrderPick {
+    id: number;
+    title: string;
+    price: number;
+}
+export interface CreateOrderProps {
+    flying: FlyingOrderPick[];
+}
+
+export interface OrderUser {
+    flying_price: number;
+    flying_title: string;
+    status: string;
 }

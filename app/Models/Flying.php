@@ -20,6 +20,7 @@ class Flying extends Model
 
     public function order()
     {
+        // return $this->hasMany(Order::class, "flying_id", "id");
         return $this->hasMany(Order::class);
     }
 }

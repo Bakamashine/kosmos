@@ -3,6 +3,7 @@ import { FormEvent } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { HttpMethod } from "../helper/enum";
 import { Flying, FlyingFormProps } from "../interface";
+import { Ruble } from "../constants/Ruble";
 
 export default function FlyingForm({
     method,
@@ -59,7 +60,7 @@ export default function FlyingForm({
                 )}
             </Form.Group>
             <InputGroup className="">
-                <InputGroup.Text>Цена</InputGroup.Text>
+                <InputGroup.Text>{Ruble}</InputGroup.Text>
                 <Form.Control
                     type="number"
                     min="0"

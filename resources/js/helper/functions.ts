@@ -5,3 +5,10 @@ export function submit(e: FormEvent<HTMLFormElement>, callback: (path: string) =
     // PostFeedback("/feedback");
     callback(path);
 }
+
+
+export function decodeHtml(code: string) {
+    const temp = document.createElement("p");
+    temp.innerHTML = code;
+    return temp.textContent;
+}

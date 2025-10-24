@@ -9,6 +9,7 @@ export default function UpdateOrder() {
     const { props } = usePage();
     const orders = props.order as Order[];
     const orders_status = props.order_status as string[];
+console.log("orders: ", orders)
 
     const { data, setData, patch, errors } = useForm({
         status: "0",
@@ -27,8 +28,10 @@ export default function UpdateOrder() {
                         <tr>
                             <th>#</th>
                             <th>Имя пользователя</th>
-                            <th>Его ID</th>
-                            <th>Текст заявки</th>
+                            <th>ID пользователя</th>
+                            <th>Желаемая дата</th>
+                            <th>Цена полёта</th>
+                            <th>Название полёта</th>
                             <th>Статус заявки</th>
                             <th>-</th>
                         </tr>
@@ -39,7 +42,9 @@ export default function UpdateOrder() {
                                 <td>{index + 1}</td>
                                 <td>{item.user_name}</td>
                                 <td>{item.user_id}</td>
-                                <td>{item.text}</td>
+                                <td>{item.date}</td>
+                                <td>{item.flying_price}</td>
+                                <td>{item.flying_title}</td>
                                 <td>{item.status}</td>
                                 <td>
                                     <Form onSubmit={(e) => submit(e, item.id)}>
@@ -60,12 +65,14 @@ export default function UpdateOrder() {
                                                 )
                                             )}
                                         </Form.Select>
-                                        <Button
-                                            type={"submit"}
-                                            className="btn btn-dark"
-                                        >
-                                            Смена статуса
-                                        </Button>
+                                        <div className="mt-2">
+                                            <Button
+                                                type={"submit"}
+                                                className="btn btn-dark"
+                                            >
+                                                Смена статуса
+                                            </Button>
+                                        </div>
                                     </Form>
                                 </td>
                             </tr>

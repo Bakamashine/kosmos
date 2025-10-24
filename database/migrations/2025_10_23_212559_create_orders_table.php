@@ -14,10 +14,8 @@ return new class extends Migration {
         Schema::create("orders", function (Blueprint $table) {
             $table->id();
             $table->enum("status", OrderStatus::cases())->default("Новый");
-            $table->foreignId("flying_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("flying_id")->constrained("flying")->cascadeOnDelete();
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
-            // $table->morphs("flying");
-            $table->string("text");
             $table->date("date");
         });
     }

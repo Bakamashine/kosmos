@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repository\OrderRepository;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
@@ -29,7 +30,10 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        $request->user()->orders()->create($request->all());
+        // $request->user()->orders()->create($request->all());
+        $result = OrderRepository::Add($request);
+        if ($result)
+            return redirect()->route("home")->with("success", "Заявка успешно создана!");
     }
 
     /**

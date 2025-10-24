@@ -15,7 +15,6 @@ class Order extends Model
     protected $fillable = [
         "status",
         "flying_id",
-        "text",
         "date"
     ];
 
@@ -26,6 +25,7 @@ class Order extends Model
 
     public function flying()
     {
+        // return $this->belongsTo(Flying::class, "flying_id", "id", "flying");
         return $this->belongsTo(Flying::class);
     }
 }

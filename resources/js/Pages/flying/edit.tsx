@@ -14,10 +14,12 @@ export default function EditFlying() {
             <h1 className="text-center">{flying.title}</h1>
 
             <FlyingForm
-            description={flying.description}
-            price={flying.price}
-            title={flying.title}
-            method={HttpMethod.PUT} url={route('flying.update', {flying: flying.id})} />
+                description={flying.description}
+                price={flying.price}
+                title={flying.title}
+                method={HttpMethod.PUT}
+                url={route("flying.update", { flying: flying.id })}
+            />
         </Layout>
     );
 }

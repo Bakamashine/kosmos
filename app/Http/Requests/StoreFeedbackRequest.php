@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Feedback;
+use App\Models\Order;
+use App\Rules\UniqFeedbackRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreFeedbackRequest extends FormRequest
 {
@@ -22,7 +26,14 @@ class StoreFeedbackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "feedback" => ['required', 'string'],
+            "text" => ['required', 'string'],
+            "score" => ['required', 'integer', "min:1", "max:5"],
+            "order_id" => [
+                'required',
+                'integer',
+                 Rule::unique(Feedback::class)->where("user_id", auth()->id())
+                // UniqFeedbackRule::class
+            ]
         ];
     }
 }

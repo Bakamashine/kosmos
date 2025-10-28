@@ -15,7 +15,11 @@ return new class extends Migration {
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->text("feedback");
+            $table->foreignId("order_id")
+                ->constrained()
+                ->cascadeOnDelete();
+            $table->text("text");
+            $table->integer("score");
             $table->timestamps();
         });
     }

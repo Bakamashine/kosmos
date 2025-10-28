@@ -9,6 +9,7 @@ import {
     FlyingOrderPick,
     Order,
     OrderUser,
+    SuccessOrder,
 } from "../../interface";
 import CreateFeedback from "../../forms/CreateFeedback";
 import CreateOrder from "../../forms/CreateOrder";
@@ -20,11 +21,13 @@ export default function Home() {
     const success = props.success as string;
     const flying = props.flying as FlyingOrderPick[];
     const orders = props.orders as OrderUser[];
+    const success_order = props.success_order as SuccessOrder[];
 
     console.log("feedbacks: ", feedbacks);
     console.log("success: ", success);
     console.log("flying: ", flying);
     console.log("orders: ", orders);
+    console.log("success_order", success_order);
 
     return (
         <Layout>
@@ -37,7 +40,7 @@ export default function Home() {
                     <ListGroup>
                         {feedbacks.map((item, index) => (
                             <ListGroup.Item key={index}>
-                                {item.feedback}
+                                Text: {item.text} | Score: {item.score} | Flying name: {item.flying_title} | Date: {item.date}
                             </ListGroup.Item>
                         ))}
                     </ListGroup>
@@ -57,9 +60,11 @@ export default function Home() {
                     </ListGroup>
                 </div>
             )}
-            <div>
-                <CreateFeedback />
-            </div>
+            {success_order.length > 0 && (
+                <div>
+                    <CreateFeedback success_order={success_order} />
+                </div>
+            )}
             <div>
                 <CreateOrder flying={flying} />
                 {success !== undefined && <p>{success}</p>}

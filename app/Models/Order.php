@@ -44,7 +44,11 @@ class Order extends Model
 
     public function flying()
     {
-        // return $this->belongsTo(Flying::class, "flying_id", "id", "flying");
         return $this->belongsTo(Flying::class);
+    }
+
+    public function feedback()
+    {
+        return $this->hasMany(Feedback::class);
     }
 }

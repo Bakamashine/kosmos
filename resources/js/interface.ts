@@ -24,7 +24,16 @@ export interface Roles {
 }
 
 export interface Feedback {
-    feedback: string;
+    text: string;
+    score: number;
+    date?: string,
+    flying_title?: string,
+    user_name?: string,
+    flying_price?: number
+}
+
+export interface FeedbackPag extends Pag {
+    data: Feedback[];
 }
 
 export interface Order extends OrderUser {
@@ -104,4 +113,10 @@ export interface OrderUser {
 
 export interface UserPag extends Pag {
     data: User[];
+}
+
+export interface SuccessOrder
+{
+    title: string
+    order_id: number;
 }

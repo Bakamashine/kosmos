@@ -21,6 +21,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUserId($value)
+ * @property string $text
+ * @property int $score
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereScore($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereText($value)
  * @mixin \Eloquent
  */
 class Feedback extends Model
@@ -29,11 +33,19 @@ class Feedback extends Model
     use HasFactory;
 
     protected $fillable = [
-        'feedback'
+        'text',
+        "score",
+        "order_id"
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
 }

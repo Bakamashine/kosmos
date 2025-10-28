@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [MainController::class, 'index'])->name("main");
 Route::inertia("/about_us", 'about_us')->name("about_us");
 
+Route::get("/feedback", [FeedbackController::class, 'index'])->name("feedback.index");
+
 Route::middleware(["guest"])->group(function () {
     Route::inertia("/login", "auth/login")->name("login");
     Route::inertia("/register", 'auth/register')->name("register");

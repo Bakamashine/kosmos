@@ -9,7 +9,7 @@ export default function UpdateOrder() {
     const { props } = usePage();
     const orders = props.order as Order[];
     const orders_status = props.order_status as string[];
-console.log("orders: ", orders)
+    console.log("orders: ", orders);
 
     const { data, setData, patch, errors } = useForm({
         status: "0",
@@ -56,6 +56,8 @@ console.log("orders: ", orders)
                                                     data.target.value
                                                 )
                                             }
+                                            defaultValue={item.status}
+                                            // value={data.status}
                                         >
                                             {orders_status.map(
                                                 (item, index) => (

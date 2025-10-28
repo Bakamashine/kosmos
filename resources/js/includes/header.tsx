@@ -4,10 +4,10 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { route } from "ziggy-js";
-import { User } from "../Pages/Layout";
+import { User } from "../interface";
 
 function Header() {
-    const { props } = usePage<{ auth: { user: User }, appName: string }>();
+    const { props } = usePage<{ auth: { user: User }; appName: string }>();
     const user = props.auth.user;
     console.log(props.appName);
     // console.log(user)
@@ -28,6 +28,14 @@ function Header() {
                                     href={route("main")}
                                 >
                                     Главная страница
+                                </Link>
+                            </Nav>
+                            <Nav className="m-2">
+                                <Link
+                                    className="btn btn-dark"
+                                    href={route("about_us")}
+                                >
+                                    О нас
                                 </Link>
                             </Nav>
                             {user !== undefined && user !== null ? (

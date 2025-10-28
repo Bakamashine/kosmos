@@ -48,6 +48,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
             Route::put("/user/{user}", 'update')->name("user.update");
             Route::delete("/user/{user}", 'destroy')->name("user.destroy");
             Route::patch("/user/{user}/ban", 'ban')->name("user.ban");
+            Route::patch("/user/{user}/unban", 'unban')->name("user.unban");
         });
         // Route::resource('user', UserController::class);
         Route::resource('flying', FlyingController::class);

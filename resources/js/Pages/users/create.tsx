@@ -1,33 +1,43 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { FormEvent } from "react";
 import Layout from "../Layout";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { Head, router, useForm, usePage } from "@inertiajs/react";
+import { Head, useForm } from "@inertiajs/react";
+import { Button, Form } from "react-bootstrap";
 import { route } from "ziggy-js";
-
-export default function Auth() {
+export default function CreateUser() {
     const { data, setData, post, errors } = useForm({
+        name: "",
         email: "",
         password: "",
     });
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        post(route("login.store"));
+        post(route("user.store"));
     }
 
-    console.log("Login errors: ", errors)
+    const title = "Создание пользователя";
     return (
         <Layout>
-            <Head title="Авторизация" />
+            <Head title={title} />
             <Form className="m-3 bg-form" onSubmit={handleSubmit}>
-                <h5 className="text-center">Авторизация</h5>
+                <h5 className="text-center">{title}</h5>
+
+                <Form.Group className="mb-3" controlId="name">
+                    <Form.Label>Имя пользователя</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Введите имя пользователя"
+                        onChange={(e) => setData("name", e.target.value)}
+                        value={data.name}
+                    />
+                    {errors.name && <p className="red">{errors.name}</p>}
+                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Ваша почта</Form.Label>
+                    <Form.Label>Почта пользователя</Form.Label>
                     <Form.Control
                         type="email"
-                        placeholder="Введите почту"
+                        placeholder="Введите почту пользователя"
                         onChange={(e) => setData("email", e.target.value)}
                         value={data.email}
                     />
@@ -35,10 +45,10 @@ export default function Auth() {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
-                    <Form.Label>Пароль</Form.Label>
+                    <Form.Label>Пароль пользователя</Form.Label>
                     <Form.Control
                         type="password"
-                        placeholder="Введите пароль"
+                        placeholder="Введите пароль пользователя"
                         onChange={(e) => setData("password", e.target.value)}
                         value={data.password}
                     />
@@ -46,8 +56,9 @@ export default function Auth() {
                         <p className="red">{errors.password}</p>
                     )}
                 </Form.Group>
+
                 <Button variant="primary" type="submit">
-                    Авторизоваться
+                    Регистрация
                 </Button>
             </Form>
         </Layout>

@@ -5,15 +5,16 @@ export interface User {
     role_name: string;
     email: string;
     status: number;
+    id?: number;
 }
 
-export interface UserUpdate
-{
+export interface UserUpdate {
     name: string;
     role_name: string;
     email: string;
     status: number;
     role_id: number;
+    id?: number;
 }
 
 export interface Roles {
@@ -31,6 +32,7 @@ export interface Order extends OrderUser {
     status: string;
     text: string;
     user_id: number;
+    date: string;
     user_name: string;
 }
 

@@ -8,7 +8,7 @@ import NotFoundRecords from "../../components/NotFoundRecords";
 import Paginate from "../../components/Paginate";
 import { UserPag } from "../../interface";
 export default function ManagementUser() {
-    const users = usePage().props.user as UserPag[];
+    const users = usePage().props.user as UserPag;
     console.log("Management users: ", users);
     const title = "Управление пользователями";
     return (
@@ -39,7 +39,7 @@ export default function ManagementUser() {
                                                 user: item.id,
                                             })}
                                         >
-                                            Redact
+                                            Редактирование
                                         </Link>
                                         <br />
                                         <Link
@@ -48,24 +48,35 @@ export default function ManagementUser() {
                                                 user: item.id,
                                             })}
                                         >
-                                            Delete
+                                            Удаление
                                         </Link>
                                         <br />
-                                        <Link
-                                            method="patch"
-                                            href={route("user.ban", {
-                                                user: item.id,
-                                            })}
-                                        >
-                                            Ban
-                                        </Link>
+                                        {item.status == 1 ? (
+                                            <Link
+                                                method="patch"
+                                                href={route("user.ban", {
+                                                    user: item.id,
+                                                })}
+                                            >
+                                                Блокировние
+                                            </Link>
+                                        ) : (
+                                            <Link
+                                                method="patch"
+                                                href={route("user.unban", {
+                                                    user: item.id,
+                                                })}
+                                            >
+                                                Разблокировать
+                                            </Link>
+                                        )}
                                     </td>
                                     <td>{item.email}</td>
                                     <td>
                                         {item.status == 1 ? (
-                                            <p>Active</p>
+                                            <p className="text-success">Активный</p>
                                         ) : (
-                                            <p>Banned</p>
+                                            <p className="text-danger">Заблокированный</p>
                                         )}
                                     </td>
                                 </tr>
@@ -79,8 +90,8 @@ export default function ManagementUser() {
             ) : (
                 <NotFoundRecords text="Полёты не найдены" />
             )}
-            <Link className="btn btn-dark" href={route("flying.create")}>
-                Создать полёт
+            <Link className="btn btn-dark" href={route("user.create")}>
+                Создать пользователя
             </Link>
         </Layout>
     );

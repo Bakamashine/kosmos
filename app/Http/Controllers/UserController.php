@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\Role;
 use App\Models\User;
+use Dotenv\Exception\ValidationException;
+use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -25,6 +27,11 @@ class UserController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return inertia("users/create");
+    }
+
     public function store(StoreUserRequest $request)
     {
         User::create($request->all());
@@ -38,13 +45,20 @@ class UserController extends Controller
 
     public function update(User $user, UpdateUserRequest $request)
     {
+
         $user->update($request->all());
-        $user->save();
+        return redirect()->route("user.index");
     }
 
     public function ban(User $user)
     {
         $user->status = 0;
+        $user->save();
+    }
+
+    public function unban(User $user)
+    {
+        $user->status = 1;
         $user->save();
     }
 }

@@ -40,7 +40,7 @@ export default function ManagementFlying() {
                                                 flying: item.id,
                                             })}
                                         >
-                                            Redact
+                                            Редактирование
                                         </Link>
                                         <br />
                                         <Link
@@ -49,7 +49,7 @@ export default function ManagementFlying() {
                                                 flying: item.id,
                                             })}
                                         >
-                                            Delete
+                                            Удаление
                                         </Link>
                                     </td>
                                     <td>{item.description}</td>

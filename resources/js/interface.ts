@@ -1,5 +1,27 @@
 import { HttpMethod } from "./helper/enum";
 
+export interface User {
+    name: string;
+    role_name: string;
+    email: string;
+    status: number;
+}
+
+export interface UserUpdate
+{
+    name: string;
+    role_name: string;
+    email: string;
+    status: number;
+    role_id: number;
+}
+
+export interface Roles {
+    id?: number;
+    role_name: string;
+    abilities: string;
+}
+
 export interface Feedback {
     feedback: string;
 }
@@ -76,4 +98,8 @@ export interface OrderUser {
     flying_price: number;
     flying_title: string;
     status: string;
+}
+
+export interface UserPag extends Pag {
+    data: User[];
 }

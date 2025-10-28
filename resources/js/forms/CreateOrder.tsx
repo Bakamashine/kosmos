@@ -14,7 +14,7 @@ export default function CreateOrder({ flying }: CreateOrderProps) {
 
     function submit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        post(route('order.store'));
+        post(route("order.store"));
     }
 
     // console.log("errors order: ", errors);
@@ -33,12 +33,18 @@ export default function CreateOrder({ flying }: CreateOrderProps) {
                     {errors.date && <p className="red">{errors.date}</p>}
                 </Form.Group>
                 <Form.Group className="mb-3">
-                <Form.Label>Выберите полёт</Form.Label>
-                <Form.Select aria-label="Default select example" onChange={e => setData("flying_id", e.target.value)} value={data.flying_id}>
-                    {flying.map((item, index) => (
-                        <option key={index} value={item.id}>{item.title} - {item.price} {Ruble}</option>
-                    ))}
-                </Form.Select>
+                    <Form.Label>Выберите полёт</Form.Label>
+                    <Form.Select
+                        aria-label="Default select example"
+                        onChange={(e) => setData("flying_id", e.target.value)}
+                        value={data.flying_id}
+                    >
+                        {flying.map((item, index) => (
+                            <option key={index} value={item.id}>
+                                {item.title} - {item.price} {Ruble}
+                            </option>
+                        ))}
+                    </Form.Select>
                 </Form.Group>
                 <div className="mt-3">
                     <Button variant="primary" type="submit">

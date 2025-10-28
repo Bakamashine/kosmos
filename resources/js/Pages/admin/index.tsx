@@ -20,6 +20,9 @@ export default function Admin() {
             <Link href={route("flying.index")} className="btn btn-dark">
                 Управление полётами
             </Link>
+            <Link href={route("user.index")} className="btn btn-dark">
+                Управление пользователями
+            </Link>
         </Layout>
     );
 }

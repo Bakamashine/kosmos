@@ -7,7 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\BannedUser;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/", [MainController::class, 'index'])->name("main");
@@ -17,7 +19,7 @@ Route::middleware(["guest"])->group(function () {
     Route::inertia("/register", 'auth/register')->name("register");
 });
 
-Route::middleware(["auth"])->group(function () {
+Route::middleware(["auth", BannedUser::class])->group(function () {
     Route::controller(FeedbackController::class)->group(function () {
         Route::post("/feedback", "store")->name("feedback.store");
     });
@@ -38,6 +40,16 @@ Route::middleware(["auth"])->group(function () {
             Route::post("/news/store", 'store')->name("news.store");
             Route::delete("/news/{news}/destroy", 'destroy')->name("news.destroy");
         });
+        Route::controller(UserController::class)->group(function () {
+            Route::get("/user", 'index')->name("user.index");
+            Route::post("/user", 'store')->name("user.store");
+            Route::get("/user/create", 'create')->name("user.create");
+            Route::get("/user/{user}/edit", 'edit')->name("user.edit");
+            Route::put("/user/{user}", 'update')->name("user.update");
+            Route::delete("/user/{user}", 'destroy')->name("user.destroy");
+            Route::patch("/user/{user}/ban", 'ban')->name("user.ban");
+        });
+        // Route::resource('user', UserController::class);
         Route::resource('flying', FlyingController::class);
     });
 });

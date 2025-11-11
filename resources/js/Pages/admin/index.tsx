@@ -2,7 +2,7 @@ import React, { FormEvent } from "react";
 import Layout from "../Layout";
 import { Head, Link, useForm, usePage } from "@inertiajs/react";
 import { route } from "ziggy-js";
-import UpdateOrder from "../order/update_status";
+import UpdateOrder from "../../components/order/updateStatus";
 
 export default function Admin() {
     return (
@@ -11,10 +11,11 @@ export default function Admin() {
             <h1 className="text-center">
                 Добро пожаловать на административную страницу
             </h1>
-            <div>
+            <div className="updateOrder">
                 <UpdateOrder />
             </div>
-            <Link href={route("news")} className="btn btn-dark">
+            <Link href={route("order.indexMobile")} className="btn btn-dark mobile">Обновление статуса заявок</Link>
+            <Link href={route("news.index")} className="btn btn-dark">
                 Управление новостями
             </Link>
             <Link href={route("flying.index")} className="btn btn-dark">

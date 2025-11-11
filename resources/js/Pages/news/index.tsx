@@ -18,7 +18,7 @@ export default function ManagementNews() {
 
                 {news !== undefined ? (
                     <div>
-                        <div className="d-flex flex-wrap justify-content-between">
+                        <div className="news">
                             {news.data.map((item, index) => (
                                 <NewsCard
                                     key={index}

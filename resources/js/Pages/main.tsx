@@ -7,6 +7,7 @@ import NewsCard from "../components/NewsCard";
 import { News, NewsPag } from "../interface";
 import NotFoundRecords from "../components/NotFoundRecords";
 import Paginate from "../components/Paginate";
+import { GetSizeWindow } from "../helper/functions";
 export default function Main() {
     const { props } = usePage();
 
@@ -17,14 +18,14 @@ export default function Main() {
         <Layout>
             <Head title="Главная" />
             <h1 className="text-center p-2">Главная страница</h1>
-            <div className="m-3">
+            <div className="carousel_size">
                 <UncontrolledCarousel />
             </div>
 
             {news !== undefined ? (
                 <div className="">
                     <h3 className="text-center">Наши новости</h3>
-                    <div className="d-flex flex-wrap justify-content-between">
+                    <div className="news">
                         {news.data.map((item, index) => (
                             <NewsCard
                                 key={index}

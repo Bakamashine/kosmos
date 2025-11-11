@@ -6,9 +6,15 @@ export function submit(e: FormEvent<HTMLFormElement>, callback: (path: string) =
     callback(path);
 }
 
-
 export function decodeHtml(code: string) {
     const temp = document.createElement("p");
     temp.innerHTML = code;
     return temp.textContent;
 }
+export function GetSizeWindow() {
+    return {
+        width: window.innerWidth,
+        height: window.innerHeight
+    }
+}
+

@@ -4,6 +4,7 @@ import { Roles, User, UserUpdate } from "../../interface";
 import Layout from "../Layout";
 import { Button, Form } from "react-bootstrap";
 import { route } from "ziggy-js";
+import Back from "../../components/Back";
 export default function EditUser() {
     const { name, email, status, role_name, role_id, id } = usePage().props
         .user as UserUpdate;
@@ -72,6 +73,7 @@ export default function EditUser() {
                 <Button type="submit" className="btn btn-dark">
                     Обновить пользователя
                 </Button>
+                <Back pathName="user.index" />
             </Form>
         </Layout>
     );

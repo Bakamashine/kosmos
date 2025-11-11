@@ -8,7 +8,7 @@ export default function AboutUs() {
             <Head title={title} />
             <h1 className="text-center">{title}</h1>
 
-            <div>
+            <div className="about_us">
                 <p>
                     Добро пожаловать на сайт Недалёкий космос — ваш гид в
                     удивительный мир ближайшего космоса!

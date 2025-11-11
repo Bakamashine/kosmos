@@ -120,3 +120,7 @@ export interface SuccessOrder
     title: string
     order_id: number;
 }
+
+export interface OrderPag extends Pag {
+    data: Order[];
+}

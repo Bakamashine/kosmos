@@ -1,9 +1,11 @@
-import { InertiaFormProps, useForm } from "@inertiajs/react";
+import { InertiaFormProps, Link, useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { HttpMethod } from "../helper/enum";
 import { Flying, FlyingFormProps } from "../interface";
 import { Ruble } from "../constants/Ruble";
+import { route } from "ziggy-js";
+import Back from "../components/Back";
 
 export default function FlyingForm({
     method,
@@ -77,6 +79,7 @@ export default function FlyingForm({
                     Редактировать полёт
                 </Button>
             </div>
+            {Back("flying.index")}
         </Form>
     );
 }

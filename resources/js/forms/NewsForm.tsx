@@ -2,6 +2,7 @@ import { InertiaFormProps, useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
 import { Button, Form } from "react-bootstrap";
 import { HttpMethod } from "../helper/enum";
+import Back from "../components/Back";
 
 interface NewsFormProps {
     // submit: (e: FormEvent<HTMLFormElement>) => void;
@@ -65,6 +66,7 @@ export default function NewsForm({
             <Button variant="primary" type="submit">
                 Создать новость
             </Button>
+            <Back pathName="news.index" />
         </Form>
     );
 }

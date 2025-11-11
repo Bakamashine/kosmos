@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\OrderStatus;
 use App\Http\Repository\OrderRepository;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use App\Http\Resources\OrderResource;
 use App\Models\Order;
 
 class OrderController extends Controller
@@ -50,6 +52,13 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         //
+    }
+
+    public function indexMobile()
+    {
+        $order = OrderResource::collection(Order::paginate(5));
+        $order_status = OrderStatus::cases();
+        return inertia("order/updateStatusMobile", ['order' => $order, 'order_status' => $order_status]);
     }
 
     /**

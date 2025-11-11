@@ -9,7 +9,7 @@ import NotFoundRecords from "../../components/NotFoundRecords";
 export default function ManagementNews() {
     const { props } = usePage();
     const news = props?.news as NewsPag;
-    console.log(news);
+    // console.log(news);
     return (
         <Layout>
             <Head title="Управление новостями" />

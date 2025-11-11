@@ -91,6 +91,7 @@ export interface NewsCardProps extends News {
 export interface FlyingFormProps {
     title?: string;
     description?: string;
+    textbutton?: string;
     price?: number;
     method: HttpMethod;
     url: string;

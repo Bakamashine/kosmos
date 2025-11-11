@@ -8,6 +8,7 @@ import { route } from "ziggy-js";
 
 export default function EditFlying() {
     const flying = usePage().props.flying as Flying;
+    // console.log(flying)
     return (
         <Layout>
             <Head title={flying.title} />
@@ -17,6 +18,7 @@ export default function EditFlying() {
                 description={flying.description}
                 price={flying.price}
                 title={flying.title}
+                textbutton="Редактировать полёт"
                 method={HttpMethod.PUT}
                 url={route("flying.update", { flying: flying.id })}
             />

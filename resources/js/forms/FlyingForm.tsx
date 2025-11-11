@@ -10,6 +10,7 @@ import Back from "../components/Back";
 export default function FlyingForm({
     method,
     url,
+    textbutton = "Создать полёт",
     title = "",
     description = "",
     price = undefined,
@@ -76,10 +77,10 @@ export default function FlyingForm({
             {form.errors.price && <p className="red">{form.errors.price}</p>}
             <div className="mt-3">
                 <Button variant="primary" type="submit">
-                    Редактировать полёт
+                    {textbutton}
                 </Button>
             </div>
-            {Back("flying.index")}
+            <Back pathName="flying.index" />
         </Form>
     );
 }

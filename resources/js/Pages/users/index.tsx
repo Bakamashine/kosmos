@@ -9,7 +9,7 @@ import Paginate from "../../components/Paginate";
 import { UserPag } from "../../interface";
 export default function ManagementUser() {
     const users = usePage().props.user as UserPag;
-    console.log("Management users: ", users);
+    // console.log("Management users: ", users);
     const title = "Управление пользователями";
     return (
         <Layout>

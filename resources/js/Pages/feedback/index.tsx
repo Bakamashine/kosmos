@@ -51,7 +51,7 @@ export default function ViewFeedback() {
                                 </Card>
                             ))}
                         </div>
-                        {feedback.data.length >= 5 && (
+                        {feedback.data.length > 5 && (
                             <div className="d-flex justify-content-center">
                                 <Paginate item={feedback} />
                             </div>

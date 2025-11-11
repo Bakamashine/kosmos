@@ -34,7 +34,7 @@ class NewsController extends Controller
     {
         News::create($request->all());
         // return back();
-        return redirect()->route("news");
+        return redirect()->route("news.index");
     }
 
     /**
@@ -60,7 +60,7 @@ class NewsController extends Controller
     {
         $news->update($request->all());
         $news->save();
-        return redirect()->route("news");
+        return redirect()->route("news.index");
     }
 
     /**

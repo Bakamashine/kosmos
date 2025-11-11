@@ -40,9 +40,9 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
             Route::get("/news", 'index')->name("news.index");
             Route::get("/news/create", 'create')->name("news.create");
             Route::get("/news/{news}/edit", 'edit')->name("news.edit");
-            Route::put("/news/{news}/update", 'update')->name("news.update");
-            Route::post("/news/store", 'store')->name("news.store");
-            Route::delete("/news/{news}/destroy", 'destroy')->name("news.destroy");
+            Route::put("/news/{news}", 'update')->name("news.update");
+            Route::post("/news", 'store')->name("news.store");
+            Route::delete("/news/{news}", 'destroy')->name("news.destroy");
         });
         Route::controller(UserController::class)->group(function () {
             Route::get("/user", 'index')->name("user.index");

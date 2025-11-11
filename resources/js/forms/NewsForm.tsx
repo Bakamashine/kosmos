@@ -8,12 +8,14 @@ interface NewsFormProps {
     // submit: (e: FormEvent<HTMLFormElement>) => void;
     method: HttpMethod;
     url: string;
+    textbutton?: string,
     title?: string;
     description?: string;
 }
 export default function NewsForm({
     method,
     url,
+    textbutton = "Создать новость",
     title = "",
     description = "",
 }: NewsFormProps) {
@@ -64,7 +66,7 @@ export default function NewsForm({
                 )}
             </Form.Group>
             <Button variant="primary" type="submit">
-                Создать новость
+                {textbutton}
             </Button>
             <Back pathName="news.index" />
         </Form>

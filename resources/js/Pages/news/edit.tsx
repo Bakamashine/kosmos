@@ -16,6 +16,7 @@ export default function EditNews() {
                 title={news.title}
                 description={news.description}
                 method={HttpMethod.PUT}
+                textbutton="Обновить новость"
                 url={route("news.update", {news: news.id})}
             />
         </Layout>

@@ -9,7 +9,7 @@ import { User } from "../interface";
 function Header() {
     const { props } = usePage<{ auth: { user: User }; appName: string }>();
     const user = props.auth.user;
-    console.log(props.appName);
+    // console.log(props.appName);
     // console.log(user)
 
     return (

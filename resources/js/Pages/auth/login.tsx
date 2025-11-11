@@ -16,7 +16,7 @@ export default function Auth() {
         post(route("login.store"));
     }
 
-    console.log("Login errors: ", errors)
+    // console.log("Login errors: ", errors)
     return (
         <Layout>
             <Head title="Авторизация" />

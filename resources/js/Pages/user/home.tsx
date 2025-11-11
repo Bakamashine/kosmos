@@ -23,11 +23,11 @@ export default function Home() {
     const orders = props.orders as OrderUser[];
     const success_order = props.success_order as SuccessOrder[];
 
-    console.log("feedbacks: ", feedbacks);
-    console.log("success: ", success);
-    console.log("flying: ", flying);
-    console.log("orders: ", orders);
-    console.log("success_order", success_order);
+    // console.log("feedbacks: ", feedbacks);
+    // console.log("success: ", success);
+    // console.log("flying: ", flying);
+    // console.log("orders: ", orders);
+    // console.log("success_order", success_order);
 
     return (
         <Layout>

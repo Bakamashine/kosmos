@@ -11,7 +11,7 @@ export default function Main() {
     const { props } = usePage();
 
     const news = props.news as NewsPag;
-    console.log(news);
+    // console.log(news);
 
     return (
         <Layout>

@@ -19,7 +19,7 @@ export default function CreateFeedback({ success_order }: CreateFeedbackProps) {
         e.preventDefault();
         post(route("feedback.store"));
     }
-    console.log("Create feedback errors: ", errors);
+    // console.log("Create feedback errors: ", errors);
     return (
         <div>
             <h3 className="text-center">Создание отзывов</h3>

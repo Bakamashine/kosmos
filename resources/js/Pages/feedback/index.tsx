@@ -17,7 +17,7 @@ export default function ViewFeedback() {
             <h1 className="text-center">{title}</h1>
 
             <div>
-                {feedback ? (
+                {feedback.data.length > 0 ? (
                     <div>
                         <div className="d-flex flex-wrap justify-content-center">
                             {feedback.data.map((item, index) => (
@@ -51,9 +51,11 @@ export default function ViewFeedback() {
                                 </Card>
                             ))}
                         </div>
-                        <div className="d-flex justify-content-center">
-                            <Paginate item={feedback} />
-                        </div>
+                        {feedback.data.length >= 5 && (
+                            <div className="d-flex justify-content-center">
+                                <Paginate item={feedback} />
+                            </div>
+                        )}
                     </div>
                 ) : (
                     <NotFoundRecords text="Отзывы не найдены" />

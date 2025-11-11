@@ -5,7 +5,15 @@ import Form from "react-bootstrap/Form";
 import { Head, router, useForm, usePage } from "@inertiajs/react";
 import { route } from "ziggy-js";
 
+interface AuthPropsFlash {
+    [key: string]: any;
+    flash?: {
+        banned?: string;
+    };
+}
 export default function Auth() {
+    const { flash } = usePage<AuthPropsFlash>().props;
+
     const { data, setData, post, errors } = useForm({
         email: "",
         password: "",
@@ -49,6 +57,14 @@ export default function Auth() {
                 <Button variant="primary" type="submit">
                     Авторизоваться
                 </Button>
+
+                {flash?.banned && (
+                    <div className="mt-3">
+                        <p className="text-danger text-center">
+                            {flash.banned}
+                        </p>
+                    </div>
+                )}
             </Form>
         </Layout>
     );

@@ -42,7 +42,10 @@ class HandleInertiaRequests extends Middleware
                 'email' => $request->user()->email,
                 "role_name" => $request->user()->role->role_name
             ] : null,
-            "appName" => config("app.name")
+            "appName" => config("app.name"),
+            "flash" => [
+                "banned" => fn() => $request->session()->get("banned")
+            ]
         ];
     }
 }

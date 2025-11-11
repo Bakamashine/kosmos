@@ -38,6 +38,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
         });
         Route::controller(NewsController::class)->group(function () {
             Route::get("/news", 'index')->name("news.index");
+            Route::get("/news/mobile", 'indexMobile')->name("news.indexMobile");
             Route::get("/news/create", 'create')->name("news.create");
             Route::get("/news/{news}/edit", 'edit')->name("news.edit");
             Route::put("/news/{news}", 'update')->name("news.update");
@@ -46,6 +47,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
         });
         Route::controller(UserController::class)->group(function () {
             Route::get("/user", 'index')->name("user.index");
+            Route::get("/user/mobile", 'indexMobile')->name("user.indexMobile");
             Route::post("/user", 'store')->name("user.store");
             Route::get("/user/create", 'create')->name("user.create");
             Route::get("/user/{user}/edit", 'edit')->name("user.edit");

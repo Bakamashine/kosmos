@@ -11,7 +11,7 @@ export default function Admin() {
             <h1 className="text-center">
                 Добро пожаловать на административную страницу
             </h1>
-            <div className="updateOrder">
+            <div className="nomobile">
                 <UpdateOrder />
             </div>
             <Link href={route("order.indexMobile")} className="btn btn-dark mobile">Обновление статуса заявок</Link>
@@ -21,7 +21,10 @@ export default function Admin() {
             <Link href={route("flying.index")} className="btn btn-dark">
                 Управление полётами
             </Link>
-            <Link href={route("user.index")} className="btn btn-dark">
+            <Link href={route("user.index")} className="btn btn-dark nomobile">
+                Управление пользователями
+            </Link>
+            <Link href={route("user.indexMobile")} className="btn btn-dark mobile">
                 Управление пользователями
             </Link>
         </Layout>

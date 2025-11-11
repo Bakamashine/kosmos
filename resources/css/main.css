@@ -27,6 +27,7 @@ main .news {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .mobile {
@@ -45,12 +46,15 @@ main .news {
         display: grid;
         justify-content: center;
     }
+    .nomobile {
+        display: none !important;
+    }
     .mobile {
         display: block;
     }
-    .updateOrder {
+    /* .updateOrder {
         display: none;
-    }
+    } */
     main .main__wrapper {
         background-color: white;
         /* margin: 30px; */

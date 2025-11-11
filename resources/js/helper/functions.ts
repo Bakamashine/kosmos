@@ -18,3 +18,11 @@ export function GetSizeWindow() {
     }
 }
 
+export function GetStatus(status: number) {
+    switch(status){
+        case 1:
+            return "Активный"
+        case 2:
+            return "Заблокированный"
+    }
+}

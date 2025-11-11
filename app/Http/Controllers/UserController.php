@@ -19,6 +19,12 @@ class UserController extends Controller
         return inertia("users/index", ['user' => $user]);
     }
 
+    public function indexMobile()
+    {
+        $user = User::paginate(5);
+        return inertia("users/indexMobile", ['user' => $user]);
+    }
+
     public function edit(User $user)
     {
         return inertia("users/edit", [

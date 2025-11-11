@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereUserId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Feedback> $feedback
+ * @property-read int|null $feedback_count
  * @mixin \Eloquent
  */
 class Order extends Model

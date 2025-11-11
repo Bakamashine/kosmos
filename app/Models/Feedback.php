@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $score
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereScore($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereText($value)
+ * @property int $order_id
+ * @property-read \App\Models\Order $order
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereOrderId($value)
  * @mixin \Eloquent
  */
 class Feedback extends Model

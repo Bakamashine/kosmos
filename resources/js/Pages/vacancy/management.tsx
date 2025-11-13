@@ -8,6 +8,7 @@ import Paginate from "../../components/ui/Paginate";
 import { route } from "ziggy-js";
 export default function VakanciesManagement() {
     const { vacancy } = usePage<{  vacancy: VacancyPag }>().props;
+    console.log("Deleted vacancy: ", vacancy)
     const title = "Управление вакансиями";
     return (
         <Layout>
@@ -36,11 +37,21 @@ export default function VakanciesManagement() {
                 ) : (
                     <NotFoundRecords text="Вакансии не найдены" />
                 )}
-                <div className="d-flex justify-content-center">
+                {/* <div className="d-flex justify-content-center">
                     <Link className="btn btn-dark" href={route("vacancy.create")}>
                         Создание новости
                     </Link>
                 </div>
+                <div className="" */}
+
+                    <div className="d-grid gap-3">
+                    <Link className="btn btn-dark" href={route("vacancy.create")}>
+                        Создание новости
+                    </Link>
+                    <Link className="btn btn-dark" href={route("vacancy.destroyed")}>
+                        Удалённые
+                    </Link>
+                    </div>
             </div>
         </Layout>
     );

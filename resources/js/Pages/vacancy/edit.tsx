@@ -8,7 +8,7 @@ import { route } from "ziggy-js";
 
 export default function EditVacancy() {
     const { vacancy } = usePage<{ vacancy: Vacancy }>().props;
-    console.log(vacancy);
+    // console.log(vacancy);
     return (
         <Layout>
             <Head title={vacancy.title} />

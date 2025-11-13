@@ -73,6 +73,8 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::get("/create", "create")->name(".create");
                 Route::delete("{vacancy}", "destroy")->name(".destroy");
                 Route::put("/{vacancy}/update", 'update')->name(".update");
+                Route::get("/destroyed", 'destroyed')->name(".destroyed");
+                Route::post("/{vacancy}/restore", "restore")->name(".restore");
             });
         Route::resource('flying', FlyingController::class);
     });

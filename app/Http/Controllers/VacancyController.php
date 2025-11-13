@@ -82,4 +82,14 @@ class VacancyController extends Controller
     {
         $vacancy->delete();
     }
+
+    public function restore(Vacancy $vacancy) {
+        $vacancy->restore();
+    }
+
+    public function destroyed()
+    {
+        $vac = Vacancy::onlyTrashed()->paginate(5);
+        return inertia("vacancy/trash", ['vacancy' => $vac]);
+    }
 }

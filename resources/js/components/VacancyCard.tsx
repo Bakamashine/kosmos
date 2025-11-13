@@ -33,9 +33,7 @@ export default function VacancyCard({
                 {user.role_name == "admin" && (
                     <div>
                         <div>
-                            <Link
-                                href={route("vacancy.edit", { vacancy: id })}
-                            >
+                            <Link href={route("vacancy.edit", { vacancy: id })}>
                                 Редактировать вакансию
                             </Link>
                         </div>

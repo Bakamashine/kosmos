@@ -145,5 +145,5 @@ export interface Vacancy {
 }
 
 export interface VacancyPag extends Pag {
-    data: Vakancies[]
+    data: Vacancy[]
 }

@@ -1,0 +1,57 @@
+import { Head, Link, usePage } from "@inertiajs/react";
+import React from "react";
+import { VacancyPag } from "../../interface";
+import Layout from "../Layout";
+import VacancyCard from "../../components/VacancyCard";
+import Paginate from "../../components/ui/Paginate";
+import NotFoundRecords from "../../components/ui/NotFoundRecords";
+import { route } from "ziggy-js";
+
+export default function TrashVacancy() {
+    const { vacancy } = usePage<{ vacancy: VacancyPag }>().props;
+    console.log("Trash vacancy: ", vacancy)
+
+    const title = "Удалённые вакансии";
+    return (
+        <Layout>
+            <Head title={title} />
+            <h1 className="text-center">{title}</h1>
+
+            <div className="">
+                {vacancy && vacancy.data && vacancy.data.length > 0 ? (
+                    <div>
+                        <div className="news">
+                            {vacancy.data.map((item, index) => (
+                                <div>
+                                    <VacancyCard
+                                        key={index}
+                                        description={item.description}
+                                        title={item.title}
+                                        id={item.id}
+                                        image={item.image}
+                                        payment={item.payment}
+                                    />
+                                    <div className="mt-2 text-center">
+                                        <Link
+                                            className="text-success"
+                                            href={route("vacancy.restore", {
+                                                vacancy: item.id,
+                                            })}
+                                        >
+                                            Восстановить
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="d-flex justify-content-center">
+                            <Paginate item={vacancy} />
+                        </div>
+                    </div>
+                ) : (
+                    <NotFoundRecords text="Удалённые вакансии не найдены" />
+                )}
+            </div>
+        </Layout>
+    );
+}

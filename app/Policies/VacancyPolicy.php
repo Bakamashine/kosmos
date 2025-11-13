@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Vakancies;
+use App\Models\Vacancy;
 use Illuminate\Auth\Access\Response;
 
-class VakanciesPolicy
+class VacancyPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class VakanciesPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Vakancies $vakancies): bool
+    public function view(User $user, Vacancy $vakancies): bool
     {
         return false;
     }
@@ -35,7 +35,7 @@ class VakanciesPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Vakancies $vakancies): bool
+    public function update(User $user, Vacancy $vakancies): bool
     {
         return false;
     }
@@ -43,7 +43,7 @@ class VakanciesPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Vakancies $vakancies): bool
+    public function delete(User $user, Vacancy $vakancies): bool
     {
         return false;
     }
@@ -51,7 +51,7 @@ class VakanciesPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Vakancies $vakancies): bool
+    public function restore(User $user, Vacancy $vakancies): bool
     {
         return false;
     }
@@ -59,7 +59,7 @@ class VakanciesPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Vakancies $vakancies): bool
+    public function forceDelete(User $user, Vacancy $vakancies): bool
     {
         return false;
     }

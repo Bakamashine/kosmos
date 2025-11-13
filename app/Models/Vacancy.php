@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Vakancies extends Model
+class Vacancy extends Model
 {
     /** @use HasFactory<\Database\Factories\VakanciesFactory> */
     use HasFactory, SoftDeletes;
+
+    public $table = "vacancy";
 
     protected $fillable = [
         "title",

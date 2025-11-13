@@ -8,7 +8,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\VakanciesController;
+use App\Http\Controllers\VacancyController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\BannedUser;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +17,7 @@ Route::get("/", [MainController::class, 'index'])->name("main");
 Route::inertia("/about_us", 'about_us')->name("about_us");
 
 Route::get("/feedback", [FeedbackController::class, 'index'])->name("feedback.index");
-Route::get("/vakancies", [VakanciesController::class, "index"])->name("vakancies.index");
+Route::get("/vakancies", [VacancyController::class, "index"])->name("vakancies.index");
 
 Route::middleware(["guest"])->group(function () {
     Route::inertia("/login", "auth/login")->name("login");
@@ -62,17 +62,17 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
         // Route::get("vakancies/management", [VakanciesController::class, 'indexManagement'])->name("vakancies.management");
         // Route::resource("vakancies", VakanciesController::class);
 
-        Route::name("vakancies")
-            ->prefix("vakancies")
-            ->controller(VakanciesController::class)
+        Route::name("vacancy")
+            ->prefix("vacancy")
+            ->controller(VacancyController::class)
             ->group(function () {
                 Route::get("", "index")->name(".index");
                 Route::get("/management", 'indexManagement')->name(".management");
                 Route::post("", "store")->name(".store");
-                Route::get("/{vakancy}/edit", "edit")->name(".edit");
+                Route::get("/{vacancy}/edit", "edit")->name(".edit");
                 Route::get("/create", "create")->name(".create");
-                Route::delete("{vakancy}", "destroy")->name(".destroy");
-                Route::put("/{vakancy}/update", 'update')->name(".update");
+                Route::delete("{vacancy}", "destroy")->name(".destroy");
+                Route::put("/{vacancy}/update", 'update')->name(".update");
             });
         Route::resource('flying', FlyingController::class);
     });

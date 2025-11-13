@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../Layout";
-import VakanciesForm from "../../forms/VakanciesForm";
+import VacancyForm from "../../forms/VacancyForm";
 import { HttpMethod } from "../../helper/enum";
 import { route } from "ziggy-js";
 import { Head } from "@inertiajs/react";
@@ -10,9 +10,9 @@ export default function CreateVakancies() {
         <Layout>
             <Head title={title} />
             <h1 className="text-center">{title}</h1>
-            <VakanciesForm
+            <VacancyForm
                 method={HttpMethod.POST}
-                url={route("vakancies.store")}
+                url={route("vacancy.store")}
             />
         </Layout>
     );

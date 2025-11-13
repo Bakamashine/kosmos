@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreVakanciesRequest extends FormRequest
+class UpdateVacancyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreVakanciesRequest extends FormRequest
         return [
             "title" => ['required', 'string'],
             "description" => ['required', 'string'],
-            'image' => ['required', 'image', 'mimetypes:image/jpeg,image/png,image/jpg'],
+            'image' => ['image', 'mimetypes:image/jpeg,image/png,image/jpg'],
             'payment' => ['required', 'integer', "min:0"]
         ];
     }

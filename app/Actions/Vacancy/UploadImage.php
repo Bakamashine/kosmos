@@ -2,7 +2,7 @@
 
 namespace App\Actions\Vacancy;
 
-use App\Models\Vakancies;
+use App\Models\Vacancy;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class UploadImage
         return ImageService::UploadImage($request, "image", "vakancies");
     }
 
-    public static function ReplaceImage(Request $request, Vakancies $vac): string {
+    public static function ReplaceImage(Request $request, Vacancy $vac): string {
         return ImageService::ReplaceImage($request, 'image', 'vakancies', $vac->image);
     }
 }

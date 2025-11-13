@@ -12,12 +12,12 @@ import { FileUploader } from "react-drag-drop-files";
 import Back from "../components/ui/Back";
 import { route } from "ziggy-js";
 
-interface VakanciesFormProps extends NewsFormProps {
+interface VacancyFormProps extends NewsFormProps {
     image?: File;
     old_image?: string;
     payment?: number;
 }
-export default function VakanciesForm({
+export default function VacancyForm({
     title = "",
     description = "",
     image = undefined,
@@ -26,7 +26,7 @@ export default function VakanciesForm({
     payment = 0,
     url,
     textbutton = "Создать вакансию",
-}: VakanciesFormProps) {
+}: VacancyFormProps) {
     const form = useForm({
         title,
         description,

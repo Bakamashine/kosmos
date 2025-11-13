@@ -35,10 +35,7 @@ export default function Admin() {
             >
                 Управление пользователями
             </Link>
-            <Link
-                href={route("vakancies.management")}
-                className="btn btn-dark"
-            >
+            <Link href={route("vacancy.management")} className="btn btn-dark">
                 Управление вакансиями
             </Link>
         </Layout>

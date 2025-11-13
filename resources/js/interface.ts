@@ -135,7 +135,7 @@ export interface NewsFormProps {
     description?: string;
 }
 
-export interface Vakancies {
+export interface Vacancy {
     deleted_at?: boolean,
     description: string,
     id?: number,
@@ -144,6 +144,6 @@ export interface Vakancies {
     title: string
 }
 
-export interface VakanciesPag extends Pag {
+export interface VacancyPag extends Pag {
     data: Vakancies[]
 }

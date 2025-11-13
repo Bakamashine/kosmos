@@ -2,16 +2,9 @@ import { InertiaFormProps, useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
 import { Button, Form } from "react-bootstrap";
 import { HttpMethod } from "../helper/enum";
-import Back from "../components/Back";
+import Back from "../components/ui/Back";
+import { NewsFormProps } from "../interface";
 
-interface NewsFormProps {
-    // submit: (e: FormEvent<HTMLFormElement>) => void;
-    method: HttpMethod;
-    url: string;
-    textbutton?: string,
-    title?: string;
-    description?: string;
-}
 export default function NewsForm({
     method,
     url,
@@ -38,7 +31,10 @@ export default function NewsForm({
         }
     }
     return (
-        <Form className="m-3 bg-form" onSubmit={submit}>
+        <Form
+            className="m-3 bg-form"
+            onSubmit={submit}
+        >
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Заголовок</Form.Label>
                 <Form.Control
@@ -47,7 +43,7 @@ export default function NewsForm({
                     onChange={(e) => form.setData("title", e.target.value)}
                     value={form.data.title}
                 />
-                {form.errors.title && <p>{form.errors.title}</p>}
+                {form.errors.title && <p className="text-danger">{form.errors.title}</p>}
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -62,7 +58,7 @@ export default function NewsForm({
                     value={form.data.description}
                 />
                 {form.errors.description && (
-                    <p className="">{form.errors.description}</p>
+                    <p className="text-danger">{form.errors.description}</p>
                 )}
             </Form.Group>
             <Button variant="primary" type="submit">

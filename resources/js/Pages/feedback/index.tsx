@@ -3,8 +3,8 @@ import { Feedback, FeedbackPag } from "../../interface";
 import { Head, usePage } from "@inertiajs/react";
 import Layout from "../Layout";
 import { Card, Pagination } from "react-bootstrap";
-import NotFoundRecords from "../../components/NotFoundRecords";
-import Paginate from "../../components/Paginate";
+import NotFoundRecords from "../../components/ui/NotFoundRecords";
+import Paginate from "../../components/ui/Paginate";
 import { Ruble } from "../../constants/Ruble";
 export default function ViewFeedback() {
     const feedback = usePage().props.feedback as FeedbackPag;

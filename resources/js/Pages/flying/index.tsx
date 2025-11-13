@@ -3,21 +3,21 @@ import React from "react";
 import { FlyingPag } from "../../interface";
 import Layout from "../Layout";
 import { Table } from "react-bootstrap";
-import NotFoundRecords from "../../components/NotFoundRecords";
-import Paginate from "../../components/Paginate";
+import NotFoundRecords from "../../components/ui/NotFoundRecords";
+import Paginate from "../../components/ui/Paginate";
 import { route } from "ziggy-js";
 import { Ruble } from "../../constants/Ruble";
 
 export default function ManagementFlying() {
     const flying = usePage().props.flying as FlyingPag;
     const title = "Управление полётами";
-    console.log(flying);
+    // console.log(flying);
     return (
         <Layout>
             <Head title={title}></Head>
             <h1 className="text-center">{title}</h1>
 
-            {flying !== undefined ? (
+            {flying !== undefined && flying.data.length > 0 ? (
                 <div>
                     <Table striped bordered hover>
                         <thead>

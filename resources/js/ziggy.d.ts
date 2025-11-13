@@ -14,8 +14,152 @@ declare module 'ziggy-js' {
         }
     ],
     "main": [],
+    "about_us": [],
+    "feedback.index": [],
+    "vakancies.index": [],
     "login": [],
     "register": [],
+    "feedback.store": [],
+    "order.store": [],
+    "order.update": [
+        {
+            "name": "order",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "order.indexMobile": [],
+    "home": [],
+    "admin": [],
+    "news.index": [],
+    "news.indexMobile": [],
+    "news.create": [],
+    "news.edit": [
+        {
+            "name": "news",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "news.update": [
+        {
+            "name": "news",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "news.store": [],
+    "news.destroy": [
+        {
+            "name": "news",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "user.index": [],
+    "user.indexMobile": [],
+    "user.store": [],
+    "user.create": [],
+    "user.edit": [
+        {
+            "name": "user",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "user.update": [
+        {
+            "name": "user",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "user.destroy": [
+        {
+            "name": "user",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "user.ban": [
+        {
+            "name": "user",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "user.unban": [
+        {
+            "name": "user",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "vakancies.create": [],
+    "vakancies.store": [],
+    "vakancies.show": [
+        {
+            "name": "vakancy",
+            "required": true
+        }
+    ],
+    "vakancies.edit": [
+        {
+            "name": "vakancy",
+            "required": true
+        }
+    ],
+    "vakancies.update": [
+        {
+            "name": "vakancy",
+            "required": true
+        }
+    ],
+    "vakancies.destroy": [
+        {
+            "name": "vakancy",
+            "required": true
+        }
+    ],
+    "vakancies.management": [],
+    "flying.index": [],
+    "flying.create": [],
+    "flying.store": [],
+    "flying.show": [
+        {
+            "name": "flying",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "flying.edit": [
+        {
+            "name": "flying",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "flying.update": [
+        {
+            "name": "flying",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "flying.destroy": [
+        {
+            "name": "flying",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "news.show": [
+        {
+            "name": "news",
+            "required": true,
+            "binding": "id"
+        }
+    ],
     "storage.local": [
         {
             "name": "path",

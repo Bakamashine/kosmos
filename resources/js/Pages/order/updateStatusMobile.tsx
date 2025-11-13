@@ -4,7 +4,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import { route } from "ziggy-js";
 import { Order, OrderPag } from "../../interface";
 import Layout from "../Layout";
-import Paginate from "../../components/Paginate";
+import Paginate from "../../components/ui/Paginate";
 export default function UpdateStatusMobile() {
     const { props } = usePage();
     const orders = props.order as OrderPag;

@@ -4,7 +4,7 @@ import { UserPag } from "../../interface";
 import { route } from "ziggy-js";
 import Layout from "../Layout";
 import { Card, Form } from "react-bootstrap";
-import Paginate from "../../components/Paginate";
+import Paginate from "../../components/ui/Paginate";
 export default function UserManagementMobile() {
     const { props } = usePage();
     const users = props.user as UserPag;

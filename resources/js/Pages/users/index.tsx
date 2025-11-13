@@ -4,8 +4,8 @@ import { Head, Link, usePage } from "@inertiajs/react";
 import { Table } from "react-bootstrap";
 import { route } from "ziggy-js";
 import { Ruble } from "../../constants/Ruble";
-import NotFoundRecords from "../../components/NotFoundRecords";
-import Paginate from "../../components/Paginate";
+import NotFoundRecords from "../../components/ui/NotFoundRecords";
+import Paginate from "../../components/ui/Paginate";
 import { UserPag } from "../../interface";
 export default function ManagementUser() {
     const users = usePage().props.user as UserPag;

@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "./Layout";
 import { Carousel } from "react-bootstrap";
-import UncontrolledCarousel from "../components/Carousel";
+import UncontrolledCarousel from "../components/ui/Carousel";
 import { Head, usePage } from "@inertiajs/react";
 import NewsCard from "../components/NewsCard";
 import { News, NewsPag } from "../interface";
-import NotFoundRecords from "../components/NotFoundRecords";
-import Paginate from "../components/Paginate";
+import NotFoundRecords from "../components/ui/NotFoundRecords";
+import Paginate from "../components/ui/Paginate";
 import { GetSizeWindow } from "../helper/functions";
 export default function Main() {
     const { props } = usePage();
@@ -22,7 +22,7 @@ export default function Main() {
                 <UncontrolledCarousel />
             </div>
 
-            {news !== undefined ? (
+            {news !== undefined && news.data.length > 0 ? (
                 <div className="">
                     <h3 className="text-center">Наши новости</h3>
                     <div className="news">

@@ -5,7 +5,7 @@ import { HttpMethod } from "../helper/enum";
 import { Flying, FlyingFormProps } from "../interface";
 import { Ruble } from "../constants/Ruble";
 import { route } from "ziggy-js";
-import Back from "../components/Back";
+import Back from "../components/ui/Back";
 
 export default function FlyingForm({
     method,

@@ -125,3 +125,25 @@ export interface SuccessOrder
 export interface OrderPag extends Pag {
     data: Order[];
 }
+
+export interface NewsFormProps {
+    // submit: (e: FormEvent<HTMLFormElement>) => void;
+    method: HttpMethod;
+    url: string;
+    textbutton?: string,
+    title?: string;
+    description?: string;
+}
+
+export interface Vakancies {
+    deleted_at?: boolean,
+    description: string,
+    id?: number,
+    image: string,
+    payment: number,
+    title: string
+}
+
+export interface VakanciesPag extends Pag {
+    data: Vakancies[]
+}

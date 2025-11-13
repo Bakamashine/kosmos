@@ -4,7 +4,8 @@ import { Roles, User, UserUpdate } from "../../interface";
 import Layout from "../Layout";
 import { Button, Form } from "react-bootstrap";
 import { route } from "ziggy-js";
-import Back from "../../components/Back";
+import Back from "../../components/ui/Back"
+
 export default function EditUser() {
     const { name, email, status, role_name, role_id, id } = usePage().props
         .user as UserUpdate;

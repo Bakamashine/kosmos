@@ -46,6 +46,14 @@ function Header() {
                                     Отзывы
                                 </Link>
                             </Nav>
+                            <Nav className="m-2">
+                                <Link
+                                    className="btn btn-dark"
+                                    href={route("vakancies.index")}
+                                >
+                                    Вакансии
+                                </Link>
+                            </Nav>
                             {user !== undefined && user !== null ? (
                                 <>
                                     <Nav className="m-2">

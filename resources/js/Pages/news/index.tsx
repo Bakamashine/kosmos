@@ -4,8 +4,8 @@ import { Head, Link, usePage } from "@inertiajs/react";
 import { NewsPag } from "../../interface";
 import { route } from "ziggy-js";
 import NewsCard from "../../components/NewsCard";
-import Paginate from "../../components/Paginate";
-import NotFoundRecords from "../../components/NotFoundRecords";
+import Paginate from "../../components/ui/Paginate";
+import NotFoundRecords from "../../components/ui/NotFoundRecords";
 export default function ManagementNews() {
     const { props } = usePage();
     const news = props?.news as NewsPag;
@@ -16,7 +16,7 @@ export default function ManagementNews() {
             <div className="text-center">
                 <h1>Управление новостями</h1>
 
-                {news !== undefined ? (
+                {news !== undefined && news.data.length > 0 ? (
                     <div>
                         <div className="news">
                             {news.data.map((item, index) => (

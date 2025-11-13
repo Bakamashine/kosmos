@@ -14,7 +14,12 @@ export default function Admin() {
             <div className="nomobile">
                 <UpdateOrder />
             </div>
-            <Link href={route("order.indexMobile")} className="btn btn-dark mobile">Обновление статуса заявок</Link>
+            <Link
+                href={route("order.indexMobile")}
+                className="btn btn-dark mobile"
+            >
+                Обновление статуса заявок
+            </Link>
             <Link href={route("news.index")} className="btn btn-dark">
                 Управление новостями
             </Link>
@@ -24,8 +29,17 @@ export default function Admin() {
             <Link href={route("user.index")} className="btn btn-dark nomobile">
                 Управление пользователями
             </Link>
-            <Link href={route("user.indexMobile")} className="btn btn-dark mobile">
+            <Link
+                href={route("user.indexMobile")}
+                className="btn btn-dark mobile"
+            >
                 Управление пользователями
+            </Link>
+            <Link
+                href={route("vakancies.management")}
+                className="btn btn-dark"
+            >
+                Управление вакансиями
             </Link>
         </Layout>
     );

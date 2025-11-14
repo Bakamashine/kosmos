@@ -40,7 +40,7 @@ export default function Home() {
                     <ListGroup>
                         {feedbacks.map((item, index) => (
                             <ListGroup.Item key={index}>
-                                Text: {item.text} | Score: {item.score} | Flying name: {item.flying_title} | Date: {item.date}
+                                Text: {item.text} | Score: {item.score} | Flying name: {item.flying_title} | Date: {item.date && new Date(item.date).toLocaleString()}
                             </ListGroup.Item>
                         ))}
                     </ListGroup>

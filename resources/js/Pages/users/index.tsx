@@ -47,6 +47,7 @@ export default function ManagementUser() {
                                             href={route("user.destroy", {
                                                 user: item.id,
                                             })}
+                                            className="text-danger"
                                         >
                                             Удаление
                                         </Link>
@@ -57,8 +58,9 @@ export default function ManagementUser() {
                                                 href={route("user.ban", {
                                                     user: item.id,
                                                 })}
+                                                className="text-secondary"
                                             >
-                                                Блокировние
+                                                Блокирование
                                             </Link>
                                         ) : (
                                             <Link
@@ -66,6 +68,7 @@ export default function ManagementUser() {
                                                 href={route("user.unban", {
                                                     user: item.id,
                                                 })}
+                                                className="text-success"
                                             >
                                                 Разблокировать
                                             </Link>

@@ -8,6 +8,7 @@ export default function ShowNews() {
     const news = props.news;
     const user = props.auth.user;
 
+
     return (
         <Layout>
             <Head title={news.title} />
@@ -20,7 +21,7 @@ export default function ShowNews() {
                     </Link>
                 </div>
 
-                {user.role_name === "admin" && (
+                {user && user.role_name === "admin" && (
                     <div>
                         <Link className="" href={route("news.index")}>
                             К новостям (админ)

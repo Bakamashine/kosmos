@@ -28,39 +28,47 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
     Route::controller(FeedbackController::class)->group(function () {
         Route::post("/feedback", "store")->name("feedback.store");
     });
-    Route::controller(OrderController::class)->group(function () {
-        Route::post("/order", 'store')->name("order.store");
-        Route::patch("/order/{order}", 'update')->name("order.update");
-        Route::get("/order/mobile", 'indexMobile')->name("order.indexMobile");
-    });
+    Route::controller(OrderController::class)
+        ->prefix("order")
+        ->name("order")
+        ->group(function () {
+            Route::post("", 'store')->name(".store");
+            Route::patch("/{order}", 'update')->name(".update");
+            Route::get("/mobile", 'indexMobile')->name(".indexMobile");
+        });
     Route::get("/home", [HomeController::class, 'index'])->name("home");
     Route::middleware(AdminMiddleware::class)->group(function () {
-        Route::controller(AdminController::class)->group(function () {
-            Route::get("/admin", 'index')->name("admin");
-        });
-        Route::controller(NewsController::class)->group(function () {
-            Route::get("/news", 'index')->name("news.index");
-            Route::get("/news/mobile", 'indexMobile')->name("news.indexMobile");
-            Route::get("/news/create", 'create')->name("news.create");
-            Route::get("/news/{news}/edit", 'edit')->name("news.edit");
-            Route::put("/news/{news}", 'update')->name("news.update");
-            Route::post("/news", 'store')->name("news.store");
-            Route::delete("/news/{news}", 'destroy')->name("news.destroy");
-        });
-        Route::controller(UserController::class)->group(function () {
-            Route::get("/user", 'index')->name("user.index");
-            Route::get("/user/mobile", 'indexMobile')->name("user.indexMobile");
-            Route::post("/user", 'store')->name("user.store");
-            Route::get("/user/create", 'create')->name("user.create");
-            Route::get("/user/{user}/edit", 'edit')->name("user.edit");
-            Route::put("/user/{user}", 'update')->name("user.update");
-            Route::delete("/user/{user}", 'destroy')->name("user.destroy");
-            Route::patch("/user/{user}/ban", 'ban')->name("user.ban");
-            Route::patch("/user/{user}/unban", 'unban')->name("user.unban");
-        });
-
-        // Route::get("vakancies/management", [VakanciesController::class, 'indexManagement'])->name("vakancies.management");
-        // Route::resource("vakancies", VakanciesController::class);
+        Route::controller(AdminController::class)
+            ->prefix("admin")
+            ->group(function () {
+                Route::get("", 'index')->name("admin");
+            });
+        Route::controller(NewsController::class)
+            ->prefix("news")
+            ->name("news")
+            ->group(function () {
+                Route::get("", 'index')->name(".index");
+                Route::get("/mobile", 'indexMobile')->name(".indexMobile");
+                Route::get("/create", 'create')->name(".create");
+                Route::get("/{news}/edit", 'edit')->name(".edit");
+                Route::put("/{news}", 'update')->name(".update");
+                Route::post("", 'store')->name(".store");
+                Route::delete("/{news}", 'destroy')->name(".destroy");
+            });
+        Route::controller(UserController::class)
+            ->prefix("user")
+            ->name("user")
+            ->group(function () {
+                Route::get("", 'index')->name(".index");
+                Route::get("/mobile", 'indexMobile')->name(".indexMobile");
+                Route::post("", 'store')->name(".store");
+                Route::get("/create", 'create')->name(".create");
+                Route::get("/{user}/edit", 'edit')->name(".edit");
+                Route::put("/{user}", 'update')->name(".update");
+                Route::delete("/{user}", 'destroy')->name(".destroy");
+                Route::patch("/{user}/ban", 'ban')->name(".ban");
+                Route::patch("/{user}/unban", 'unban')->name(".unban");
+            });
 
         Route::name("vacancy")
             ->prefix("vacancy")
@@ -71,10 +79,10 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::post("", "store")->name(".store");
                 Route::get("/{vacancy}/edit", "edit")->name(".edit");
                 Route::get("/create", "create")->name(".create");
-                Route::delete("{vacancy}", "destroy")->name(".destroy");
+                Route::delete("/{vacancy}", "destroy")->name(".destroy");
                 Route::put("/{vacancy}/update", 'update')->name(".update");
-                Route::get("/destroyed", 'destroyed')->name(".destroyed");
                 Route::post("/{vacancy}/restore", "restore")->name(".restore");
+                Route::get("/destroyed", 'destroyed')->name(".destroyed");
             });
         Route::resource('flying', FlyingController::class);
     });

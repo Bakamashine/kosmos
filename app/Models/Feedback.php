@@ -8,26 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property int $user_id
- * @property string $feedback
+ * @property int $order_id
+ * @property string $text
+ * @property int $score
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Order $order
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\FeedbackFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback query()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereFeedback($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUserId($value)
- * @property string $text
- * @property int $score
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereOrderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereScore($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereText($value)
- * @property int $order_id
- * @property-read \App\Models\Order $order
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUserId($value)
  * @mixin \Eloquent
  */
 class Feedback extends Model

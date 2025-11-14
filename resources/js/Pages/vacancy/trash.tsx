@@ -9,7 +9,7 @@ import { route } from "ziggy-js";
 
 export default function TrashVacancy() {
     const { vacancy } = usePage<{ vacancy: VacancyPag }>().props;
-    console.log("Trash vacancy: ", vacancy)
+    // console.log("Trash vacancy: ", vacancy)
 
     const title = "Удалённые вакансии";
     return (
@@ -22,18 +22,20 @@ export default function TrashVacancy() {
                     <div>
                         <div className="news">
                             {vacancy.data.map((item, index) => (
-                                <div>
+                                <div key={index}>
                                     <VacancyCard
                                         key={index}
                                         description={item.description}
                                         title={item.title}
                                         id={item.id}
+                                        deleted={true}
                                         image={item.image}
                                         payment={item.payment}
                                     />
                                     <div className="mt-2 text-center">
                                         <Link
                                             className="text-success"
+                                            method="post"
                                             href={route("vacancy.restore", {
                                                 vacancy: item.id,
                                             })}
@@ -51,6 +53,12 @@ export default function TrashVacancy() {
                 ) : (
                     <NotFoundRecords text="Удалённые вакансии не найдены" />
                 )}
+
+                <div className="text-center">
+                    <Link href={route("vacancy.management")}>
+                        К управлению вакансиями
+                    </Link>
+                </div>
             </div>
         </Layout>
     );

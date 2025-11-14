@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $flying_id
  * @property int $user_id
  * @property string $date
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Feedback> $feedback
+ * @property-read int|null $feedback_count
  * @property-read \App\Models\Flying $flying
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\OrderFactory factory($count = null, $state = [])
@@ -22,8 +24,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Order whereUserId($value)
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Feedback> $feedback
- * @property-read int|null $feedback_count
  * @mixin \Eloquent
  */
 class Order extends Model

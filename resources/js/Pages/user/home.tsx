@@ -67,7 +67,7 @@ export default function Home() {
             )}
             <div>
                 <CreateOrder flying={flying} />
-                {success !== undefined && <p>{success}</p>}
+                {success !== undefined && <p className="text-success">{success}</p>}
             </div>
         </Layout>
     );

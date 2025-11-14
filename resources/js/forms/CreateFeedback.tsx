@@ -36,7 +36,7 @@ export default function CreateFeedback({ success_order }: CreateFeedbackProps) {
                         style={{ height: "100px" }}
                     />
                     {errors.text ?? (
-                        <p className="invalid-feedback">{errors.text}</p>
+                        <p className="text-danger">{errors.text}</p>
                     )}
                 </FloatingLabel>
 
@@ -53,7 +53,7 @@ export default function CreateFeedback({ success_order }: CreateFeedbackProps) {
                         value={data.score}
                     />
                 </InputGroup>
-                {errors.score && <p className="red">{errors.score}</p>}
+                {errors.score && <p className="text-danger">{errors.score}</p>}
 
                 <Form.Group className="mb-3">
                     <Form.Label>Выберите полёт</Form.Label>

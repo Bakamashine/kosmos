@@ -5,14 +5,18 @@ import { Ruble } from "../constants/Ruble";
 import { Link, usePage } from "@inertiajs/react";
 import { route } from "ziggy-js";
 
+interface VacancyCardProps extends Vacancy {
+    deleted?: boolean;
+}
 export default function VacancyCard({
     title,
     description,
     image,
     payment,
     id,
+    deleted = false,
     deleted_at = undefined,
-}: Vacancy) {
+}: VacancyCardProps) {
     const { user } = usePage<{ auth: { user: User } }>().props.auth;
     return (
         <Card style={{ width: "18rem" }}>
@@ -25,29 +29,37 @@ export default function VacancyCard({
                 <ListGroup.Item>
                     Зарплата: {payment} {Ruble}
                 </ListGroup.Item>
-                {/* <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                <ListGroup.Item>Vestibulum at eros</ListGroup.Item> */}
             </ListGroup>
             <Card.Body>
-                <Card.Link href="#">Забронировать</Card.Link>
-                {user.role_name == "admin" && (
+                {!deleted && (
+                    <Card.Link href="#">Забронировать</Card.Link>
+                )}
+                {user && user.role_name == "admin" && (
                     <div>
-                        <div>
-                            <Link href={route("vacancy.edit", { vacancy: id })}>
-                                Редактировать вакансию
-                            </Link>
-                        </div>
-                        <div>
-                            <Link
-                                className="text-danger"
-                                href={route("vacancy.destroy", {
-                                    vacancy: id,
-                                })}
-                                method="delete"
-                            >
-                                Удалить
-                            </Link>
-                        </div>
+                        {!deleted && (
+                            <div>
+                                <Link
+                                    href={route("vacancy.edit", {
+                                        vacancy: id,
+                                    })}
+                                >
+                                    Редактировать вакансию
+                                </Link>
+                            </div>
+                        )}
+                        {!deleted && (
+                            <div>
+                                <Link
+                                    className="text-danger"
+                                    href={route("vacancy.destroy", {
+                                        vacancy: id,
+                                    })}
+                                    method="delete"
+                                >
+                                    Удалить
+                                </Link>
+                            </div>
+                        )}
                     </div>
                 )}
             </Card.Body>

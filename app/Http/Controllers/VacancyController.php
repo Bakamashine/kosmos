@@ -83,8 +83,10 @@ class VacancyController extends Controller
         $vacancy->delete();
     }
 
-    public function restore(Vacancy $vacancy) {
-        $vacancy->restore();
+    public function restore(int $id)
+    {
+        Vacancy::onlyTrashed()->find($id)->restore();
+
     }
 
     public function destroyed()

@@ -32,7 +32,7 @@ export default function VacancyCard({
             </ListGroup>
             <Card.Body>
                 {!deleted && (
-                    <Link href={route('otclice', {otclice: id})}>Откликнутся</Link>
+                    <Link href={route('otclice.create', {otclice: id})}>Откликнутся</Link>
                 )}
                 {user && user.role_name == "admin" && (
                     <div>

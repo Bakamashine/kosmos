@@ -1,5 +1,5 @@
 import React, { JSX } from "react";
-import { Pag } from "../interface";
+import { Pag } from "../../interface";
 import { Pagination } from "react-bootstrap";
 import { router } from "@inertiajs/react";
 

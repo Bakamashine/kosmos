@@ -54,4 +54,10 @@ class Vacancy extends Model
         "created_at",
         "updated_at"
     ];
+
+    public function otclice() {
+        return $this->hasMany(Otclice::class);
+    }
+
+
 }

@@ -13,15 +13,16 @@ class OtcliceController extends Controller
      */
     public function index()
     {
-        //
+        $otclice = Otclice::pagiante(5);
+        return inertia("otclice/index", ['otclice' => $otclice]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Otclice $otclice)
     {
-        //
+        return inertia("otclice/create", ['otclice' => $otclice]);
     }
 
     /**
@@ -29,7 +30,11 @@ class OtcliceController extends Controller
      */
     public function store(StoreOtcliceRequest $request)
     {
-        //
+        $request->user()->otclice()->create([
+            "vacancy_id" => $request->vacancy_id,
+            "description" => $request->description
+        ]);
+        return redirect()->route("home");
     }
 
     /**

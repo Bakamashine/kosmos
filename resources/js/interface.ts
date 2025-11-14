@@ -26,10 +26,10 @@ export interface Roles {
 export interface Feedback {
     text: string;
     score: number;
-    date?: string,
-    flying_title?: string,
-    user_name?: string,
-    flying_price?: number
+    date?: string;
+    flying_title?: string;
+    user_name?: string;
+    flying_price?: number;
 }
 
 export interface FeedbackPag extends Pag {
@@ -116,9 +116,8 @@ export interface UserPag extends Pag {
     data: User[];
 }
 
-export interface SuccessOrder
-{
-    title: string
+export interface SuccessOrder {
+    title: string;
     order_id: number;
 }
 
@@ -130,20 +129,31 @@ export interface NewsFormProps {
     // submit: (e: FormEvent<HTMLFormElement>) => void;
     method: HttpMethod;
     url: string;
-    textbutton?: string,
+    textbutton?: string;
     title?: string;
     description?: string;
 }
 
 export interface Vacancy {
-    deleted_at?: boolean,
-    description: string,
-    id?: number,
-    image: string,
-    payment: number,
-    title: string
+    deleted_at?: boolean;
+    description: string;
+    id?: number;
+    image: string;
+    payment: number;
+    title: string;
 }
 
 export interface VacancyPag extends Pag {
-    data: Vacancy[]
+    data: Vacancy[];
+}
+
+export interface IOtclice {
+    id?: number;
+    vacancy_id: number;
+    user_id: number;
+    description: string;
+}
+
+export interface IOtclicePag extends Pag {
+    data: IOtclice[];
 }

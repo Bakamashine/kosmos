@@ -22,4 +22,18 @@ class Otclice extends Model
 {
     /** @use HasFactory<\Database\Factories\OtcliceFactory> */
     use HasFactory;
+    protected $fillable = [
+        "vacancy_id",
+        "description"
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function vacancy()
+    {
+        return $this->belongsTo(Vacancy::class);
+    }
 }

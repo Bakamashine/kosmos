@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OtcliceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacancyController;
 use App\Http\Middleware\AdminMiddleware;
@@ -85,6 +86,17 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::get("/destroyed", 'destroyed')->name(".destroyed");
             });
         Route::resource('flying', FlyingController::class);
+
+        Route::name("otclice")
+        ->prefix("otclice")
+        ->controller(OtcliceController::class)
+        ->group(function () {
+            Route::get("", "index")->name(".index");
+            Route::get("/{otclice}/create", 'create')->name(".create");
+            Route::post("", 'store')->name(".store");
+            Route::delete("/{otclice}/destroy", "destroy")->name(".destroy");
+            Route::patch("/{otclice}/update", 'update')->name(".update");
+        });
     });
 });
 

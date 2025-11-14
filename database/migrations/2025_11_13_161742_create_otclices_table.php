@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('otclices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id")->constrained("users")->cascadeOnDelete();
+            $table->foreignId("vacancy_id")->constrained("vacancy")->cascadeOnDelete();
+            $table->text("description");
             $table->timestamps();
         });
     }

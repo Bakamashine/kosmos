@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -45,7 +46,12 @@ class HandleInertiaRequests extends Middleware
             "appName" => config("app.name"),
             "flash" => [
                 "banned" => fn() => $request->session()->get("banned")
-            ]
+            ],
+            // "breadcrumps" => fn() => Breadcrumbs::generate(),
+            'breadcrumbs' => fn() =>
+                $request->route() && $request->route()->getName()
+                ? Breadcrumbs::generate($request->route()->getName(), ...array_values($request->route()->originalParameters()))
+                : []
         ];
     }
 }

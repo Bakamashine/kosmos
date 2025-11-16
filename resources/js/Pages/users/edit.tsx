@@ -74,7 +74,7 @@ export default function EditUser() {
                 <Button type="submit" className="btn btn-dark">
                     Обновить пользователя
                 </Button>
-                <Back pathName="user.index" />
+                {/* <Back pathName="user.index" /> */}
             </Form>
         </Layout>
     );

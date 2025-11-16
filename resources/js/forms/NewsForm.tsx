@@ -64,7 +64,7 @@ export default function NewsForm({
             <Button variant="primary" type="submit">
                 {textbutton}
             </Button>
-            <Back pathName="news.index" />
+            {/* <Back pathName="news.index" /> */}
         </Form>
     );
 }

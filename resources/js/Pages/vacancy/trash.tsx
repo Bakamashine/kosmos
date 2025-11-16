@@ -54,11 +54,11 @@ export default function TrashVacancy() {
                     <NotFoundRecords text="Удалённые вакансии не найдены" />
                 )}
 
-                <div className="text-center">
+                {/* <div className="text-center">
                     <Link href={route("vacancy.management")}>
                         К управлению вакансиями
                     </Link>
-                </div>
+                </div> */}
             </div>
         </Layout>
     );

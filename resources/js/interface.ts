@@ -176,3 +176,9 @@ export interface FullUser {
     created_at: string;
     updated_at: string;
 }
+
+export interface BreadCrumps {
+    title: string;
+    url: string;
+    current: boolean;
+}

@@ -1,3 +1,6 @@
+:root {
+    --bg-white: rgb(248 249 250);
+}
 .carousel img {
     width: 100%;
     height: 400px;
@@ -78,6 +81,11 @@ main .news {
     }
 }
 
+.breadcrumps {
+    background-color: var(--bg-white);
+    padding: 10px;
+    margin-top: 3px;
+}
 
 main .main__wrapper {
     background-color: white;

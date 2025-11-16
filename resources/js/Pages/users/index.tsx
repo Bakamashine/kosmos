@@ -30,7 +30,15 @@ export default function ManagementUser() {
                         <tbody>
                             {users.data.map((item, index) => (
                                 <tr key={index}>
-                                    <td>{item.id}</td>
+                                    <td>
+                                        <Link
+                                            href={route("user.show", {
+                                                user: item.id,
+                                            })}
+                                        >
+                                            {item.id}
+                                        </Link>
+                                    </td>
                                     <td>
                                         {item.name}
                                         <br />
@@ -77,9 +85,13 @@ export default function ManagementUser() {
                                     <td>{item.email}</td>
                                     <td>
                                         {item.status == 1 ? (
-                                            <p className="text-success">Активный</p>
+                                            <p className="text-success">
+                                                Активный
+                                            </p>
                                         ) : (
-                                            <p className="text-danger">Заблокированный</p>
+                                            <p className="text-danger">
+                                                Заблокированный
+                                            </p>
                                         )}
                                     </td>
                                 </tr>

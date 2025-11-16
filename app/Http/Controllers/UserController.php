@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Resources\FullUserResource;
 use App\Http\Resources\UserResource;
 use App\Models\Role;
 use App\Models\User;
@@ -66,5 +67,9 @@ class UserController extends Controller
     {
         $user->status = 1;
         $user->save();
+    }
+
+    public function show(User $user) {
+        return inertia("users/show", ['user' => new FullUserResource($user)]);
     }
 }

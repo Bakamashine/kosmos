@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOtcliceRequest;
 use App\Http\Requests\UpdateOtcliceRequest;
 use App\Models\Otclice;
+use App\Models\Vacancy;
 
 class OtcliceController extends Controller
 {
@@ -13,16 +14,16 @@ class OtcliceController extends Controller
      */
     public function index()
     {
-        $otclice = Otclice::pagiante(5);
+        $otclice = Otclice::paginate(5);
         return inertia("otclice/index", ['otclice' => $otclice]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Otclice $otclice)
+    public function create(Vacancy $vacancy)
     {
-        return inertia("otclice/create", ['otclice' => $otclice]);
+        return inertia("otclice/create", ['vacancy' => $vacancy]);
     }
 
     /**

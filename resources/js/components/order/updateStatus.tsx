@@ -1,7 +1,7 @@
 import { Update } from "vite";
 import { Order } from "../../interface";
 import { Button, Form, Table } from "react-bootstrap";
-import { useForm, usePage } from "@inertiajs/react";
+import { Link, useForm, usePage } from "@inertiajs/react";
 import { FormEvent } from "react";
 import { route } from "ziggy-js";
 
@@ -41,7 +41,16 @@ export default function UpdateOrder() {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{item.user_name}</td>
-                                <td>{item.user_id}</td>
+                                {/* <td>{item.user_id}</td> */}
+                                <td>
+                                    <Link
+                                        href={route("user.show", {
+                                            user: item.user_id,
+                                        })}
+                                    >
+                                        {item.user_id}
+                                    </Link>{" "}
+                                </td>
                                 <td>{item.date}</td>
                                 <td>{item.flying_price}</td>
                                 <td>{item.flying_title}</td>

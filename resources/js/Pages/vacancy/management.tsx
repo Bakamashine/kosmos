@@ -46,7 +46,7 @@ export default function VakanciesManagement() {
 
                     <div className="d-grid gap-3">
                     <Link className="btn btn-dark" href={route("vacancy.create")}>
-                        Создание новости
+                        Создание вакансии
                     </Link>
                     <Link className="btn btn-dark" href={route("vacancy.destroyed")}>
                         Удалённые

@@ -1,9 +1,10 @@
-import { Head, usePage } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import React from "react";
 import { IOtclice, IOtclicePag } from "../../interface";
 import Layout from "../Layout";
 import { Table } from "react-bootstrap";
 import Paginate from "../../components/ui/Paginate";
+import { route } from "ziggy-js";
 
 export default function Otclice() {
     const { otclice } = usePage<{ otclice: IOtclicePag }>().props;
@@ -12,7 +13,7 @@ export default function Otclice() {
     return (
         <Layout>
             <Head title={title} />
-            <h1 className="text-center"></h1>
+            <h1 className="text-center">{title}</h1>
 
             <div>
                 {otclice.data.length > 0 && (
@@ -30,8 +31,24 @@ export default function Otclice() {
                                 {otclice.data.map((item, index) => (
                                     <tr key={index}>
                                         <td>{item.id}</td>
-                                        <td>{item.user_id}</td>
-                                        <td>{item.vacancy_id}</td>
+                                        <td>
+                                            <Link
+                                                href={route("user.show", {
+                                                    user: item.user_id,
+                                                })}
+                                            >
+                                                {item.user_id}
+                                            </Link>
+                                        </td>
+                                        <td>
+                                            <Link
+                                                href={route("vacancy.show", {
+                                                    vacancy: item.vacancy_id,
+                                                })}
+                                            >
+                                                {item.vacancy_id}
+                                            </Link>
+                                        </td>
                                         <td>{item.description}</td>
                                     </tr>
                                 ))}

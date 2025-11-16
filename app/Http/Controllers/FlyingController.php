@@ -40,7 +40,7 @@ class FlyingController extends Controller
      */
     public function show(Flying $flying)
     {
-        //
+        return inertia("flying/show", ['flying' => $flying]);
     }
 
     /**

@@ -22,6 +22,8 @@ class OrderResource extends JsonResource
             "flying_title" => $this->flying->title,
             "flying_price" => $this->flying->price,
             "date" => $this->date,
+            "flying_id" => $this->flying_id,
+            "created_at" => $this->created_at,
         ];
     }
 }

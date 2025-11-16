@@ -38,6 +38,9 @@ export default function Admin() {
             <Link href={route("vacancy.management")} className="btn btn-dark">
                 Управление вакансиями
             </Link>
+            <Link href={route("otclice.index")} className="btn btn-dark">
+                Управление откликами
+            </Link>
         </Layout>
     );
 }

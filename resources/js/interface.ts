@@ -30,6 +30,8 @@ export interface Feedback {
     flying_title?: string;
     user_name?: string;
     flying_price?: number;
+    created_at: string;
+    order_id?: number;
 }
 
 export interface FeedbackPag extends Pag {
@@ -42,6 +44,7 @@ export interface Order extends OrderUser {
     text: string;
     user_id: number;
     date: string;
+    flying_id?: number;
     user_name: string;
 }
 
@@ -77,6 +80,7 @@ export interface NewsPag extends Pag {
 
 export interface Flying extends News {
     price: number;
+    created_at: string;
 }
 
 export interface FlyingPag extends Pag {
@@ -151,9 +155,24 @@ export interface IOtclice {
     id?: number;
     vacancy_id: number;
     user_id: number;
+    created_at: string;
+    updated_at: string;
     description: string;
 }
 
 export interface IOtclicePag extends Pag {
     data: IOtclice[];
+}
+
+export interface FullUser {
+    email: string;
+    feedbacks: Feedback[];
+    id?: number;
+    name: string;
+    orders: Order[];
+    otclice: IOtclice[];
+    role: string;
+    status: number;
+    created_at: string;
+    updated_at: string;
 }

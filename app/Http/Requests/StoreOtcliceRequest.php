@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Otclice;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreOtcliceRequest extends FormRequest
 {
@@ -23,6 +25,7 @@ class StoreOtcliceRequest extends FormRequest
     {
         return [
             "description" => ['required', 'string'],
+            "vacancy_id" => ['required', Rule::unique(Otclice::class)->where("user_id", request()->user()->id)]
         ];
     }
 }

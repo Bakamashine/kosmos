@@ -36,6 +36,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
             Route::post("", 'store')->name(".store");
             Route::patch("/{order}", 'update')->name(".update");
             Route::get("/mobile", 'indexMobile')->name(".indexMobile");
+            Route::get("/{order}", 'show')->name(".show");
         });
     Route::get("/home", [HomeController::class, 'index'])->name("home");
     Route::middleware(AdminMiddleware::class)->group(function () {
@@ -69,6 +70,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::delete("/{user}", 'destroy')->name(".destroy");
                 Route::patch("/{user}/ban", 'ban')->name(".ban");
                 Route::patch("/{user}/unban", 'unban')->name(".unban");
+                Route::get("/{user}", 'show')->name(".show");
             });
 
         Route::name("vacancy")
@@ -84,19 +86,20 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::put("/{vacancy}/update", 'update')->name(".update");
                 Route::post("/{vacancy}/restore", "restore")->name(".restore");
                 Route::get("/destroyed", 'destroyed')->name(".destroyed");
+                Route::get("{vacancy}", "show")->name(".show");
             });
         Route::resource('flying', FlyingController::class);
 
         Route::name("otclice")
-        ->prefix("otclice")
-        ->controller(OtcliceController::class)
-        ->group(function () {
-            Route::get("", "index")->name(".index");
-            Route::get("/{otclice}/create", 'create')->name(".create");
-            Route::post("", 'store')->name(".store");
-            Route::delete("/{otclice}/destroy", "destroy")->name(".destroy");
-            Route::patch("/{otclice}/update", 'update')->name(".update");
-        });
+            ->prefix("otclice")
+            ->controller(OtcliceController::class)
+            ->group(function () {
+                Route::get("", "index")->name(".index");
+                Route::get("/{vacancy}/create", 'create')->name(".create");
+                Route::post("", 'store')->name(".store");
+                Route::delete("/{otclice}/destroy", "destroy")->name(".destroy");
+                Route::patch("/{otclice}/update", 'update')->name(".update");
+            });
     });
 });
 

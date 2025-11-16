@@ -27,8 +27,8 @@ export default function UpdateOrder() {
                     <thead>
                         <tr>
                             <th>#</th>
+                            {/* <th>Имя пользователя</th> */}
                             <th>Имя пользователя</th>
-                            <th>ID пользователя</th>
                             <th>Желаемая дата</th>
                             <th>Цена полёта</th>
                             <th>Название полёта</th>
@@ -40,7 +40,7 @@ export default function UpdateOrder() {
                         {orders.map((item, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{item.user_name}</td>
+                                {/* <td>{item.user_name}</td> */}
                                 {/* <td>{item.user_id}</td> */}
                                 <td>
                                     <Link
@@ -48,7 +48,7 @@ export default function UpdateOrder() {
                                             user: item.user_id,
                                         })}
                                     >
-                                        {item.user_id}
+                                        {item.user_name}
                                     </Link>{" "}
                                 </td>
                                 <td>{item.date}</td>

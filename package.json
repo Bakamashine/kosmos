@@ -15,12 +15,14 @@
         "vite": "^7.0.7"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^7.1.0",
         "@inertiajs/react": "^2.2.8",
         "@types/node": "^24.7.2",
         "@types/react": "^19.2.2",
         "@types/react-dom": "^19.2.1",
         "@vitejs/plugin-react": "^5.0.4",
         "bootstrap": "^5.3.8",
+        "mdb-react-ui-kit": "^9.0.0",
         "react": "^19.2.0",
         "react-bootstrap": "^2.10.10",
         "react-dom": "^19.2.0",

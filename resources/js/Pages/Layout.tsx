@@ -4,6 +4,7 @@ import { Link, router, usePage } from "@inertiajs/react";
 import { Breadcrumb } from "react-bootstrap";
 import { BreadCrumps } from "../interface";
 import { route } from "ziggy-js";
+import Footer from "../includes/footer";
 
 const Layout = ({ children }: { children: ReactNode }) => {
     const { breadcrumbs } = usePage<{ breadcrumbs: BreadCrumps[] }>().props;
@@ -30,6 +31,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
             <main>
                 <section className="main__wrapper">{children}</section>
             </main>
+
+            <Footer />
         </>
     );
 };

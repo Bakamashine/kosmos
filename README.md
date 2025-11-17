@@ -6,13 +6,9 @@ composer install
 
 Затем установите js зависимости командой
 
-```bash
-yarn install
-```
-или
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
 После этого следует скопировать .env.example в .env

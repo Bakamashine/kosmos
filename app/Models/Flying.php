@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
 
 /**
  * @property int $id
@@ -26,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flying whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class Flying extends Model
+class Flying extends Model implements Sitemapable
 {
     /** @use HasFactory<\Database\Factories\FlyingFactory> */
     use HasFactory;
@@ -41,7 +42,11 @@ class Flying extends Model
 
     public function order()
     {
-        // return $this->hasMany(Order::class, "flying_id", "id");
         return $this->hasMany(Order::class);
+    }
+
+    public function toSitemapTag(): array|string|\Spatie\Sitemap\Tags\Url
+    {
+        return route("flying.show", $this);
     }
 }

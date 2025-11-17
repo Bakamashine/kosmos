@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Sitemap\Tags\Url;
+use Spatie\Sitemap\Contracts\Sitemapable;
 
 /**
  * @property int $id
@@ -34,7 +37,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Vacancy withoutTrashed()
  * @mixin \Eloquent
  */
-class Vacancy extends Model
+class Vacancy extends Model implements Sitemapable
 {
     /** @use HasFactory<\Database\Factories\VakanciesFactory> */
     use HasFactory, SoftDeletes;
@@ -57,9 +60,16 @@ class Vacancy extends Model
         "updated_at"
     ];
 
-    public function otclice() {
+    public function otclice()
+    {
         return $this->hasMany(Otclice::class);
     }
 
+    public function toSitemapTag(): array|string|\Spatie\Sitemap\Tags\Url
+    {
+        // return route("vacancy.show", $this);
+        return Url::create(route("vacancy.show", $this))
+            ->setLastModificationDate(Carbon::create($this->updated_at));
+    }
 
 }

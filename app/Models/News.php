@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
 
 /**
  * @property int $id
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|News whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class News extends Model
+class News extends Model implements Sitemapable
 {
     /** @use HasFactory<\Database\Factories\NewsFactory> */
     use HasFactory;
@@ -31,4 +32,9 @@ class News extends Model
         "title",
         "description"
     ];
+
+    public function toSitemapTag(): array|string|\Spatie\Sitemap\Tags\Url
+    {
+        return route("news.show", $this);
+    }
 }

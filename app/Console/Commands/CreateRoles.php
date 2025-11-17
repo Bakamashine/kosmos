@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Database\Seeders\RoleSeeder;
 use Illuminate\Console\Command;
 
-class createroles extends Command
+class CreateRoles extends Command
 {
     /**
      * The name and signature of the console command.

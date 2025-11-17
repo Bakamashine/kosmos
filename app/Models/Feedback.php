@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
 
 /**
  * @property int $id
@@ -28,7 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUserId($value)
  * @mixin \Eloquent
  */
-class Feedback extends Model
+class Feedback extends Model implements Sitemapable
 {
     /** @use HasFactory<\Database\Factories\FeedbackFactory> */
     use HasFactory;
@@ -49,4 +50,9 @@ class Feedback extends Model
         return $this->belongsTo(Order::class);
     }
 
+
+    public function toSitemapTag(): array|string|\Spatie\Sitemap\Tags\Url
+    {
+        return route("feedback.index", $this);
+    }
 }

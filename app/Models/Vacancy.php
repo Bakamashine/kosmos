@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $payment
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Otclice> $otclice
+ * @property-read int|null $otclice_count
  * @method static \Database\Factories\VacancyFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Vacancy newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Vacancy newQuery()

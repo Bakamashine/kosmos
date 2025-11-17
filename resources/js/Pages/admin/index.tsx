@@ -41,6 +41,9 @@ export default function Admin() {
             <Link href={route("otclice.index")} className="btn btn-dark">
                 Управление откликами
             </Link>
+            <a rel="noopener noreferrer" target="_blank" href={route("XMLExport")} className="btn btn-dark">
+                Экспорт всех записей
+            </a>
         </Layout>
     );
 }

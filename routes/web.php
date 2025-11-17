@@ -44,6 +44,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
             ->prefix("admin")
             ->group(function () {
                 Route::get("", 'index')->name("admin");
+                Route::get("/xml", "XMLExport")->name("XMLExport");
             });
         Route::controller(NewsController::class)
             ->prefix("news")

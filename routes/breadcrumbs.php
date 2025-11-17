@@ -4,34 +4,6 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 
 use Diglactic\Breadcrumbs\Generator as Trail;
 
-// Breadcrumbs::for("/", function (BreadcrumbTrail $trail) {
-// $trail->push("Home", route('home'));
-// $trail->push("Admin", route("admin"));
-// $trail->push("Login", route("login"));
-// $trail->push("Register", route("register"));
-// $trail->push("Main", route("main"));
-// });
-
-// Breadcrumbs::for("admin", function () {
-
-// });
-
-// Breadcrumbs::for("main", function (BreadcrumbTrail $trail) {
-//     $trail->push("Login", route("login"));
-//     $trail->push("Register", route("register"));
-// });
-// Breadcrumbs::for("admin", function (BreadcrumbTrail $trail) {
-//     $trail->parent("main");
-// });
-
-// Breadcrumbs::for("news", function (BreadcrumbTrail $trail) {
-//     $trail->parent("admin");
-//     $trail->push("News", route("news.index"));
-//     $trail->push("Create", route("news.create"));
-//     $trail->push("Edit", route("news.edit"));
-// });
-
-
 /*
 |--------------------------------------------------------------------------
 | Main & Static

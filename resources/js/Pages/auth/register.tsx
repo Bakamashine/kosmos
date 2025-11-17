@@ -31,7 +31,7 @@ export default function Register() {
                         onChange={(e) => setData("name", e.target.value)}
                         value={data.name}
                     />
-                    {errors.name && <p className="red">{errors.name}</p>}
+                    {errors.name && <p className="text-danger">{errors.name}</p>}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="email">
@@ -42,7 +42,7 @@ export default function Register() {
                         onChange={(e) => setData("email", e.target.value)}
                         value={data.email}
                     />
-                    {errors.email && <p className="red">{errors.email}</p>}
+                    {errors.email && <p className="text-danger">{errors.email}</p>}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
@@ -54,7 +54,7 @@ export default function Register() {
                         value={data.password}
                     />
                     {errors.password && (
-                        <p className="red">{errors.password}</p>
+                        <p className="text-danger">{errors.password}</p>
                     )}
                 </Form.Group>
 
@@ -70,7 +70,7 @@ export default function Register() {
 
                     />
                     {errors.password_confirmation && (
-                        <p className="red">{errors.password_confirmation}</p>
+                        <p className="text-danger">{errors.password_confirmation}</p>
                     )}
                 </Form.Group>
                 <Button variant="primary" type="submit">

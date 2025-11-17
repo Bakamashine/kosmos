@@ -39,7 +39,7 @@ export default function Auth() {
                         onChange={(e) => setData("email", e.target.value)}
                         value={data.email}
                     />
-                    {errors.email && <p className="red">{errors.email}</p>}
+                    {errors.email && <p className="text-danger">{errors.email}</p>}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
@@ -51,7 +51,7 @@ export default function Auth() {
                         value={data.password}
                     />
                     {errors.password && (
-                        <p className="red">{errors.password}</p>
+                        <p className="text-danger">{errors.password}</p>
                     )}
                 </Form.Group>
                 <Button variant="primary" type="submit">

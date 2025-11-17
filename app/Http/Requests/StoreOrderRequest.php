@@ -22,7 +22,7 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'flying_id' => ['required'],
+            'flying_id' => ['required', "integer"],
             "date" => ['required']
         ];
     }

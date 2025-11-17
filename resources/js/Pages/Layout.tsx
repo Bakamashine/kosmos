@@ -1,17 +1,28 @@
 import React, { ReactNode } from "react";
 import Header from "../includes/header";
-import { Link, router, usePage } from "@inertiajs/react";
+import { Head, Link, router, usePage } from "@inertiajs/react";
 import { Breadcrumb } from "react-bootstrap";
 import { BreadCrumps } from "../interface";
 import { route } from "ziggy-js";
 import Footer from "../includes/footer";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({
+    children,
+    title,
+    title_h1 = false,
+    title_h1_replace = undefined,
+}: {
+    children: ReactNode;
+    title: string;
+    title_h1?: boolean;
+    title_h1_replace?: string;
+}) => {
     const { breadcrumbs } = usePage<{ breadcrumbs: BreadCrumps[] }>().props;
     // console.log("BreadCrumps: ", breadcrumbs);
     return (
         <>
             <header>
+                <Head title={title} />
                 <Header />
                 {breadcrumbs && breadcrumbs.length > 0 && (
                     <Breadcrumb className="breadcrumps">
@@ -29,7 +40,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
                 )}
             </header>
             <main>
-                <section className="main__wrapper">{children}</section>
+                <section className="main__wrapper">
+                    {title_h1 && <h1 className="text-center p-2">{title_h1_replace ? title_h1_replace: title}</h1>}
+                    {children}
+                </section>
             </main>
 
             <Footer />

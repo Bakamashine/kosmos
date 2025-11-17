@@ -10,12 +10,8 @@ export default function ViewFeedback() {
     const feedback = usePage().props.feedback as FeedbackPag;
     console.log("View Feedback: ", feedback);
 
-    const title = "Отзывы";
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
-
+        <Layout title="Отзывы" title_h1>
             <div>
                 {feedback.data.length > 0 ? (
                     <div>

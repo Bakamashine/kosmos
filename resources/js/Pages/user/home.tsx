@@ -30,10 +30,9 @@ export default function Home() {
     // console.log("orders: ", orders);
     // console.log("success_order", success_order);
 
+    const title = "Домашняя страница"
     return (
-        <Layout>
-            <Head title="Домашняя страница" />
-            <h1 className="text-center">Домашняя страница</h1>
+        <Layout title={title} title_h1>
 
             {feedbacks.length > 0 ? (
                 <div>

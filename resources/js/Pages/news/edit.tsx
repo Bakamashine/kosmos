@@ -9,8 +9,7 @@ import { route } from "ziggy-js";
 export default function EditNews() {
     const news = usePage().props.news as News;
     return (
-        <Layout>
-            <Head title={news.title} />
+        <Layout title={news.title}>
 
             <NewsForm
                 title={news.title}

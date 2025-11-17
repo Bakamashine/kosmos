@@ -11,9 +11,7 @@ export default function VakanciesManagement() {
     console.log("Deleted vacancy: ", vacancy)
     const title = "Управление вакансиями";
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
 
             <div className="">
                 {vacancy && vacancy.data.length > 0 ? (

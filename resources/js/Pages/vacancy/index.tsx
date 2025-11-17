@@ -12,9 +12,7 @@ export default function Vakancy() {
 
     const title = "Вакансии";
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
             <div className="">
                 {vacancy && vacancy.data.length > 0 ? (
                     <div>

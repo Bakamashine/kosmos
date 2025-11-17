@@ -17,8 +17,7 @@ export default function CreateUser() {
 
     const title = "Создание пользователя";
     return (
-        <Layout>
-            <Head title={title} />
+        <Layout title={title}>
             <Form className="m-3 bg-form" onSubmit={handleSubmit}>
                 <h5 className="text-center">{title}</h5>
 

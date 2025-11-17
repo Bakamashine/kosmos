@@ -4,9 +4,7 @@ import { Head } from "@inertiajs/react";
 export default function AboutUs() {
     const title = "О нас";
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
 
             <div className="about_us">
                 <p>

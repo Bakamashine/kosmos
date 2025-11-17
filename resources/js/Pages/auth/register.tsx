@@ -19,8 +19,7 @@ export default function Register() {
         post(route("register.store"));
     }
     return (
-        <Layout>
-            <Head title="Регистрация" />
+        <Layout title="Регистрация">
             <Form className="m-3 bg-form" onSubmit={handleSubmit}>
                 <h5 className="text-center">Регистрация</h5>
 

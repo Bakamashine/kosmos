@@ -28,9 +28,7 @@ export default function EditUser() {
     }
 
     return (
-        <Layout>
-            <Head title={`Редактирование: ${name}`} />
-            <h1 className="text-center">Редактирование пользователя</h1>
+        <Layout title={`Редактирование: ${name}`} title_h1 title_h1_replace="Редактирование пользователя">
             <Form onSubmit={submit}>
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Имя пользователя</Form.Label>

@@ -26,8 +26,7 @@ export default function Auth() {
 
     // console.log("Login errors: ", errors)
     return (
-        <Layout>
-            <Head title="Авторизация" />
+        <Layout title="Авторизация">
             <Form className="m-3 bg-form" onSubmit={handleSubmit}>
                 <h5 className="text-center">Авторизация</h5>
 

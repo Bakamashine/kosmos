@@ -10,9 +10,7 @@ export default function EditFlying() {
     const flying = usePage().props.flying as Flying;
     // console.log(flying)
     return (
-        <Layout>
-            <Head title={flying.title} />
-            <h1 className="text-center">{flying.title}</h1>
+        <Layout title={flying.title} title_h1>
 
             <FlyingForm
                 description={flying.description}

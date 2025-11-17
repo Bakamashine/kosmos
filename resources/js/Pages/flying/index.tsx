@@ -13,9 +13,7 @@ export default function ManagementFlying() {
     const title = "Управление полётами";
     // console.log(flying);
     return (
-        <Layout>
-            <Head title={title}></Head>
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
 
             {flying !== undefined && flying.data.length > 0 ? (
                 <div>

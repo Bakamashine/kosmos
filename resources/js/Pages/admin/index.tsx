@@ -6,11 +6,11 @@ import UpdateOrder from "../../components/order/updateStatus";
 
 export default function Admin() {
     return (
-        <Layout>
-            <Head title="Административная страница" />
-            <h1 className="text-center">
-                Добро пожаловать на административную страницу
-            </h1>
+        <Layout
+            title="Административная страница"
+            title_h1
+            title_h1_replace="Добро пожаловать на административную страницу"
+        >
             <div className="nomobile">
                 <UpdateOrder />
             </div>
@@ -41,7 +41,12 @@ export default function Admin() {
             <Link href={route("otclice.index")} className="btn btn-dark">
                 Управление откликами
             </Link>
-            <a rel="noopener noreferrer" target="_blank" href={route("XMLExport")} className="btn btn-dark">
+            <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href={route("XMLExport")}
+                className="btn btn-dark"
+            >
                 Экспорт всех записей
             </a>
         </Layout>

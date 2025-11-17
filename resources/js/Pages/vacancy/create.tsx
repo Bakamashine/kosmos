@@ -7,9 +7,7 @@ import { Head } from "@inertiajs/react";
 export default function CreateVakancies() {
     const title = "Создание вакансии";
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
             <VacancyForm
                 method={HttpMethod.POST}
                 url={route("vacancy.store")}

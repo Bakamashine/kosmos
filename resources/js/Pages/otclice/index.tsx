@@ -5,18 +5,17 @@ import Layout from "../Layout";
 import { Table } from "react-bootstrap";
 import Paginate from "../../components/ui/Paginate";
 import { route } from "ziggy-js";
+import NotFoundRecords from "../../components/ui/NotFoundRecords";
 
 export default function Otclice() {
     const { otclice } = usePage<{ otclice: IOtclicePag }>().props;
 
     const title = "Отклики";
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
 
             <div>
-                {otclice.data.length > 0 && (
+                {otclice.data.length > 0 ? (
                     <div>
                         <Table striped bordered hover>
                             <thead>
@@ -59,6 +58,8 @@ export default function Otclice() {
                             <Paginate item={otclice} />
                         </div>
                     </div>
+                ): (
+                    <NotFoundRecords text="Отлики не найдены" />
                 )}
             </div>
         </Layout>

@@ -21,9 +21,7 @@ export default function CreateNews() {
     const title = "Создание новости";
 
     return (
-        <Layout>
-            <Head title={title} />
-            <h5 className="text-center">{title}</h5>
+        <Layout title={title} title_h1>
 
             <NewsForm method={HttpMethod.POST} url={route("news.store")} />
         </Layout>

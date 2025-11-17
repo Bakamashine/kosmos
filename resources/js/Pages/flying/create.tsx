@@ -7,9 +7,7 @@ import { route } from "ziggy-js";
 export default function CreateFlying() {
     const title = "Создание полёта";
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
 
             <FlyingForm
             method={HttpMethod.POST} url={route("flying.store")} />

@@ -12,9 +12,7 @@ export default function ManagementUser() {
     // console.log("Management users: ", users);
     const title = "Управление пользователями";
     return (
-        <Layout>
-            <Head title={title}></Head>
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
 
             {users !== undefined ? (
                 <div>

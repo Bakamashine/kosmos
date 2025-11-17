@@ -11,11 +11,8 @@ export default function ManagementNews() {
     const news = props?.news as NewsPag;
     // console.log(news);
     return (
-        <Layout>
-            <Head title="Управление новостями" />
+        <Layout title="Управление новостями" title_h1 >
             <div className="text-center">
-                <h1>Управление новостями</h1>
-
                 {news !== undefined && news.data.length > 0 ? (
                     <div>
                         <div className="news">

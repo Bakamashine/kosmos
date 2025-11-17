@@ -11,9 +11,7 @@ export default function ShowUser() {
 
     const title = `Пользователь: ${user.name}`;
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
 
             <div className="border p-3">
                 <p>Имя: {user.name}</p>

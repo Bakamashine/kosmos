@@ -15,9 +15,7 @@ export default function Main() {
     // console.log(news);
 
     return (
-        <Layout>
-            <Head title="Главная" />
-            <h1 className="text-center p-2">Главная страница</h1>
+        <Layout title="Главная" title_h1 title_h1_replace="Главная страница">
             <div className="carousel_size">
                 <UncontrolledCarousel />
             </div>

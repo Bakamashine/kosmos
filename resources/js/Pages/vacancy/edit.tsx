@@ -10,9 +10,7 @@ export default function EditVacancy() {
     const { vacancy } = usePage<{ vacancy: Vacancy }>().props;
     // console.log(vacancy);
     return (
-        <Layout>
-            <Head title={vacancy.title} />
-            <h1 className="text-center">Редактирование вакансии</h1>
+        <Layout title={vacancy.title} title_h1 title_h1_replace="Редактирование вакансии">
             <div>
                 <VacancyForm
                     method={HttpMethod.PUT}

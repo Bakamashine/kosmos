@@ -10,9 +10,7 @@ export default function ShowOrder() {
     // console.log("Order: ", order);
     const title = `${new Date(order.date).toLocaleDateString()} заявка`;
     return (
-        <Layout>
-            <Head title={title} />
-            <h1 className="text-center">{title}</h1>
+        <Layout title={title} title_h1>
 
             <div className="p-3 border">
                 <p>Стоимость полёта: {order.flying_price}</p>

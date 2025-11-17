@@ -10,8 +10,7 @@ export default function ShowNews() {
 
 
     return (
-        <Layout>
-            <Head title={news.title} />
+        <Layout title={news.title}>
             <div className="text-center">
                 <h1>{news.title}</h1>
                 <p>{news.description}</p>

@@ -1,2 +1,38 @@
 User-agent: *
-Disallow:
+Allow: /
+
+Disallow: /admin
+Disallow: /admin/
+Disallow: /user
+Disallow: /user/
+Disallow: /order
+Disallow: /order/
+Disallow: /home
+Disallow: /login
+Disallow: /register
+
+Disallow: /news/create
+Disallow: /news/*/edit
+Disallow: /vacancy/create
+Disallow: /vacancy/*/edit
+Disallow: /vacancy/*/update
+Disallow: /vacancy/*/restore
+Disallow: /vacancy/destroyed
+Disallow: /vacancy/*/destroy
+Disallow: /flying/create
+Disallow: /flying/*/edit
+
+Disallow: /feedback
+Disallow: /order/*
+
+Disallow: /xml
+Disallow: /otclice
+Disallow: /otclice/
+Disallow: /user/*/ban
+Disallow: /user/*/unban
+
+Disallow: /*?*
+
+Crawl-delay: 10
+
+Sitemap: http://ivanfa71.beget.tech

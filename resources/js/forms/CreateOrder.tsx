@@ -9,7 +9,7 @@ import { route } from "ziggy-js";
 export default function CreateOrder({ flying }: CreateOrderProps) {
     const { data, setData, post, errors } = useForm({
         date: "",
-        flying_id: 1,
+        flying_id: "",
     });
 
     function submit(e: FormEvent<HTMLFormElement>) {
@@ -36,15 +36,17 @@ export default function CreateOrder({ flying }: CreateOrderProps) {
                     <Form.Label>Выберите полёт</Form.Label>
                     <Form.Select
                         aria-label="Default select example"
-                        onChange={(e) => setData("flying_id", parseInt(e.target.value))}
+                        onChange={(e) => setData("flying_id", e.target.value)}
                         value={data.flying_id}
                     >
+                        <option value="">Выберите полёт</option>
                         {flying.map((item, index) => (
                             <option key={index} value={item.id}>
                                 {item.title} - {item.price} {Ruble}
                             </option>
                         ))}
                     </Form.Select>
+                    {errors.flying_id && <p className="text-danger">{errors.flying_id}</p>}
                 </Form.Group>
                 <div className="mt-3">
                     <Button variant="primary" type="submit">

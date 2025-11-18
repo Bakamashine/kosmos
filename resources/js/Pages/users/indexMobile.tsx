@@ -11,7 +11,7 @@ export default function UserManagementMobile() {
     const { data, setData, patch, errors } = useForm({
         status: "0",
     });
-console.log(users)
+    console.log(users);
 
     function submit(e: FormEvent<HTMLFormElement>, id: number) {
         e.preventDefault();
@@ -38,6 +38,7 @@ console.log(users)
                                 <br />
                                 <Link
                                     method="delete"
+                                    className="text-danger"
                                     href={route("user.destroy", {
                                         user: item.id,
                                     })}
@@ -48,6 +49,7 @@ console.log(users)
                                 {item.status == 1 ? (
                                     <Link
                                         method="patch"
+                                        className="text-secondary"
                                         href={route("user.ban", {
                                             user: item.id,
                                         })}

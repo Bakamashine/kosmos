@@ -26,7 +26,7 @@ export default function NewsCard({
                         </div>
 
                         <div>
-                            <Link method="delete" href={route("news.destroy", { news: id })}>
+                            <Link className="text-danger" method="delete" href={route("news.destroy", { news: id })}>
                                 Удалить
                             </Link>
                         </div>

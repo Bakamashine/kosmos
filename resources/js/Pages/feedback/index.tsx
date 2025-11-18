@@ -8,7 +8,7 @@ import Paginate from "../../components/ui/Paginate";
 import { Ruble } from "../../constants/Ruble";
 export default function ViewFeedback() {
     const feedback = usePage().props.feedback as FeedbackPag;
-    console.log("View Feedback: ", feedback);
+    // console.log("View Feedback: ", feedback);
 
     return (
         <Layout title="Отзывы" title_h1>

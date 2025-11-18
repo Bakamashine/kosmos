@@ -8,7 +8,7 @@ import Paginate from "../../components/ui/Paginate";
 import { route } from "ziggy-js";
 export default function VakanciesManagement() {
     const { vacancy } = usePage<{  vacancy: VacancyPag }>().props;
-    console.log("Deleted vacancy: ", vacancy)
+    // console.log("Deleted vacancy: ", vacancy)
     const title = "Управление вакансиями";
     return (
         <Layout title={title} title_h1>

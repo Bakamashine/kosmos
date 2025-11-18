@@ -43,6 +43,7 @@ export default function ManagementFlying() {
                                         <br />
                                         <Link
                                             method="delete"
+                                            className="text-danger"
                                             href={route("flying.destroy", {
                                                 flying: item.id,
                                             })}

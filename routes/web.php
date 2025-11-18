@@ -46,6 +46,8 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::get("", 'index')->name("admin");
                 Route::get("/xml", "XMLExport")->name("XMLExport");
             });
+
+        Route::delete("/feedback/{feedback}", [FeedbackController::class, 'destroy'])->name("feedback.destroy");
         Route::controller(NewsController::class)
             ->prefix("news")
             ->name("news")

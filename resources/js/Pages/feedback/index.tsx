@@ -1,13 +1,16 @@
 import React from "react";
-import { Feedback, FeedbackPag } from "../../interface";
-import { Head, usePage } from "@inertiajs/react";
+import { Feedback, FeedbackPag, User } from "../../interface";
+import { Head, Link, usePage } from "@inertiajs/react";
 import Layout from "../Layout";
 import { Card, Pagination } from "react-bootstrap";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
 import Paginate from "../../components/ui/Paginate";
 import { Ruble } from "../../constants/Ruble";
+import { route } from "ziggy-js";
 export default function ViewFeedback() {
     const feedback = usePage().props.feedback as FeedbackPag;
+    const { user } = usePage<{ auth: {user: User} }>().props.auth;
+    // console.log("user: ", user);
     // console.log("View Feedback: ", feedback);
 
     return (
@@ -43,6 +46,15 @@ export default function ViewFeedback() {
                                                 ))}
                                         </Card.Subtitle>
                                         <Card.Text>{item.text}</Card.Text>
+                                        {user && user.role_name == "admin" && (
+                                            <Link
+                                                href={route("feedback.destroy", {feedback: item.id})}
+                                                method="delete"
+                                                className="text-danger"
+                                            >
+                                                Удалить
+                                            </Link>
+                                        )}
                                     </Card.Body>
                                 </Card>
                             ))}

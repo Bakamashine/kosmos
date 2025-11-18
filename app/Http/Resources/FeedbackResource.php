@@ -21,6 +21,7 @@ class FeedbackResource extends JsonResource
             'user_name' => $this->user->name,
             "flying_title" => $this->order->flying->title,
             "flying_price" => $this->order->flying->price,
+            "id" => $this->id
         ];
     }
 }

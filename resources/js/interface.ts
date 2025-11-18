@@ -26,6 +26,7 @@ export interface Roles {
 export interface Feedback {
     text: string;
     score: number;
+    id?: number;
     date?: string;
     flying_title?: string;
     user_name?: string;

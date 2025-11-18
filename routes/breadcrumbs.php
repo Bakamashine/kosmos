@@ -95,6 +95,11 @@ Breadcrumbs::for('user.index', function (Trail $trail) {
     $trail->push('Пользователи', route('user.index'));
 });
 
+Breadcrumbs::for("user.indexMobile", function (Trail $trail) {
+    $trail->parent("admin");
+    $trail->push("Пользователи", route("user.indexMobile"));
+});
+
 Breadcrumbs::for('user.create', function (Trail $trail) {
     $trail->parent('user.index');
     $trail->push('Создать', route('user.create'));
@@ -108,6 +113,22 @@ Breadcrumbs::for('user.edit', function (Trail $trail, $user) {
 Breadcrumbs::for('user.show', function (Trail $trail, $user) {
     $trail->parent('user.index');
     $trail->push($user->name, route('user.show', $user));
+});
+
+/*
+|--------------------------------------------------------------------------
+| Orders (Admin)
+|--------------------------------------------------------------------------
+*/
+
+Breadcrumbs::for("order.index", function (Trail $trail) {
+    $trail->push("admin");
+    $trail->push("Заявки", route("order.index"));
+});
+
+Breadcrumbs::for("order.indexMobile", function (Trail $trail) {
+    $trail->push("admin");
+    $trail->push("Заявки", route("order.indexMobile"));
 });
 
 /*

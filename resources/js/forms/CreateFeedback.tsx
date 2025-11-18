@@ -1,5 +1,5 @@
 import { useForm } from "@inertiajs/react";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect } from "react";
 import { Button, FloatingLabel, Form, InputGroup } from "react-bootstrap";
 import { Flying, SuccessOrder } from "../interface";
 import { route } from "ziggy-js";
@@ -12,7 +12,7 @@ export default function CreateFeedback({ success_order }: CreateFeedbackProps) {
     const { data, setData, post, errors } = useForm({
         text: "",
         score: 1,
-        order_id: 1,
+        order_id: "",
     });
 
     function submit(e: FormEvent<HTMLFormElement>) {
@@ -20,6 +20,10 @@ export default function CreateFeedback({ success_order }: CreateFeedbackProps) {
         post(route("feedback.store"));
     }
     // console.log("Create feedback errors: ", errors);
+
+    // useEffect(() => {
+    //     console.log(data);
+    // }, [data])
     return (
         <div>
             <h3 className="text-center">Создание отзывов</h3>
@@ -35,7 +39,7 @@ export default function CreateFeedback({ success_order }: CreateFeedbackProps) {
                         onChange={(data) => setData("text", data.target.value)}
                         style={{ height: "100px" }}
                     />
-                    {errors.text ?? (
+                    {errors.text && (
                         <p className="text-danger">{errors.text}</p>
                     )}
                 </FloatingLabel>
@@ -60,10 +64,11 @@ export default function CreateFeedback({ success_order }: CreateFeedbackProps) {
                     <Form.Select
                         aria-label="Default select example"
                         onChange={(e) =>
-                            setData("order_id", parseInt(e.target.value))
+                            setData("order_id", e.target.value)
                         }
                         value={data.order_id}
                     >
+                        <option value="">Выберите полёт</option>
                         {success_order.map((item, index) => (
                             <option key={index} value={item.order_id}>
                                 {item.title}

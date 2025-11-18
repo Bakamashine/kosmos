@@ -30,7 +30,7 @@ export default function CreateOrder({ flying }: CreateOrderProps) {
                         onChange={(e) => setData("date", e.target.value)}
                         value={data.date}
                     />
-                    {errors.date && <p className="red">{errors.date}</p>}
+                    {errors.date && <p className="text-danger">{errors.date}</p>}
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Выберите полёт</Form.Label>

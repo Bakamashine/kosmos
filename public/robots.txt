@@ -35,4 +35,4 @@ Disallow: /*?*
 
 Crawl-delay: 10
 
-Sitemap: http://ivanfa71.beget.tech
+Sitemap: http://ivanfa71.beget.tech/sitemap.xml

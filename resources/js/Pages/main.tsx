@@ -15,7 +15,7 @@ export default function Main() {
     // console.log(news);
 
     return (
-        <Layout title="Главная" title_h1 title_h1_replace="Главная страница">
+        <Layout title="Главная" title_h1 title_h1_replace="Главная страница" meta="Билеты для путешествия в необъятный космос">
             <div className="carousel_size">
                 <UncontrolledCarousel />
             </div>

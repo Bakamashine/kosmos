@@ -11,7 +11,6 @@ export default function ShowOrder() {
     const title = `${new Date(order.date).toLocaleDateString()} заявка`;
     return (
         <Layout title={title} title_h1>
-
             <div className="p-3 border">
                 <p>Стоимость полёта: {order.flying_price}</p>
                 <p>Название полёта: {order.flying_title}</p>

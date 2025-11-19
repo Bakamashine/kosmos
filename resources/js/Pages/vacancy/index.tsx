@@ -8,11 +8,11 @@ import Paginate from "../../components/ui/Paginate";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
 
 export default function Vakancy() {
-    const {  vacancy } = usePage<{ vacancy: VacancyPag }>().props;
+    const { vacancy } = usePage<{ vacancy: VacancyPag }>().props;
 
     const title = "Вакансии";
     return (
-        <Layout title={title} title_h1>
+        <Layout title={title} title_h1 meta="Выбор вакансий">
             <div className="">
                 {vacancy && vacancy.data.length > 0 ? (
                     <div>

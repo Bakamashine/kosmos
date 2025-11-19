@@ -14,7 +14,6 @@ export default function ManagementFlying() {
     // console.log(flying);
     return (
         <Layout title={title} title_h1>
-
             {flying !== undefined && flying.data.length > 0 ? (
                 <div>
                     <Table striped bordered hover>

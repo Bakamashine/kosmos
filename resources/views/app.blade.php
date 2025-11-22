@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/img/rocket.png" type="image/png">
-
+	<meta name="keywords" content="Необъятный космос, космос, билеты в космос, вакансии астронавта, работа космонавтом, новости необъятный космос, вакансии необъятный космос, сделать заявку необъятный космос">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m, e, t, r, i, k, a) {

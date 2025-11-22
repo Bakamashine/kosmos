@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Order;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreOrderRequest extends FormRequest
 {
@@ -23,7 +25,12 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             'flying_id' => ['required', "integer"],
-            "date" => ['required']
+            "date" => [
+                'required',
+                "date",
+                Rule::unique(Order::class, "date")->where("user_id", auth()->id()),
+                "after_or_equal:today"
+            ]
         ];
     }
 }

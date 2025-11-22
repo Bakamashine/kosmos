@@ -13,15 +13,13 @@ use App\Models\User;
 use App\Models\Vacancy;
 use FluidXml\FluidXml;
 use App\Services\GenerateXMLService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Storage;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $order = OrderResource::collection(Order::all());
+        $order = OrderResource::collection(Order::paginate(10));
         $order_status = OrderStatus::cases();
         return inertia("admin/index", ['order' => $order, 'order_status' => $order_status]);
     }

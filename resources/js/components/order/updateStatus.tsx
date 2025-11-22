@@ -1,15 +1,16 @@
 import { Update } from "vite";
-import { Order } from "../../interface";
+import { Order, OrderPag } from "../../interface";
 import { Button, Form, Table } from "react-bootstrap";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { FormEvent } from "react";
 import { route } from "ziggy-js";
+import Paginate from "../ui/Paginate";
 
 export default function UpdateOrder() {
     const { props } = usePage();
-    const orders = props.order as Order[];
+    const orders = props.order as OrderPag;
     const orders_status = props.order_status as string[];
-    // console.log("orders: ", orders);
+    console.log("orders: ", orders);
 
     const { data, setData, patch, errors } = useForm({
         status: "0",
@@ -22,74 +23,83 @@ export default function UpdateOrder() {
     return (
         <>
             <h3 className="text-center">Все заявки пользователей</h3>
-            {orders.length > 0 ? (
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            {/* <th>Имя пользователя</th> */}
-                            <th>Имя пользователя</th>
-                            <th>Желаемая дата</th>
-                            <th>Цена полёта</th>
-                            <th>Название полёта</th>
-                            <th>Статус заявки</th>
-                            <th>-</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {orders.map((item, index) => (
-                            <tr key={index}>
-                                <td>{index + 1}</td>
-                                {/* <td>{item.user_name}</td> */}
-                                {/* <td>{item.user_id}</td> */}
-                                <td>
-                                    <Link
-                                        href={route("user.show", {
-                                            user: item.user_id,
-                                        })}
-                                    >
-                                        {item.user_name}
-                                    </Link>{" "}
-                                </td>
-                                <td>{item.date}</td>
-                                <td>{item.flying_price}</td>
-                                <td>{item.flying_title}</td>
-                                <td>{item.status}</td>
-                                <td>
-                                    <Form onSubmit={(e) => submit(e, item.id)}>
-                                        <Form.Select
-                                            aria-label="Default select example"
-                                            onChange={(data) =>
-                                                setData(
-                                                    "status",
-                                                    data.target.value
-                                                )
-                                            }
-                                            defaultValue={item.status}
-                                            // value={data.status}
-                                        >
-                                            {orders_status.map(
-                                                (item, index) => (
-                                                    <option key={index}>
-                                                        {item}
-                                                    </option>
-                                                )
-                                            )}
-                                        </Form.Select>
-                                        <div className="mt-2">
-                                            <Button
-                                                type={"submit"}
-                                                className="btn btn-dark"
-                                            >
-                                                Смена статуса
-                                            </Button>
-                                        </div>
-                                    </Form>
-                                </td>
+            {orders.data.length > 0 ? (
+                <div>
+                    <Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                {/* <th>Имя пользователя</th> */}
+                                <th>Имя пользователя</th>
+                                <th>Желаемая дата</th>
+                                <th>Цена полёта</th>
+                                <th>Название полёта</th>
+                                <th>Статус заявки</th>
+                                <th>-</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </Table>
+                        </thead>
+                        <tbody>
+                            {orders.data.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    {/* <td>{item.user_name}</td> */}
+                                    {/* <td>{item.user_id}</td> */}
+                                    <td>
+                                        <Link
+                                            href={route("user.show", {
+                                                user: item.user_id,
+                                            })}
+                                        >
+                                            {item.user_name}
+                                        </Link>{" "}
+                                    </td>
+                                    <td>{item.date}</td>
+                                    <td>{item.flying_price}</td>
+                                    <td>{item.flying_title}</td>
+                                    <td>{item.status}</td>
+                                    <td>
+                                        <Form
+                                            onSubmit={(e) => submit(e, item.id)}
+                                        >
+                                            <Form.Select
+                                                aria-label="Default select example"
+                                                onChange={(data) =>
+                                                    setData(
+                                                        "status",
+                                                        data.target.value
+                                                    )
+                                                }
+                                                defaultValue={item.status}
+                                                // value={data.status}
+                                            >
+                                                {orders_status.map(
+                                                    (item, index) => (
+                                                        <option key={index}>
+                                                            {item}
+                                                        </option>
+                                                    )
+                                                )}
+                                            </Form.Select>
+                                            <div className="mt-2">
+                                                <Button
+                                                    type={"submit"}
+                                                    className="btn btn-dark"
+                                                >
+                                                    Смена статуса
+                                                </Button>
+                                            </div>
+                                        </Form>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                    {orders.data.length > 10 && (
+                        <div className="d-flex justify-content-center">
+                            <Paginate item={orders} />
+                        </div>
+                    )}
+                </div>
             ) : (
                 <p className="text-center">Заявок нет</p>
             )}

@@ -42,4 +42,12 @@ class ApiController extends Controller
             "Компания 'Необъятный космос'"
         ]);
     }
+
+    public function concurents() {
+	return response()->json([
+	    "https://masterskaya-talantov.ru/neobyatnyj-kosmos",
+	    "https://mdou66norilsk.gosuslugi.ru/nash-detskiy-sad/novosti-i-sobytiya/neobyatnyy-kosmos.html",
+	    "https://games.andryushkin.ru/ds_quiz/kosmos"
+	]);
+    }
 }

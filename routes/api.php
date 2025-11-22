@@ -10,4 +10,5 @@ Route::controller(ApiController::class)
     Route::get("navigate", 'navigate');
     Route::get("commerce", "commerce");
     Route::get("some", "some");
+    Route::get("concurents", "concurents");
 });

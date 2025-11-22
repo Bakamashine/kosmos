@@ -41,7 +41,17 @@ export default function UpdateOrder() {
                         <tbody>
                             {orders.data.map((item, index) => (
                                 <tr key={index}>
-                                    <td>{index + 1}</td>
+                                    <td>
+                                        <Link
+                                            href={route("order.destroy", {
+                                                order: item.id,
+                                            })}
+                                            method="delete"
+                                            className="text-danger"
+                                        >
+                                            {index + 1}
+                                        </Link>
+                                    </td>
                                     {/* <td>{item.user_name}</td> */}
                                     {/* <td>{item.user_id}</td> */}
                                     <td>

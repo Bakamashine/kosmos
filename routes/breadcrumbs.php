@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Order;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
 use Diglactic\Breadcrumbs\Generator as Trail;
@@ -122,13 +123,18 @@ Breadcrumbs::for('user.show', function (Trail $trail, $user) {
 */
 
 Breadcrumbs::for("order.index", function (Trail $trail) {
-    $trail->push("admin");
+    $trail->parent("admin");
     $trail->push("Заявки", route("order.index"));
 });
 
 Breadcrumbs::for("order.indexMobile", function (Trail $trail) {
-    $trail->push("admin");
+    $trail->parent("admin");
     $trail->push("Заявки", route("order.indexMobile"));
+});
+
+Breadcrumbs::for("order.show", function (Trail $trail, Order $order) {
+    $trail->parent("admin");
+    $trail->push("Заявка (детально)", route("order.show", $order));
 });
 
 /*

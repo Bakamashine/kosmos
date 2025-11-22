@@ -36,6 +36,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
             Route::post("", 'store')->name(".store");
             Route::patch("/{order}", 'update')->name(".update");
             Route::get("/mobile", 'indexMobile')->name(".indexMobile");
+            Route::delete("/{order}", "destroy")->name(".destroy");
             Route::get("/{order}", 'show')->name(".show");
         });
     Route::get("/home", [HomeController::class, 'index'])->name("home");

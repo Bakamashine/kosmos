@@ -57,7 +57,7 @@ export default function UpdateStatusMobile() {
                     </Card>
                 ))}
             </div>
-            {orders.data.length > 5 && (
+            {orders.total > 5 && (
                 <div className="d-flex justify-content-center">
                     <Paginate item={orders} />
                 </div>

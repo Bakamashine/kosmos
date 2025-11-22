@@ -28,7 +28,7 @@ export default function Vakancy() {
                                 />
                             ))}
                         </div>
-                        {vacancy.data.length > 5 && (
+                        {vacancy.total > 5 && (
                             <div className="d-flex justify-content-center">
                                 <Paginate item={vacancy} />
                             </div>

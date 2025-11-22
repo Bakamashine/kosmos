@@ -1,14 +1,15 @@
 import { Update } from "vite";
-import { Order, OrderPag } from "../../interface";
+import { Order, OrderPag, OrderPagUniqual } from "../../interface";
 import { Button, Form, Table } from "react-bootstrap";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { FormEvent } from "react";
 import { route } from "ziggy-js";
 import Paginate from "../ui/Paginate";
+import PaginateOrder from "../ui/PaginateOrder";
 
 export default function UpdateOrder() {
     const { props } = usePage();
-    const orders = props.order as OrderPag;
+    const orders = props.order as OrderPagUniqual;
     const orders_status = props.order_status as string[];
     console.log("orders: ", orders);
 
@@ -49,7 +50,7 @@ export default function UpdateOrder() {
                                             method="delete"
                                             className="text-danger"
                                         >
-                                            {index + 1}
+                                            {item.id}
                                         </Link>
                                     </td>
                                     {/* <td>{item.user_name}</td> */}
@@ -104,9 +105,9 @@ export default function UpdateOrder() {
                             ))}
                         </tbody>
                     </Table>
-                    {orders.data.length > 10 && (
+                    {orders.meta.total > 5 && (
                         <div className="d-flex justify-content-center">
-                            <Paginate item={orders} />
+                            <PaginateOrder item={orders}  />
                         </div>
                     )}
                 </div>

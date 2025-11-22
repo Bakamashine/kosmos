@@ -71,7 +71,7 @@ export default function UserManagementMobile() {
                     </Card>
                 ))}
             </div>
-            {users.data.length > 5 && (
+            {users.total > 5 && (
                 <div className="d-flex justify-content-center">
                     <Paginate item={users} />
                 </div>

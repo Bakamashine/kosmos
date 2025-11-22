@@ -75,6 +75,30 @@ export interface Pag {
     total: number;
 }
 
+export interface OrderPagUniqual {
+    data: Order[];
+    links: {
+        first: string;
+        last: string;
+        next: string;
+        prev: string;
+    };
+    meta: {
+        current_page: number;
+        from: number;
+        last_page: 16;
+        links: {
+            url: string;
+            label: string;
+            active: boolean;
+        }[];
+        path: string;
+        per_page: number;
+        to: number;
+        total: 153;
+    };
+}
+
 export interface NewsPag extends Pag {
     data: News[];
 }

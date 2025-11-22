@@ -9,7 +9,7 @@ import { Ruble } from "../../constants/Ruble";
 import { route } from "ziggy-js";
 export default function ViewFeedback() {
     const feedback = usePage().props.feedback as FeedbackPag;
-    const { user } = usePage<{ auth: {user: User} }>().props.auth;
+    const { user } = usePage<{ auth: { user: User } }>().props.auth;
     // console.log("user: ", user);
     // console.log("View Feedback: ", feedback);
 
@@ -48,7 +48,10 @@ export default function ViewFeedback() {
                                         <Card.Text>{item.text}</Card.Text>
                                         {user && user.role_name == "admin" && (
                                             <Link
-                                                href={route("feedback.destroy", {feedback: item.id})}
+                                                href={route(
+                                                    "feedback.destroy",
+                                                    { feedback: item.id }
+                                                )}
                                                 method="delete"
                                                 className="text-danger"
                                             >
@@ -59,7 +62,7 @@ export default function ViewFeedback() {
                                 </Card>
                             ))}
                         </div>
-                        {feedback.data.length > 5 && (
+                        {feedback.total > 5 && (
                             <div className="d-flex justify-content-center">
                                 <Paginate item={feedback} />
                             </div>

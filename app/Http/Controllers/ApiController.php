@@ -39,7 +39,7 @@ class ApiController extends Controller
 
     public function some() {
         return response()->json([
-            "Компания 'Необъятный космос'"
+		"Компания '" . env("APP_NAME") . "'"
         ]);
     }
 

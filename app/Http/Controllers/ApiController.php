@@ -9,7 +9,7 @@ class ApiController extends Controller
     public function info()
     {
         return response()->json([
-            "Информация об компании 'Необъятный космос'",
+            "Информация об компании '". env("APP_NAME")  ."'",
             "Информация о вакансиях",
             "Информация в слайдере",
             "Отзывы пользователей",

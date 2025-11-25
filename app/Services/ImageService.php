@@ -48,6 +48,17 @@ class ImageService implements IImageService
         throw new Exception('File not found!');
     }
 
+    /**
+     * Обрезает изображение и сохраняет
+     * @param Request $request
+     * @param string $key Ключ под которым хранится значение в Request
+     * @param string $path Путь под которым идёт сохранение
+     * @param int $width Длина картинки
+     * @param int $height Высота картинки
+     * @param string $pathOldImage Путь до старого изображения (из БД)
+     * @throws Exception
+     * @return string
+     */
     public function OptimizedAndUploadReplace(Request $request, string $key, string $path, int $width, int $height, string $pathOldImage): string
     {
         $newImage = $this->OptimizedAndUpload($request, $key, $path, $width, $height);

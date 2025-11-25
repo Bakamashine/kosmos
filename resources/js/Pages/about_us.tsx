@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "./Layout";
 import { Head } from "@inertiajs/react";
+import { ListGroup } from "react-bootstrap";
 export default function AboutUs() {
     const title = "О нас";
     return (
         <Layout title={title} title_h1>
-
             <div className="about_us">
                 <p>
                     Добро пожаловать на сайт Недалёкий космос — ваш гид в
@@ -62,12 +62,27 @@ export default function AboutUs() {
                 <p>
                     Если вы хотите присоединиться, пишите нам! Свяжитесь с нами
                     У вас есть идеи, вопросы или материалы для публикации?
-                    Напишите на email: ivan.fa.002@gmail.com или
-                    присоединяйтесь к нашему форуму. Следите за обновлениями в
-                    соцсетях: VK, Telegram. Вместе исследуем космос — шаг за
-                    шагом!
+                    Напишите на email: ivan.fa.002@gmail.com или присоединяйтесь
+                    к нашему форуму. Следите за обновлениями в соцсетях: VK,
+                    Telegram. Вместе исследуем космос — шаг за шагом!
                 </p>
                 <p>♿ ♿ ♿</p>
+                <h3>Наши спонсоры: </h3>
+                <ListGroup>
+                    <ListGroup.Item><a href="http://vikapaf2.beget.tech">http://vikapaf2.beget.tech</a></ListGroup.Item>
+                    <ListGroup.Item><a href="http://daniis06.beget.tech">http://daniis06.beget.tech</a></ListGroup.Item>
+                    <ListGroup.Item><a href="http://itaci6je.beget.tech">http://itaci6je.beget.tech</a></ListGroup.Item>
+                    <ListGroup.Item><a href="http://chiefyb9.beget.tech">http://chiefyb9.beget.tech</a></ListGroup.Item>
+                    <ListGroup.Item><a href="http://cherneo8.beget.tech">http://cherneo8.beget.tech</a></ListGroup.Item>
+                    <ListGroup.Item><a href="http://masukod7.beget.tech">http://masukod7.beget.tech</a></ListGroup.Item>
+                    <ListGroup.Item><a href="http://aaaabbrp.beget.tech">http://aaaabbrp.beget.tech</a></ListGroup.Item>
+                    <ListGroup.Item><a href="
+                        http://qwerty1wew.beget.tech">http://qwerty1wew.beget.tech</a>
+                    </ListGroup.Item>
+                    <ListGroup.Item><a href="http://nikitlht.beget.tech">http://nikitlht.beget.tech</a></ListGroup.Item>
+                <ListGroup.Item><a href="http://masukod7.beget.tech">http://masukod7.beget.tech</a></ListGroup.Item>
+                </ListGroup>
+
             </div>
         </Layout>
     );

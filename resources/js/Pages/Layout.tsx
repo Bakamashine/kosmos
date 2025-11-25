@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 import Header from "../includes/header";
 import { Head, Link, router, usePage } from "@inertiajs/react";
 import { Breadcrumb } from "react-bootstrap";
@@ -21,36 +21,47 @@ const Layout = ({
 }) => {
     const { breadcrumbs } = usePage<{ breadcrumbs: BreadCrumps[] }>().props;
     // console.log("BreadCrumps: ", breadcrumbs);
+
+    const breadcrumbsList = useMemo(() => {
+        if (!breadcrumbs || breadcrumbs.length === 0) return null;
+        return (
+            <Breadcrumb className="breadcrumps">
+                {breadcrumbs.map((item, index) => (
+                    <Breadcrumb.Item
+                        key={index}
+                        onClick={() => router.visit(item.url)}
+                    >
+                        {item.title}
+                    </Breadcrumb.Item>
+                ))}
+            </Breadcrumb>
+        );
+    }, [breadcrumbs]);
+
+    const pageTitleh1 = useMemo(() => {
+        if (!title_h1) return null;
+
+        return (
+            <h1 className="text-center p-2">
+                {title_h1_replace ? title_h1_replace : title}
+            </h1>
+        );
+    }, [title_h1, title, title_h1_replace]);
+
     return (
         <>
             <header>
                 <Head>
                     <title>{title}</title>
-                    { meta && <meta name="description" content={meta} /> }
+                    {meta && <meta name="description" content={meta} />}
                 </Head>
                 <Header />
-                {breadcrumbs && breadcrumbs.length > 0 && (
-                    <Breadcrumb className="breadcrumps">
-                        {breadcrumbs.map((item, index) => (
-                            <Breadcrumb.Item
-                                key={index}
-                                onClick={() => {
-                                    router.visit(item.url);
-                                }}
-                            >
-                                {item.title}
-                            </Breadcrumb.Item>
-                        ))}
-                    </Breadcrumb>
-                )}
+
+                {breadcrumbsList}
             </header>
             <main>
                 <section className="main__wrapper">
-                    {title_h1 && (
-                        <h1 className="text-center p-2">
-                            {title_h1_replace ? title_h1_replace : title}
-                        </h1>
-                    )}
+                    {pageTitleh1}
                     {children}
                 </section>
             </main>

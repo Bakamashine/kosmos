@@ -49,6 +49,7 @@ export default function ManagementUser() {
                                         </Link>
                                         <br />
                                         <Link
+                                            preserveScroll
                                             method="delete"
                                             href={route("user.destroy", {
                                                 user: item.id,
@@ -60,6 +61,7 @@ export default function ManagementUser() {
                                         <br />
                                         {item.status == 1 ? (
                                             <Link
+                                                preserveScroll
                                                 method="patch"
                                                 href={route("user.ban", {
                                                     user: item.id,
@@ -70,6 +72,7 @@ export default function ManagementUser() {
                                             </Link>
                                         ) : (
                                             <Link
+                                                preserveScroll
                                                 method="patch"
                                                 href={route("user.unban", {
                                                     user: item.id,

@@ -41,6 +41,7 @@ export default function ManagementFlying() {
                                         </Link>
                                         <br />
                                         <Link
+                                            preserveScroll
                                             method="delete"
                                             className="text-danger"
                                             href={route("flying.destroy", {

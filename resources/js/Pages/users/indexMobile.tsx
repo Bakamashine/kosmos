@@ -37,6 +37,7 @@ export default function UserManagementMobile() {
                                 </Link>
                                 <br />
                                 <Link
+                                    preserveScroll
                                     method="delete"
                                     className="text-danger"
                                     href={route("user.destroy", {

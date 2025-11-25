@@ -19,7 +19,7 @@ export default function UpdateOrder() {
 
     function submit(e: FormEvent<HTMLFormElement>, id: number) {
         e.preventDefault();
-        patch(route("order.update", { order: id }));
+        patch(route("order.update", { order: id }), {preserveScroll: true});
     }
     return (
         <>
@@ -44,6 +44,7 @@ export default function UpdateOrder() {
                                 <tr key={index}>
                                     <td>
                                         <Link
+                                            preserveScroll
                                             href={route("order.destroy", {
                                                 order: item.id,
                                             })}

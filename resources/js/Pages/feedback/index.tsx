@@ -48,6 +48,7 @@ export default function ViewFeedback() {
                                         <Card.Text>{item.text}</Card.Text>
                                         {user && user.role_name == "admin" && (
                                             <Link
+                                                preserveScroll
                                                 href={route(
                                                     "feedback.destroy",
                                                     { feedback: item.id }

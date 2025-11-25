@@ -50,6 +50,7 @@ export default function VacancyCard({
                         {!deleted && (
                             <div>
                                 <Link
+                                    preserveScroll
                                     className="text-danger"
                                     href={route("vacancy.destroy", {
                                         vacancy: id,

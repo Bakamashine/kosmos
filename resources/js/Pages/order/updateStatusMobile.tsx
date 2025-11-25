@@ -17,7 +17,7 @@ export default function UpdateStatusMobile() {
 
     function submit(e: FormEvent<HTMLFormElement>, id: number) {
         e.preventDefault();
-        patch(route("order.update", { order: id }));
+        patch(route("order.update", { order: id }), {preserveScroll: true});
     }
     const title = "Обновление статуса";
     return (

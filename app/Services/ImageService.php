@@ -49,7 +49,7 @@ class ImageService implements IImageService
     }
 
     /**
-     * Обрезает изображение и сохраняет
+     * Обрезает изображение и сохраняет и удаляет старое изображение
      * @param Request $request
      * @param string $key Ключ под которым хранится значение в Request
      * @param string $path Путь под которым идёт сохранение

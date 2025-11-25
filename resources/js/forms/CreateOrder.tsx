@@ -17,7 +17,7 @@ export default function CreateOrder({ flying }: CreateOrderProps) {
         post(route("order.store"));
     }
 
-    console.log("errors order: ", errors);
+    // console.log("errors order: ", errors);
     return (
         <div>
             <h3 className="text-center">Создание заявки</h3>

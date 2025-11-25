@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Vacancy\UploadImage;
+use App\Contracts\Services\IImageService;
 use App\Http\Requests\StoreVacancyRequest;
 use App\Http\Requests\UpdateVacancyRequest;
 use App\Models\Vacancy;
@@ -10,6 +11,16 @@ use App\Services\ImageService;
 
 class VacancyController extends Controller
 {
+
+
+    private int $width = 286;
+    private int $height = 169;
+
+    public function __construct(
+        protected IImageService $imageService
+    ) {
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -39,7 +50,8 @@ class VacancyController extends Controller
     public function store(StoreVacancyRequest $request)
     {
         $vac = new Vacancy($request->only(['title', 'description', 'payment']));
-        $vac->image = UploadImage::Upload($request);
+        // $vac->image = UploadImage::UploadStatic($request);
+        $vac->image = $this->imageService->OptimizedAndUpload($request, "image", "vacancy", $this->width, $this->height);
         $vac->save();
         return redirect()->route("vacancy.management");
     }
@@ -69,7 +81,8 @@ class VacancyController extends Controller
         $vacancy->description = $request->description;
         $vacancy->payment = $request->payment;
         if ($request->hasFile("image")) {
-            $vacancy->image = UploadImage::ReplaceImage($request, $vacancy);
+            // $vacancy->image = UploadImage::ReplaceImage($request, $vacancy);
+            $vacancy->image = $this->imageService->OptimizedAndUploadReplace($request, "image", "vacancy", $this->width, $this->height, $vacancy->image);
         }
         $vacancy->save();
         return redirect()->route("vacancy.management");

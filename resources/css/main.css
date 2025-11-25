@@ -100,3 +100,18 @@ main .main__wrapper {
 .non-border {
     border-bottom: none;
 }
+
+.calculator_button {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.calculator_button:hover {
+    background-color: grey;
+}

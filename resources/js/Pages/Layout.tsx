@@ -1,9 +1,8 @@
-import React, { ReactNode, useMemo } from "react";
+import React, { MouseEventHandler, ReactNode, useMemo } from "react";
 import Header from "../includes/header";
 import { Head, Link, router, usePage } from "@inertiajs/react";
 import { Breadcrumb } from "react-bootstrap";
 import { BreadCrumps } from "../interface";
-import { route } from "ziggy-js";
 import Footer from "../includes/footer";
 
 const Layout = ({
@@ -21,6 +20,23 @@ const Layout = ({
 }) => {
     const { breadcrumbs } = usePage<{ breadcrumbs: BreadCrumps[] }>().props;
     // console.log("BreadCrumps: ", breadcrumbs);
+    let calculatorWindow: Window | null;
+
+    function openWindow(event: React.MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        if (calculatorWindow && !calculatorWindow.closed) {
+            calculatorWindow.focus();
+            return;
+        }
+    //   console.log("Open Calculator!");
+        let windowFeatures =
+            "height=400,width=400,status=yes,toolbar=no,menubar=no,location=no,popup";
+        calculatorWindow = window.open(
+            "/calculator-popup.html",
+            "CalculatorWindow",
+            windowFeatures
+        );
+    }
 
     const breadcrumbsList = useMemo(() => {
         if (!breadcrumbs || breadcrumbs.length === 0) return null;
@@ -59,6 +75,12 @@ const Layout = ({
 
                 {breadcrumbsList}
             </header>
+            <button
+                className="calculator_button nomobile"
+                onClick={(event) => openWindow(event)}
+            >
+                <img src="/img/calculator.svg" />
+            </button>
             <main>
                 <section className="main__wrapper">
                     {pageTitleh1}

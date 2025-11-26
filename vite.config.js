@@ -11,11 +11,12 @@ export default defineConfig({
                 "resources/css/main.css",
                 "resources/js/app.tsx",
                 "resources/js/bootstrap.js",
-                "resources/js/ziggy.js"
+                "resources/js/ziggy.js",
+                // "resources/js/ssr.jsx"
             ],
+            ssr: "resources/js/ssr.jsx",
             refresh: true,
         }),
         react(),
-        // tailwindcss(),
     ],
 });

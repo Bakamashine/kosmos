@@ -1,4 +1,10 @@
-import React, { MouseEventHandler, ReactNode, useMemo } from "react";
+import React, {
+    MouseEventHandler,
+    ReactNode,
+    useEffect,
+    useMemo,
+    useState,
+} from "react";
 import Header from "../includes/header";
 import { Head, Link, router, usePage } from "@inertiajs/react";
 import { Breadcrumb } from "react-bootstrap";
@@ -10,7 +16,7 @@ const Layout = ({
     title,
     meta,
     title_h1 = false,
-    title_h1_replace = undefined,
+    title_h1_replace,
 }: {
     children: ReactNode;
     title: string;
@@ -18,17 +24,24 @@ const Layout = ({
     title_h1_replace?: string;
     meta?: string;
 }) => {
-    const { breadcrumbs } = usePage<{ breadcrumbs: BreadCrumps[] }>().props;
+    const { breadcrumbs, appName } = usePage<{
+        breadcrumbs: BreadCrumps[];
+        appName: string;
+    }>().props;
     // console.log("BreadCrumps: ", breadcrumbs);
     let calculatorWindow: Window | null;
 
+    if (typeof window === "undefined") {
+        return null;
+    }
+
     function openWindow(event: React.MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
+
         if (calculatorWindow && !calculatorWindow.closed) {
             calculatorWindow.focus();
             return;
         }
-    //   console.log("Open Calculator!");
         let windowFeatures =
             "height=400,width=400,status=yes,toolbar=no,menubar=no,location=no,popup";
         calculatorWindow = window.open(
@@ -59,7 +72,7 @@ const Layout = ({
 
         return (
             <h1 className="text-center p-2">
-                {title_h1_replace ? title_h1_replace : title}
+                {title_h1_replace ? title_h1_replace : title} - {appName}
             </h1>
         );
     }, [title_h1, title, title_h1_replace]);

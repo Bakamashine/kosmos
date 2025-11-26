@@ -29,8 +29,30 @@ declare module 'ziggy-js' {
         }
     ],
     "order.indexMobile": [],
+    "order.destroy": [
+        {
+            "name": "order",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "order.show": [
+        {
+            "name": "order",
+            "required": true,
+            "binding": "id"
+        }
+    ],
     "home": [],
     "admin": [],
+    "XMLExport": [],
+    "feedback.destroy": [
+        {
+            "name": "feedback",
+            "required": true,
+            "binding": "id"
+        }
+    ],
     "news.index": [],
     "news.indexMobile": [],
     "news.create": [],
@@ -95,33 +117,52 @@ declare module 'ziggy-js' {
             "binding": "id"
         }
     ],
-    "vakancies.create": [],
-    "vakancies.store": [],
-    "vakancies.show": [
+    "user.show": [
         {
-            "name": "vakancy",
+            "name": "user",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "vacancy.index": [],
+    "vacancy.management": [],
+    "vacancy.store": [],
+    "vacancy.edit": [
+        {
+            "name": "vacancy",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "vacancy.create": [],
+    "vacancy.destroy": [
+        {
+            "name": "vacancy",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "vacancy.update": [
+        {
+            "name": "vacancy",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "vacancy.restore": [
+        {
+            "name": "vacancy",
             "required": true
         }
     ],
-    "vakancies.edit": [
+    "vacancy.destroyed": [],
+    "vacancy.show": [
         {
-            "name": "vakancy",
-            "required": true
+            "name": "vacancy",
+            "required": true,
+            "binding": "id"
         }
     ],
-    "vakancies.update": [
-        {
-            "name": "vakancy",
-            "required": true
-        }
-    ],
-    "vakancies.destroy": [
-        {
-            "name": "vakancy",
-            "required": true
-        }
-    ],
-    "vakancies.management": [],
     "flying.index": [],
     "flying.create": [],
     "flying.store": [],
@@ -149,6 +190,29 @@ declare module 'ziggy-js' {
     "flying.destroy": [
         {
             "name": "flying",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "otclice.index": [],
+    "otclice.create": [
+        {
+            "name": "vacancy",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "otclice.store": [],
+    "otclice.destroy": [
+        {
+            "name": "otclice",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "otclice.update": [
+        {
+            "name": "otclice",
             "required": true,
             "binding": "id"
         }

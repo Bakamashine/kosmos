@@ -2,8 +2,8 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Head, useForm, usePage } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
 import Layout from "../Layout";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { route } from "ziggy-js";
 
 export default function Register() {
@@ -31,7 +31,9 @@ export default function Register() {
                         onChange={(e) => setData("name", e.target.value)}
                         value={data.name}
                     />
-                    {errors.name && <p className="text-danger">{errors.name}</p>}
+                    {errors.name && (
+                        <p className="text-danger">{errors.name}</p>
+                    )}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="email">
@@ -42,7 +44,9 @@ export default function Register() {
                         onChange={(e) => setData("email", e.target.value)}
                         value={data.email}
                     />
-                    {errors.email && <p className="text-danger">{errors.email}</p>}
+                    {errors.email && (
+                        <p className="text-danger">{errors.email}</p>
+                    )}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
@@ -67,10 +71,11 @@ export default function Register() {
                             setData("password_confirmation", e.target.value)
                         }
                         value={data.password_confirmation}
-
                     />
                     {errors.password_confirmation && (
-                        <p className="text-danger">{errors.password_confirmation}</p>
+                        <p className="text-danger">
+                            {errors.password_confirmation}
+                        </p>
                     )}
                 </Form.Group>
                 <Button variant="primary" type="submit">

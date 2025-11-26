@@ -1,6 +1,7 @@
 import { FormEvent } from "react";
 import { HttpMethod } from "./enum";
 import { route } from "ziggy-js";
+import * as he from "he"
 
 export function submit(
     e: FormEvent<HTMLFormElement>,
@@ -35,9 +36,7 @@ export function submit(
 }
 
 export function decodeHtml(code: string) {
-    const temp = document.createElement("p");
-    temp.innerHTML = code;
-    return temp.textContent;
+    return he.decode(code);
 }
 export function GetSizeWindow() {
     return {

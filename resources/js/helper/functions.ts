@@ -1,44 +1,33 @@
-import { FormEvent } from "react";
-import { HttpMethod } from "./enum";
-import { route } from "ziggy-js";
+// export function submit(
+//     e: FormEvent<HTMLFormElement>,
+//     url: string,
+//     method: HttpMethod,
+//     form: any,
+// ) {
+//     e.preventDefault();
+//     switch (method) {
+//         case HttpMethod.POST:
+//            form.post(route(url));
+//            break;
+//         case HttpMethod.GET:
+//             form.get(route(url));
+//             break
+//         case HttpMethod.DELETE:
+//             form.delete(route(url));
+//             break;
+//         case HttpMethod.PATCH:
+//             form.patch(route(url));
+//             break;
+//         case HttpMethod.PUT:
+//             form.put(route(url));
+//             break;
+//         default:
+//             throw new Error("Not found method");
+//     }
+//     // PostFeedback("/feedback");
+//     // callback(path);
+// }
 
-export function submit(
-    e: FormEvent<HTMLFormElement>,
-    url: string,
-    method: HttpMethod,
-    form: any,
-    // callback: (path: string) => void,
-    // path: string
-) {
-    e.preventDefault();
-    switch (method) {
-        case HttpMethod.POST:
-           form.post(route(url));
-           break;
-        case HttpMethod.GET:
-            form.get(route(url));
-            break
-        case HttpMethod.DELETE:
-            form.delete(route(url));
-            break;
-        case HttpMethod.PATCH:
-            form.patch(route(url));
-            break;
-        case HttpMethod.PUT:
-            form.put(route(url));
-            break;
-        default:
-            throw new Error("Not found method");
-    }
-    // PostFeedback("/feedback");
-    // callback(path);
-}
-
-export function decodeHtml(code: string) {
-    const temp = document.createElement("p");
-    temp.innerHTML = code;
-    return temp.textContent;
-}
 export function GetSizeWindow() {
     return {
         width: window.innerWidth,

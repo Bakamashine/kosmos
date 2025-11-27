@@ -1,4 +1,10 @@
-import React, { MouseEventHandler, ReactNode, useMemo } from "react";
+import React, {
+    MouseEventHandler,
+    ReactNode,
+    useEffect,
+    useMemo,
+    useState,
+} from "react";
 import Header from "../includes/header";
 import { Head, Link, router, usePage } from "@inertiajs/react";
 import { Breadcrumb } from "react-bootstrap";
@@ -10,7 +16,7 @@ const Layout = ({
     title,
     meta,
     title_h1 = false,
-    title_h1_replace = undefined,
+    title_h1_replace,
 }: {
     children: ReactNode;
     title: string;
@@ -18,17 +24,29 @@ const Layout = ({
     title_h1_replace?: string;
     meta?: string;
 }) => {
-    const { breadcrumbs } = usePage<{ breadcrumbs: BreadCrumps[] }>().props;
+    const { breadcrumbs, appName } = usePage<{
+        breadcrumbs: BreadCrumps[];
+        appName: string;
+    }>().props;
     // console.log("BreadCrumps: ", breadcrumbs);
     let calculatorWindow: Window | null;
+    const [isClient, setIsClient] = useState(false);
 
-    function openWindow(event: React.MouseEvent<HTMLButtonElement>) {
-        event.preventDefault();
+    // if (typeof window === "undefined") {
+    //     return null;
+    // }
+
+    // useEffect(()=>{
+    //     openWindow();
+    // },[isClient])
+
+    function openWindow() {
+        // event.preventDefault();
+
         if (calculatorWindow && !calculatorWindow.closed) {
             calculatorWindow.focus();
             return;
         }
-    //   console.log("Open Calculator!");
         let windowFeatures =
             "height=400,width=400,status=yes,toolbar=no,menubar=no,location=no,popup";
         calculatorWindow = window.open(
@@ -66,18 +84,18 @@ const Layout = ({
 
     return (
         <>
+            <Head>
+                <title>{title}</title>
+                {meta && <meta name="description" content={meta} />}
+            </Head>
             <header>
-                <Head>
-                    <title>{title}</title>
-                    {meta && <meta name="description" content={meta} />}
-                </Head>
                 <Header />
 
                 {breadcrumbsList}
             </header>
             <button
                 className="calculator_button nomobile"
-                onClick={(event) => openWindow(event)}
+                onClick={(event) => setIsClient(true)}
             >
                 <img src="/img/calculator.svg" />
             </button>

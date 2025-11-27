@@ -4,7 +4,6 @@ import { Head, usePage } from "@inertiajs/react";
 import { News } from "../../interface";
 import NewsForm from "../../forms/NewsForm";
 import { HttpMethod } from "../../helper/enum";
-import { route } from "ziggy-js";
 
 export default function EditNews() {
     const news = usePage().props.news as News;
@@ -16,7 +15,7 @@ export default function EditNews() {
                 description={news.description}
                 method={HttpMethod.PUT}
                 textbutton="Обновить новость"
-                url={route("news.update", {news: news.id})}
+                url={`/news/${news.id}`}
             />
         </Layout>
     );

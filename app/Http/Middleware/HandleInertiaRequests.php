@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Tighten\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -51,7 +52,8 @@ class HandleInertiaRequests extends Middleware
             'breadcrumbs' => fn() =>
                 $request->route() && $request->route()->getName()
                 ? Breadcrumbs::generate($request->route()->getName(), ...array_values($request->route()->originalParameters()))
-                : []
+                : [],
+            // 'ziggy' => (new  Ziggy())->toArray()
         ];
     }
 }

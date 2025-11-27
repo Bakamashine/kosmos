@@ -1,6 +1,7 @@
 import React, {
     FormEvent,
     HTMLInputTypeAttribute,
+    lazy,
     useEffect,
     useState,
 } from "react";
@@ -8,9 +9,9 @@ import { HttpMethod } from "../helper/enum";
 import { NewsFormProps } from "../interface";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "@inertiajs/react";
-import { FileUploader } from "react-drag-drop-files";
+// import { FileUploader } from "react-drag-drop-files";
 import Back from "../components/ui/Back";
-import { route } from "ziggy-js";
+import CustomDropZone from "../components/DropZone";
 
 interface VacancyFormProps extends NewsFormProps {
     image?: File;
@@ -54,6 +55,7 @@ export default function VacancyForm({
     }
 
     useEffect(() => {
+        console.log("Image: ", form.data.image)
         generateTempUrl();
     }, [form.data.image]);
 
@@ -116,13 +118,17 @@ export default function VacancyForm({
             </Form.Group>
 
             <div className="mb-3">
-                <FileUploader
+                {/* <FileUploader
                     label="Загрузите изображение вакансии"
                     handleChange={(e) => form.setData("image", e)}
                     uploadedLabel={`Image successfull loaded! ${form.data.image?.name}`}
                     types={["jpg", "jpeg", "png"]}
                     multiple={false}
-                />
+                /> */}
+
+                <CustomDropZone callback={(file) => {
+                    form.setData("image", file);
+                }} />
                 {form.errors.image && (
                     <p className="text-danger">{form.errors.image}</p>
                 )}

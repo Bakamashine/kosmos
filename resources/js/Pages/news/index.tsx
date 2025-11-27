@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "../Layout";
 import { Head, Link, usePage } from "@inertiajs/react";
 import { NewsPag } from "../../interface";
-import { route } from "ziggy-js";
 import NewsCard from "../../components/NewsCard";
 import Paginate from "../../components/ui/Paginate";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
@@ -35,7 +34,7 @@ export default function ManagementNews() {
                 )}
 
                 <div className="">
-                    <Link className="btn btn-dark" href={route("news.create")}>
+                    <Link className="btn btn-dark" href={"/news/create"}>
                         Создание новости
                     </Link>
                 </div>

@@ -1,7 +1,6 @@
 import React, { FormEvent } from "react";
 import Layout from "../Layout";
 import { Head, Link, useForm, usePage } from "@inertiajs/react";
-import { route } from "ziggy-js";
 import UpdateOrder from "../../components/order/updateStatus";
 
 export default function Admin() {
@@ -15,36 +14,36 @@ export default function Admin() {
                 <UpdateOrder />
             </div>
             <Link
-                href={route("order.indexMobile")}
+                href={"/order/mobile"}
                 className="btn btn-dark mobile"
             >
                 Обновление статуса заявок
             </Link>
-            <Link href={route("news.index")} className="btn btn-dark">
+            <Link href={"/news"} className="btn btn-dark">
                 Управление новостями
             </Link>
-            <Link href={route("flying.index")} className="btn btn-dark">
+            <Link href={"/flying"} className="btn btn-dark">
                 Управление полётами
             </Link>
-            <Link href={route("user.index")} className="btn btn-dark nomobile">
+            <Link href={"/user"} className="btn btn-dark nomobile">
                 Управление пользователями
             </Link>
             <Link
-                href={route("user.indexMobile")}
+                href={"/user/mobile"}
                 className="btn btn-dark mobile"
             >
                 Управление пользователями
             </Link>
-            <Link href={route("vacancy.management")} className="btn btn-dark">
+            <Link href={"/vacancy/management"} className="btn btn-dark">
                 Управление вакансиями
             </Link>
-            <Link href={route("otclice.index")} className="btn btn-dark">
+            <Link href={"/otclice"} className="btn btn-dark">
                 Управление откликами
             </Link>
             <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href={route("XMLExport")}
+                href={"/admin/xml"}
                 className="btn btn-dark"
             >
                 Экспорт всех записей

@@ -3,7 +3,6 @@ import { Order, OrderPag, OrderPagUniqual } from "../../interface";
 import { Button, Form, Table } from "react-bootstrap";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { FormEvent } from "react";
-import { route } from "ziggy-js";
 import Paginate from "../ui/Paginate";
 import PaginateOrder from "../ui/PaginateOrder";
 
@@ -19,7 +18,7 @@ export default function UpdateOrder() {
 
     function submit(e: FormEvent<HTMLFormElement>, id: number) {
         e.preventDefault();
-        patch(route("order.update", { order: id }), {preserveScroll: true});
+        patch(`/order/${id}`, {preserveScroll: true})
     }
     return (
         <>
@@ -45,9 +44,7 @@ export default function UpdateOrder() {
                                     <td>
                                         <Link
                                             preserveScroll
-                                            href={route("order.destroy", {
-                                                order: item.id,
-                                            })}
+                                            href={`/order/${item.id}`}
                                             method="delete"
                                             className="text-danger"
                                         >
@@ -58,9 +55,7 @@ export default function UpdateOrder() {
                                     {/* <td>{item.user_id}</td> */}
                                     <td>
                                         <Link
-                                            href={route("user.show", {
-                                                user: item.user_id,
-                                            })}
+                                            href={`/user/${item.user_id}`}
                                         >
                                             {item.user_name}
                                         </Link>{" "}

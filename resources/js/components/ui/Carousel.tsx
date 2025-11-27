@@ -1,4 +1,4 @@
-import Carousel from "react-bootstrap/Carousel";
+import { Carousel } from "react-bootstrap";
 import React from "react";
 
 function UncontrolledCarousel() {

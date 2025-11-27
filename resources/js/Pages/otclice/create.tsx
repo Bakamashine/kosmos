@@ -3,22 +3,21 @@ import { Head, router, useForm, usePage } from "@inertiajs/react";
 import { IOtclice, Vacancy } from "../../interface";
 import Layout from "../Layout";
 import { Button, Form } from "react-bootstrap";
-import { route } from "ziggy-js";
 import { validateHeaderValue } from "http";
 
 export default function CreateOtclice() {
     const { vacancy } = usePage<{ vacancy: Vacancy }>().props;
 
-    console.log(vacancy);
+    // console.log(vacancy);
     const title = "Создание отклика";
     const { data, setData, post, errors } = useForm({
         description: "",
         vacancy_id: vacancy.id,
     });
-    console.log(errors);
+    // console.log(errors);
     const submit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post(route("otclice.store"));
+        post("/otclice");
     };
     return (
         <Layout title={title} title_h1>

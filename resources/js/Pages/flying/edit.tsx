@@ -4,7 +4,6 @@ import React from "react";
 import { Flying } from "../../interface";
 import FlyingForm from "../../forms/FlyingForm";
 import { HttpMethod } from "../../helper/enum";
-import { route } from "ziggy-js";
 
 export default function EditFlying() {
     const flying = usePage().props.flying as Flying;
@@ -18,7 +17,7 @@ export default function EditFlying() {
                 title={flying.title}
                 textbutton="Редактировать полёт"
                 method={HttpMethod.PUT}
-                url={route("flying.update", { flying: flying.id })}
+                url={`/flying/${flying.id}`}
             />
         </Layout>
     );

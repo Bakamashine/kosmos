@@ -4,7 +4,6 @@ import { IOtclice, IOtclicePag } from "../../interface";
 import Layout from "../Layout";
 import { Table } from "react-bootstrap";
 import Paginate from "../../components/ui/Paginate";
-import { route } from "ziggy-js";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
 
 export default function Otclice() {
@@ -13,7 +12,6 @@ export default function Otclice() {
     const title = "Отклики";
     return (
         <Layout title={title} title_h1>
-
             <div>
                 {otclice.data.length > 0 ? (
                     <div>
@@ -32,18 +30,14 @@ export default function Otclice() {
                                         <td>{item.id}</td>
                                         <td>
                                             <Link
-                                                href={route("user.show", {
-                                                    user: item.user_id,
-                                                })}
+                                                href={`/user/${item.user_id}`}
                                             >
                                                 {item.user_id}
                                             </Link>
                                         </td>
                                         <td>
                                             <Link
-                                                href={route("vacancy.show", {
-                                                    vacancy: item.vacancy_id,
-                                                })}
+                                                href={`/vacancy/${item.vacancy_id}`}
                                             >
                                                 {item.vacancy_id}
                                             </Link>
@@ -58,7 +52,7 @@ export default function Otclice() {
                             <Paginate item={otclice} />
                         </div>
                     </div>
-                ): (
+                ) : (
                     <NotFoundRecords text="Отлики не найдены" />
                 )}
             </div>

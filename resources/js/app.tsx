@@ -1,22 +1,33 @@
 // import "./bootstrap";
 import { createInertiaApp, router } from "@inertiajs/react";
 import { createRoot } from "react-dom/client";
-import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-// import '../css/app.css'
-// import '../css/main.css'
+import React, { StrictMode } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { hydrateRoot } from "react-dom/client";
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
 createInertiaApp({
-    title: title => `${title} - ${appName}`,
-    resolve: (name) => {
-        const pages = import.meta.glob("./Pages/**/*.tsx", { eager: true });
-        return pages[`./Pages/${name}.tsx`];
-    },
-
+    // title: (title) => (title ? `${title} - ${appName}` : appName),
+    resolve: (name) =>
+        resolvePageComponent(
+            `./Pages/${name}.tsx`,
+            import.meta.glob("./Pages/**/*.tsx")
+        ),
     setup({ el, App, props }) {
-        createRoot(el).render(<App {...props} />);
+        hydrateRoot(el, <StrictMode>
+            <App {...props} />
+        </StrictMode>)
+        // const root = createRoot(el);
+
+        // root.render(
+        //     <StrictMode>
+        //         <App {...props} />
+        //     </StrictMode>
+        // );
+    },
+    progress: {
+        color: "#4B5563",
     },
 });

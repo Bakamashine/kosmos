@@ -1,3 +1,3 @@
-import { decodeHtml } from "../helper/functions";
+import { decodeHTML } from "entities";
 
-export const Ruble = decodeHtml("&#x20bd");
+export const Ruble = decodeHTML("&#x20bd");

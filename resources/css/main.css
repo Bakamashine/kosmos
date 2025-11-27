@@ -39,7 +39,7 @@ main .news {
 
 @media (max-width: 806px) {
     .about_us {
-        padding: 20px
+        padding: 20px;
     }
     main {
         display: block !important;
@@ -77,7 +77,7 @@ main .news {
         padding-bottom: 20px !important;
     }
     .carousel_size {
-        margin: 0 !important
+        margin: 0 !important;
     }
 }
 
@@ -114,4 +114,13 @@ main .main__wrapper {
 
 .calculator_button:hover {
     background-color: grey;
+}
+
+.dropbox {
+    height: 100px;
+    border: 1px dashed blue;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
 }

@@ -5,7 +5,6 @@ import Layout from "../Layout";
 import VacancyCard from "../../components/VacancyCard";
 import Paginate from "../../components/ui/Paginate";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
-import { route } from "ziggy-js";
 
 export default function TrashVacancy() {
     const { vacancy } = usePage<{ vacancy: VacancyPag }>().props;
@@ -34,9 +33,7 @@ export default function TrashVacancy() {
                                         <Link
                                             className="text-success"
                                             method="post"
-                                            href={route("vacancy.restore", {
-                                                vacancy: item.id,
-                                            })}
+                                            href={`/vacancy/${item.id}/restore`}
                                         >
                                             Восстановить
                                         </Link>

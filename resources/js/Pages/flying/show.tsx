@@ -2,7 +2,6 @@ import { Head, Link, usePage } from "@inertiajs/react";
 import React from "react";
 import { Flying } from "../../interface";
 import Layout from "../Layout";
-import { route } from "ziggy-js";
 
 export default function ShowFlying() {
     const { flying } = usePage<{ flying: Flying }>().props;
@@ -20,7 +19,7 @@ export default function ShowFlying() {
 
             <Link
                 className="btn btn-dark"
-                href={route("flying.edit", { flying: flying.id })}
+                href={`/flying/${flying.id}/edit`}
             >
                 Редактировать
             </Link>

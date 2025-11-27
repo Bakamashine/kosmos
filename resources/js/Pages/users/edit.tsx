@@ -3,7 +3,6 @@ import React, { FormEvent } from "react";
 import { Roles, User, UserUpdate } from "../../interface";
 import Layout from "../Layout";
 import { Button, Form } from "react-bootstrap";
-import { route } from "ziggy-js";
 import Back from "../../components/ui/Back"
 
 export default function EditUser() {
@@ -24,7 +23,7 @@ export default function EditUser() {
     function submit(e: FormEvent<HTMLFormElement>) {
         console.log("submit!");
         e.preventDefault();
-        put(route("user.update", { user: id }));
+        put(`/user/${id}`);
     }
 
     return (

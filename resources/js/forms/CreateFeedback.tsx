@@ -2,7 +2,6 @@ import { useForm } from "@inertiajs/react";
 import React, { FormEvent, useEffect } from "react";
 import { Button, FloatingLabel, Form, InputGroup } from "react-bootstrap";
 import { Flying, SuccessOrder } from "../interface";
-import { route } from "ziggy-js";
 
 interface CreateFeedbackProps {
     success_order: SuccessOrder[];
@@ -17,7 +16,7 @@ export default function CreateFeedback({ success_order }: CreateFeedbackProps) {
 
     function submit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        post(route("feedback.store"));
+        post("/feedback");
     }
     // console.log("Create feedback errors: ", errors);
 

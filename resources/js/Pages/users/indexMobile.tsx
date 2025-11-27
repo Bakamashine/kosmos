@@ -1,7 +1,6 @@
 import { Head, Link, useForm, usePage } from "@inertiajs/react";
 import React, { FormEvent } from "react";
 import { UserPag } from "../../interface";
-import { route } from "ziggy-js";
 import Layout from "../Layout";
 import { Card, Form } from "react-bootstrap";
 import Paginate from "../../components/ui/Paginate";
@@ -15,7 +14,7 @@ export default function UserManagementMobile() {
 
     function submit(e: FormEvent<HTMLFormElement>, id: number) {
         e.preventDefault();
-        patch(route("user.update", { order: id }));
+        patch(`/user/${id}`)
     }
     const title = "Редактирование пользователей";
     return (
@@ -29,9 +28,7 @@ export default function UserManagementMobile() {
                             <Card.Text>{item.status}</Card.Text>
                             <Card.Footer>
                                 <Link
-                                    href={route("user.edit", {
-                                        user: item.id,
-                                    })}
+                                href={`/user/${item.id}/edit`}
                                 >
                                     Редактирование
                                 </Link>
@@ -40,9 +37,7 @@ export default function UserManagementMobile() {
                                     preserveScroll
                                     method="delete"
                                     className="text-danger"
-                                    href={route("user.destroy", {
-                                        user: item.id,
-                                    })}
+                                    href={`/user/${item.id}`}
                                 >
                                     Удаление
                                 </Link>
@@ -51,18 +46,14 @@ export default function UserManagementMobile() {
                                     <Link
                                         method="patch"
                                         className="text-secondary"
-                                        href={route("user.ban", {
-                                            user: item.id,
-                                        })}
+                                        href={`/user/${item.id}/ban`}
                                     >
                                         Блокировние
                                     </Link>
                                 ) : (
                                     <Link
                                         method="patch"
-                                        href={route("user.unban", {
-                                            user: item.id,
-                                        })}
+                                        href={`/user/${item.id}/unban`}
                                     >
                                         Разблокировать
                                     </Link>

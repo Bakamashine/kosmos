@@ -87,7 +87,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::get("/{vacancy}/edit", "edit")->name(".edit");
                 Route::get("/create", "create")->name(".create");
                 Route::delete("/{vacancy}", "destroy")->name(".destroy");
-                Route::put("/{vacancy}/update", 'update')->name(".update");
+                Route::put("/{vacancy}", 'update')->name(".update");
                 Route::post("/{vacancy}/restore", "restore")->name(".restore");
                 Route::get("/destroyed", 'destroyed')->name(".destroyed");
                 Route::get("{vacancy}", "show")->name(".show");

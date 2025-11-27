@@ -4,7 +4,6 @@ import { useForm } from "@inertiajs/react";
 import { error } from "console";
 import { CreateOrderProps } from "../interface";
 import { Ruble } from "../constants/Ruble";
-import { route } from "ziggy-js";
 
 export default function CreateOrder({ flying }: CreateOrderProps) {
     const { data, setData, post, errors } = useForm({
@@ -14,7 +13,7 @@ export default function CreateOrder({ flying }: CreateOrderProps) {
 
     function submit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        post(route("order.store"));
+        post("/order");
     }
 
     // console.log("errors order: ", errors);

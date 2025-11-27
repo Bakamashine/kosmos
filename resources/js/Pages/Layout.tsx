@@ -36,9 +36,9 @@ const Layout = ({
     //     return null;
     // }
 
-    useEffect(()=>{
-        openWindow();
-    },[isClient])
+    // useEffect(()=>{
+    //     openWindow();
+    // },[isClient])
 
     function openWindow() {
         // event.preventDefault();
@@ -77,7 +77,7 @@ const Layout = ({
 
         return (
             <h1 className="text-center p-2">
-                {title_h1_replace ? title_h1_replace : title} - {appName}
+                {title_h1_replace ? title_h1_replace : title}
             </h1>
         );
     }, [title_h1, title, title_h1_replace]);

@@ -2,7 +2,6 @@ import React, { FormEvent } from "react";
 import Layout from "../Layout";
 import { Head, useForm } from "@inertiajs/react";
 import { Button, Form } from "react-bootstrap";
-import { route } from "ziggy-js";
 export default function CreateUser() {
     const { data, setData, post, errors } = useForm({
         name: "",
@@ -12,7 +11,7 @@ export default function CreateUser() {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        post(route("user.store"));
+        post("/user");
     }
 
     const title = "Создание пользователя";

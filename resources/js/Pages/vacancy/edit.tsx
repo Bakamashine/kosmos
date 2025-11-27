@@ -4,7 +4,6 @@ import { Vacancy } from "../../interface";
 import Layout from "../Layout";
 import VacancyForm from "../../forms/VacancyForm";
 import { HttpMethod } from "../../helper/enum";
-import { route } from "ziggy-js";
 
 export default function EditVacancy() {
     const { vacancy } = usePage<{ vacancy: Vacancy }>().props;
@@ -14,7 +13,7 @@ export default function EditVacancy() {
             <div>
                 <VacancyForm
                     method={HttpMethod.PUT}
-                    url={route("vacancy.update", { vacancy: vacancy.id })}
+                    url={`/vacancy/${vacancy.id}`}
                     description={vacancy.description}
                     textbutton="Обновить вакансию"
                     title={vacancy.title}

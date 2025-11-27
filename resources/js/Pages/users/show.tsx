@@ -3,7 +3,6 @@ import React from "react";
 import { FullUser, User } from "../../interface";
 import Layout from "../Layout";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
-import { route } from "ziggy-js";
 
 export default function ShowUser() {
     const { user } = usePage<{ user: FullUser }>().props;
@@ -40,9 +39,7 @@ export default function ShowUser() {
                                 <p>
                                     ID заявки:{" "}
                                     <Link
-                                        href={route("order.show", {
-                                            order: item.order_id,
-                                        })}
+                                        href={`/order/${item.order_id}`}
                                     >
                                         {item.order_id}
                                     </Link>{" "}
@@ -65,7 +62,7 @@ export default function ShowUser() {
                                 </p>
                                 <p>Статус заявки: {item.status}</p>
                                 <p>ID полёта: {" "}
-                                    <Link href={route("flying.show", {flying: item.flying_id})}>{item.flying_id}</Link>
+                                    <Link href={`/flying/${item.flying_id}`}>{item.flying_id}</Link>
                                 </p>
                             </div>
                         ))}
@@ -89,9 +86,7 @@ export default function ShowUser() {
                                 <p>
                                     ID вакансии:{" "}
                                     <Link
-                                        href={route("vacancy.show", {
-                                            vacancy: item.vacancy_id,
-                                        })}
+                                        href={`/vacancy/${item.vacancy_id}`}
                                     >
                                         {item.vacancy_id}
                                     </Link>
@@ -107,7 +102,7 @@ export default function ShowUser() {
             {user.status == 0 ? (
                 <Link
                     method="patch"
-                    href={route("user.unban", { user: user.id })}
+                    href={`/user/${user.id}/unban`}
                     className="btn btn-success"
                 >
                     Разблокировать пользователя
@@ -115,7 +110,7 @@ export default function ShowUser() {
             ) : (
                 <Link
                     method="patch"
-                    href={route("user.ban", { user: user.id })}
+                    href={`/user/${user.id}/ban`}
                     className="btn btn-secondary"
                 >
                     Заблокировать пользователя

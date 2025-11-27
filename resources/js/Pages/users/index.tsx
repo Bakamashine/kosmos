@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "../Layout";
 import { Head, Link, usePage } from "@inertiajs/react";
 import { Table } from "react-bootstrap";
-import { route } from "ziggy-js";
 import { Ruble } from "../../constants/Ruble";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
 import Paginate from "../../components/ui/Paginate";
@@ -30,9 +29,7 @@ export default function ManagementUser() {
                                 <tr key={index}>
                                     <td>
                                         <Link
-                                            href={route("user.show", {
-                                                user: item.id,
-                                            })}
+                                            href={`/user/${item.id}`}
                                         >
                                             {item.id}
                                         </Link>
@@ -41,9 +38,7 @@ export default function ManagementUser() {
                                         {item.name}
                                         <br />
                                         <Link
-                                            href={route("user.edit", {
-                                                user: item.id,
-                                            })}
+                                            href={`/user/${item.id}/edit`}
                                         >
                                             Редактирование
                                         </Link>
@@ -51,9 +46,7 @@ export default function ManagementUser() {
                                         <Link
                                             preserveScroll
                                             method="delete"
-                                            href={route("user.destroy", {
-                                                user: item.id,
-                                            })}
+                                            href={`/user/${item.id}`}
                                             className="text-danger"
                                         >
                                             Удаление
@@ -63,9 +56,7 @@ export default function ManagementUser() {
                                             <Link
                                                 preserveScroll
                                                 method="patch"
-                                                href={route("user.ban", {
-                                                    user: item.id,
-                                                })}
+                                                href={`/user/${item.id}/ban`}
                                                 className="text-secondary"
                                             >
                                                 Блокирование
@@ -74,9 +65,7 @@ export default function ManagementUser() {
                                             <Link
                                                 preserveScroll
                                                 method="patch"
-                                                href={route("user.unban", {
-                                                    user: item.id,
-                                                })}
+                                                href={`/user/${item.id}/unban`}
                                                 className="text-success"
                                             >
                                                 Разблокировать
@@ -106,7 +95,7 @@ export default function ManagementUser() {
             ) : (
                 <NotFoundRecords text="Полёты не найдены" />
             )}
-            <Link className="btn btn-dark" href={route("user.create")}>
+            <Link className="btn btn-dark" href={"/user/create"}>
                 Создать пользователя
             </Link>
         </Layout>

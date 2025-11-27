@@ -7,7 +7,6 @@ import {
     MDBIcon,
 } from "mdb-react-ui-kit";
 import { Link, usePage } from "@inertiajs/react";
-import { route } from "ziggy-js";
 
 export default function Footer() {
     const { appName } = usePage<{ appName: string }>().props;
@@ -95,7 +94,7 @@ export default function Footer() {
                             <p>
                                 <Link
                                     className="text-reset"
-                                    href={route("vacancy.index")}
+                                    href={`/vacancy`}
                                 >
                                     Вакансии
                                 </Link>
@@ -103,7 +102,7 @@ export default function Footer() {
                             <p>
                                 <Link
                                     className="text-reset"
-                                    href={route("about_us")}
+                                    href={`/about_us`}
                                 >
                                     О нас
                                 </Link>
@@ -111,7 +110,7 @@ export default function Footer() {
                             <p>
                                 <Link
                                     className="text-reset"
-                                    href={route("feedback.index")}
+                                    href={`/feedback`}
                                 >
                                     Отзывы
                                 </Link>

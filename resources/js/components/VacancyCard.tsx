@@ -1,9 +1,8 @@
 import React from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, NavItem } from "react-bootstrap";
 import { User, Vacancy } from "../interface";
 import { Ruble } from "../constants/Ruble";
 import { Link, usePage } from "@inertiajs/react";
-import { route } from "ziggy-js";
 
 interface VacancyCardProps extends Vacancy {
     deleted?: boolean;
@@ -32,16 +31,14 @@ export default function VacancyCard({
             </ListGroup>
             <Card.Body>
                 {!deleted && (
-                    <Link href={route('otclice.create', {vacancy: id})}>Откликнутся</Link>
+                    <Link method="get" href={`/otclice/${id}/create`}>Откликнутся</Link>
                 )}
                 {user && user.role_name == "admin" && (
                     <div>
                         {!deleted && (
                             <div>
                                 <Link
-                                    href={route("vacancy.edit", {
-                                        vacancy: id,
-                                    })}
+                                    href={`/vacancy/${id}/edit`}
                                 >
                                     Редактировать вакансию
                                 </Link>
@@ -52,9 +49,7 @@ export default function VacancyCard({
                                 <Link
                                     preserveScroll
                                     className="text-danger"
-                                    href={route("vacancy.destroy", {
-                                        vacancy: id,
-                                    })}
+                                    href={`/vacancy/${id}`}
                                     method="delete"
                                 >
                                     Удалить

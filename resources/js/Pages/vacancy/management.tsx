@@ -5,14 +5,12 @@ import { VacancyPag } from "../../interface";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
 import VacancyCard from "../../components/VacancyCard";
 import Paginate from "../../components/ui/Paginate";
-import { route } from "ziggy-js";
 export default function VakanciesManagement() {
-    const { vacancy } = usePage<{  vacancy: VacancyPag }>().props;
+    const { vacancy } = usePage<{ vacancy: VacancyPag }>().props;
     // console.log("Deleted vacancy: ", vacancy)
     const title = "Управление вакансиями";
     return (
         <Layout title={title} title_h1>
-
             <div className="">
                 {vacancy && vacancy.data.length > 0 ? (
                     <div>
@@ -35,21 +33,21 @@ export default function VakanciesManagement() {
                 ) : (
                     <NotFoundRecords text="Вакансии не найдены" />
                 )}
-                {/* <div className="d-flex justify-content-center">
-                    <Link className="btn btn-dark" href={route("vacancy.create")}>
-                        Создание новости
-                    </Link>
-                </div>
-                <div className="" */}
 
-                    <div className="d-grid gap-3">
-                    <Link className="btn btn-dark" href={route("vacancy.create")}>
+                <div className="d-grid gap-3">
+                    <Link
+                        className="btn btn-dark"
+                        href={"/vacancy/create"}
+                    >
                         Создание вакансии
                     </Link>
-                    <Link className="btn btn-dark" href={route("vacancy.destroyed")}>
+                    <Link
+                        className="btn btn-dark"
+                        href={"/vacancy/destroyed"}
+                    >
                         Удалённые
                     </Link>
-                    </div>
+                </div>
             </div>
         </Layout>
     );

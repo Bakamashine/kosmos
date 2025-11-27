@@ -6,7 +6,6 @@ import { Card, Pagination } from "react-bootstrap";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
 import Paginate from "../../components/ui/Paginate";
 import { Ruble } from "../../constants/Ruble";
-import { route } from "ziggy-js";
 export default function ViewFeedback() {
     const feedback = usePage().props.feedback as FeedbackPag;
     const { user } = usePage<{ auth: { user: User } }>().props.auth;
@@ -49,10 +48,7 @@ export default function ViewFeedback() {
                                         {user && user.role_name == "admin" && (
                                             <Link
                                                 preserveScroll
-                                                href={route(
-                                                    "feedback.destroy",
-                                                    { feedback: item.id }
-                                                )}
+                                                href={`/feedback/${item.id}`}
                                                 method="delete"
                                                 className="text-danger"
                                             >

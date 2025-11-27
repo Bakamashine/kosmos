@@ -2,7 +2,6 @@ import { Head, Link, usePage } from "@inertiajs/react";
 import React from "react";
 import { Order } from "../../interface";
 import Layout from "../Layout";
-import { route } from "ziggy-js";
 
 export default function ShowOrder() {
     const { order } = usePage<{ order: Order }>().props;
@@ -19,14 +18,14 @@ export default function ShowOrder() {
                 <p>Дата: {new Date(order.date).toLocaleDateString()}</p>
                 <p>
                     ID пользователя:{" "}
-                    <Link href={route("user.show", { user: order.user_id })}>
+                    <Link href={`/user/${order.user_id}`}>
                         {order.user_id}
                     </Link>{" "}
                 </p>
                 <p>
                     ID полёта:{" "}
                     <Link
-                        href={route("flying.show", { flying: order.flying_id })}
+                        href={`/flying/${order.flying_id}`}
                     >
                         {order.flying_id}
                     </Link>

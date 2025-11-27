@@ -3,7 +3,6 @@ import Layout from "../Layout";
 import { Button, Form } from "react-bootstrap";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { News } from "../../interface";
-import { route } from "ziggy-js";
 import NewsForm from "../../forms/NewsForm";
 import { HttpMethod } from "../../helper/enum";
 
@@ -13,17 +12,12 @@ export default function CreateNews() {
         description: "",
     });
 
-    function submit(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        post(route("news.store"));
-    }
-
     const title = "Создание новости";
 
     return (
         <Layout title={title} title_h1>
 
-            <NewsForm method={HttpMethod.POST} url={route("news.store")} />
+            <NewsForm method={HttpMethod.POST} url={"/news"} />
         </Layout>
     );
 }

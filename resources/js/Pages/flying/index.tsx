@@ -5,7 +5,6 @@ import Layout from "../Layout";
 import { Table } from "react-bootstrap";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
 import Paginate from "../../components/ui/Paginate";
-import { route } from "ziggy-js";
 import { Ruble } from "../../constants/Ruble";
 
 export default function ManagementFlying() {
@@ -33,9 +32,7 @@ export default function ManagementFlying() {
                                         {item.title}
                                         <br />
                                         <Link
-                                            href={route("flying.edit", {
-                                                flying: item.id,
-                                            })}
+                                            href={`/flying/${item.id}/edit`}
                                         >
                                             Редактирование
                                         </Link>
@@ -44,9 +41,7 @@ export default function ManagementFlying() {
                                             preserveScroll
                                             method="delete"
                                             className="text-danger"
-                                            href={route("flying.destroy", {
-                                                flying: item.id,
-                                            })}
+                                            href={`/flying/${item.id}`}
                                         >
                                             Удаление
                                         </Link>
@@ -66,7 +61,7 @@ export default function ManagementFlying() {
             ) : (
                 <NotFoundRecords text="Полёты не найдены" />
             )}
-            <Link className="btn btn-dark" href={route("flying.create")}>
+            <Link className="btn btn-dark" href={`/flying/create`}>
                 Создать полёт
             </Link>
         </Layout>

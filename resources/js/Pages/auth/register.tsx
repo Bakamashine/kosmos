@@ -4,7 +4,6 @@ import { router } from "@inertiajs/react";
 import Layout from "../Layout";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-import { route } from "ziggy-js";
 
 export default function Register() {
     const { data, setData, post, errors } = useForm({
@@ -16,7 +15,7 @@ export default function Register() {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        post(route("register.store"));
+        post("/register");
     }
     return (
         <Layout title="Регистрация">

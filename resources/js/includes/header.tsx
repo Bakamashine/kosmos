@@ -1,7 +1,6 @@
 import React from "react";
 import { Head, Link, usePage } from "@inertiajs/react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { route } from "ziggy-js";
 import { User } from "../interface";
 
 function Header() {
@@ -14,7 +13,7 @@ function Header() {
         <>
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
-                    <Link className="non-border" href={route("main")}>
+                    <Link className="non-border" href={"/"}>
                         <Navbar.Brand>{props.appName}</Navbar.Brand>
                     </Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -23,7 +22,7 @@ function Header() {
                             <Nav className="m-2">
                                 <Link
                                     className="btn btn-dark"
-                                    href={route("main")}
+                                    href={"/"}
                                 >
                                     Главная страница
                                 </Link>
@@ -31,7 +30,7 @@ function Header() {
                             <Nav className="m-2">
                                 <Link
                                     className="btn btn-dark"
-                                    href={route("about_us")}
+                                    href={"/about_us"}
                                 >
                                     О нас
                                 </Link>
@@ -39,7 +38,7 @@ function Header() {
                             <Nav className="m-2">
                                 <Link
                                     className="btn btn-dark"
-                                    href={route("feedback.index")}
+                                    href={"/feedback"}
                                 >
                                     Отзывы
                                 </Link>
@@ -47,7 +46,7 @@ function Header() {
                             <Nav className="m-2">
                                 <Link
                                     className="btn btn-dark"
-                                    href={route("vakancies.index")}
+                                    href={"/vacancy"}
                                 >
                                     Вакансии
                                 </Link>
@@ -57,7 +56,7 @@ function Header() {
                                     <Nav className="m-2">
                                         <Link
                                             className="btn btn-dark "
-                                            href={route("home")}
+                                            href={"/home"}
                                         >
                                             Домашняя страница
                                         </Link>
@@ -66,7 +65,7 @@ function Header() {
                                         <Link
                                             className="btn btn-danger "
                                             method="post"
-                                            href={route("logout")}
+                                            href={"/logout"}
                                         >
                                             Выход
                                         </Link>
@@ -75,7 +74,7 @@ function Header() {
                                         <Nav className="m-2">
                                             <Link
                                                 className="btn btn-dark"
-                                                href={route("admin")}
+                                                href={"/admin"}
                                             >
                                                 Административная страница
                                             </Link>
@@ -87,7 +86,7 @@ function Header() {
                                     <Nav className="m-2">
                                         <Link
                                             className="btn btn-dark"
-                                            href={route("login")}
+                                            href={"/login"}
                                         >
                                             Авторизоваться
                                         </Link>
@@ -95,7 +94,7 @@ function Header() {
                                     <Nav className="m-2">
                                         <Link
                                             className="btn btn-dark"
-                                            href={route("register")}
+                                            href={"/register"}
                                         >
                                             Регистрация
                                         </Link>

@@ -3,7 +3,6 @@ import Layout from "../Layout";
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Head, router, useForm, usePage } from "@inertiajs/react";
-import { route } from "ziggy-js";
 
 interface AuthPropsFlash {
     [key: string]: any;
@@ -21,7 +20,7 @@ export default function Auth() {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        post(route("login.store"));
+        post("/login");
     }
 
     // console.log("Login errors: ", errors)

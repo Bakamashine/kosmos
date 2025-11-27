@@ -108,8 +108,8 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
         ->prefix("otclice")
         ->controller(OtcliceController::class)
         ->group(function () {
-            Route::post("", 'store')->name(".store");
             Route::get("/{vacancy}/create", 'create')->name(".create");
+            Route::post("", 'store')->name(".store");
         });
 });
 

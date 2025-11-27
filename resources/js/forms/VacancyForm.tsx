@@ -11,7 +11,6 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "@inertiajs/react";
 // import { FileUploader } from "react-drag-drop-files";
 import Back from "../components/ui/Back";
-import { route } from "ziggy-js";
 import CustomDropZone from "../components/DropZone";
 
 interface VacancyFormProps extends NewsFormProps {

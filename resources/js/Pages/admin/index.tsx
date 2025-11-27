@@ -43,7 +43,7 @@ export default function Admin() {
             <a
                 rel="noopener noreferrer"
                 target="_blank"
-                href={"/xml"}
+                href={"/admin/xml"}
                 className="btn btn-dark"
             >
                 Экспорт всех записей

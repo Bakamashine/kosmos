@@ -30,13 +30,18 @@ const Layout = ({
     }>().props;
     // console.log("BreadCrumps: ", breadcrumbs);
     let calculatorWindow: Window | null;
+    const [isClient, setIsClient] = useState(false);
 
-    if (typeof window === "undefined") {
-        return null;
-    }
+    // if (typeof window === "undefined") {
+    //     return null;
+    // }
 
-    function openWindow(event: React.MouseEvent<HTMLButtonElement>) {
-        event.preventDefault();
+    useEffect(()=>{
+        openWindow();
+    },[isClient])
+
+    function openWindow() {
+        // event.preventDefault();
 
         if (calculatorWindow && !calculatorWindow.closed) {
             calculatorWindow.focus();
@@ -79,18 +84,18 @@ const Layout = ({
 
     return (
         <>
+            <Head>
+                <title>{title}</title>
+                {meta && <meta name="description" content={meta} />}
+            </Head>
             <header>
-                <Head>
-                    <title>{title}</title>
-                    {meta && <meta name="description" content={meta} />}
-                </Head>
                 <Header />
 
                 {breadcrumbsList}
             </header>
             <button
                 className="calculator_button nomobile"
-                onClick={(event) => openWindow(event)}
+                onClick={(event) => setIsClient(true)}
             >
                 <img src="/img/calculator.svg" />
             </button>

@@ -11,4 +11,5 @@ Route::controller(ApiController::class)
         Route::get("commerce", "commerce");
         Route::get("some", "some");
         Route::get("concurents", "concurents");
+        Route::get("sitemap", "sitemap");
     });

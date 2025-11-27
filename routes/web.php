@@ -99,12 +99,18 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
             ->controller(OtcliceController::class)
             ->group(function () {
                 Route::get("", "index")->name(".index");
-                Route::get("/{vacancy}/create", 'create')->name(".create");
-                Route::post("", 'store')->name(".store");
                 Route::delete("/{otclice}/destroy", "destroy")->name(".destroy");
                 Route::patch("/{otclice}/update", 'update')->name(".update");
             });
     });
+
+    Route::name("otclice")
+        ->prefix("otclice")
+        ->controller(OtcliceController::class)
+        ->group(function () {
+            Route::post("", 'store')->name(".store");
+            Route::get("/{vacancy}/create", 'create')->name(".create");
+        });
 });
 
 

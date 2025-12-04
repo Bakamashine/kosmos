@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="shortcut icon" href="/img/rocket.png" type="image/png"> -->
     <link rel="apple-touch-icon" href="/img/rocket.png" type="image/png">
-	<meta name="keywords" content="Недалёкий космос, космос, билеты в космос, вакансии астронавта, работа космонавтом, новости необъятный космос, вакансии необъятный космос, сделать заявку необъятный космос">
+	<meta name="keywords" content="Недалёкий космос, космос, билеты в космос, вакансии астронавта, работа космонавтом, новости недалёкий космос, вакансии недалёкий космос, сделать заявку недалёкий космос">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function(m, e, t, r, i, k, a) {

@@ -205,7 +205,7 @@ Breadcrumbs::for('flying.edit', function (Trail $trail, $flying) {
 });
 
 Breadcrumbs::for('flying.show', function (Trail $trail, $flying) {
-    if (Auth::user()->role_id !== 1) {
+    if (Auth::check() && Auth::user()->role_id !== 1) {
         $trail->parent("flying.indexuser");
     } else
         $trail->parent('flying.index');

@@ -7,6 +7,7 @@ use App\Http\Repository\OrderRepository;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\OrderResource;
+use App\Models\Flying;
 use App\Models\Order;
 
 class OrderController extends Controller
@@ -22,9 +23,9 @@ class OrderController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Flying $flying)
     {
-        //
+        return inertia("order/create", ['flying' => $flying]);
     }
 
     /**

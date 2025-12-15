@@ -75,8 +75,8 @@ export interface Pag {
     total: number;
 }
 
-export interface OrderPagUniqual {
-    data: Order[];
+export interface PagCollection {
+    data: any[];
     links: {
         first: string;
         last: string;
@@ -86,7 +86,7 @@ export interface OrderPagUniqual {
     meta: {
         current_page: number;
         from: number;
-        last_page: 16;
+        last_page: number;
         links: {
             url: string;
             label: string;
@@ -95,8 +95,12 @@ export interface OrderPagUniqual {
         path: string;
         per_page: number;
         to: number;
-        total: 153;
+        total: number;
     };
+}
+
+export interface OrderPagCollection extends PagCollection {
+    data: Order[];
 }
 
 export interface NewsPag extends Pag {
@@ -105,7 +109,8 @@ export interface NewsPag extends Pag {
 
 export interface Flying extends News {
     price: number;
-    created_at: string;
+    image?: string;
+    created_at?: string;
 }
 
 export interface FlyingPag extends Pag {
@@ -119,8 +124,10 @@ export interface NewsCardProps extends News {
 
 export interface FlyingFormProps {
     title?: string;
+    image?: File|undefined;
     description?: string;
     textbutton?: string;
+    old_image?: string;
     price?: number;
     method: HttpMethod;
     url: string;
@@ -187,6 +194,19 @@ export interface IOtclice {
 
 export interface IOtclicePag extends Pag {
     data: IOtclice[];
+}
+
+export interface IOtcliceCollection {
+    id?: number;
+    vacancy_id: number;
+    user_id: number;
+    description: string;
+    user_name: string;
+    vacancy_name: string;
+}
+
+export interface IOtclicePagCollection extends PagCollection {
+    data: IOtcliceCollection[];
 }
 
 export interface FullUser {

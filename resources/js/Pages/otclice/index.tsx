@@ -1,19 +1,20 @@
 import { Head, Link, usePage } from "@inertiajs/react";
 import React from "react";
-import { IOtclice, IOtclicePag } from "../../interface";
+import { IOtclice, IOtclicePag, IOtclicePagCollection } from "../../interface";
 import Layout from "../Layout";
 import { Table } from "react-bootstrap";
 import Paginate from "../../components/ui/Paginate";
 import { route } from "ziggy-js";
 import NotFoundRecords from "../../components/ui/NotFoundRecords";
+import PaginateCollection from "../../components/ui/PaginateCollection";
 
 export default function Otclice() {
-    const { otclice } = usePage<{ otclice: IOtclicePag }>().props;
+    const { otclice } = usePage<{ otclice: IOtclicePagCollection }>().props;
 
     const title = "Отклики";
+    // console.log(otclice);
     return (
         <Layout title={title} title_h1>
-
             <div>
                 {otclice.data.length > 0 ? (
                     <div>
@@ -21,22 +22,29 @@ export default function Otclice() {
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>User ID</th>
+                                    <th>User name</th>
                                     <th>Vacancy ID</th>
                                     <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {otclice.data.map((item, index) => (
-                                    <tr key={index}>
-                                        <td>{item.id}</td>
+                                {otclice.data.map((item) => (
+                                    <tr key={item.id}>
                                         <td>
                                             <Link
-                                                href={route("user.show", {
-                                                    user: item.user_id,
-                                                })}
+                                                preserveScroll
+                                                method="delete"
+                                                className="text-danger"
+                                                href={`/otclice/${item.id}`}
                                             >
-                                                {item.user_id}
+                                                {item.id}
+                                            </Link>
+                                        </td>
+                                        <td>
+                                            <Link
+                                                href={`/user/${item.user_id}`}
+                                            >
+                                                {item.user_name}
                                             </Link>
                                         </td>
                                         <td>
@@ -45,7 +53,7 @@ export default function Otclice() {
                                                     vacancy: item.vacancy_id,
                                                 })}
                                             >
-                                                {item.vacancy_id}
+                                                {item.vacancy_name}
                                             </Link>
                                         </td>
                                         <td>{item.description}</td>
@@ -55,10 +63,10 @@ export default function Otclice() {
                         </Table>
 
                         <div className="d-flex justify-content-center">
-                            <Paginate item={otclice} />
+                            <PaginateCollection item={otclice} />
                         </div>
                     </div>
-                ): (
+                ) : (
                     <NotFoundRecords text="Отлики не найдены" />
                 )}
             </div>

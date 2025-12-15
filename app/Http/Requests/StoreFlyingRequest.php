@@ -25,6 +25,7 @@ class StoreFlyingRequest extends FormRequest
             "title" => ['required', 'string'],
             "description" => ['required', 'string'],
             "price" => ['required', 'integer'],
+            'image' => ['image', 'mimetypes:image/jpeg,image/png,image/jpg'],
         ];
     }
 }

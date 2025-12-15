@@ -37,7 +37,8 @@ class Flying extends Model implements Sitemapable
     protected $fillable = [
         "title",
         "description",
-        "price"
+        "price",
+        "image"
     ];
 
     public function order()

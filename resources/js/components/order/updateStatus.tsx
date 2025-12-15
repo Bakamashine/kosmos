@@ -1,15 +1,20 @@
 import { Update } from "vite";
-import { Order, OrderPag, OrderPagUniqual } from "../../interface";
+import {
+    Order,
+    OrderPag,
+    OrderPagCollection,
+    PagCollection,
+} from "../../interface";
 import { Button, Form, Table } from "react-bootstrap";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { FormEvent } from "react";
 import { route } from "ziggy-js";
 import Paginate from "../ui/Paginate";
-import PaginateOrder from "../ui/PaginateOrder";
+import PaginateCollection from "../ui/PaginateCollection";
 
 export default function UpdateOrder() {
     const { props } = usePage();
-    const orders = props.order as OrderPagUniqual;
+    const orders = props.order as OrderPagCollection;
     const orders_status = props.order_status as string[];
     // console.log("orders: ", orders);
 
@@ -19,7 +24,7 @@ export default function UpdateOrder() {
 
     function submit(e: FormEvent<HTMLFormElement>, id: number) {
         e.preventDefault();
-        patch(route("order.update", { order: id }), {preserveScroll: true});
+        patch(route("order.update", { order: id }), { preserveScroll: true });
     }
     return (
         <>
@@ -54,8 +59,6 @@ export default function UpdateOrder() {
                                             {item.id}
                                         </Link>
                                     </td>
-                                    {/* <td>{item.user_name}</td> */}
-                                    {/* <td>{item.user_id}</td> */}
                                     <td>
                                         <Link
                                             href={route("user.show", {
@@ -108,7 +111,7 @@ export default function UpdateOrder() {
                     </Table>
                     {orders.meta.total > 5 && (
                         <div className="d-flex justify-content-center">
-                            <PaginateOrder item={orders}  />
+                            <PaginateCollection item={orders} />
                         </div>
                     )}
                 </div>

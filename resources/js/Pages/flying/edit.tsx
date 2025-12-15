@@ -16,6 +16,7 @@ export default function EditFlying() {
                 description={flying.description}
                 price={flying.price}
                 title={flying.title}
+                old_image={flying.image}
                 textbutton="Редактировать полёт"
                 method={HttpMethod.PUT}
                 url={route("flying.update", { flying: flying.id })}

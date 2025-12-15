@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOtcliceRequest;
 use App\Http\Requests\UpdateOtcliceRequest;
+use App\Http\Resources\OtcliceResource;
 use App\Models\Otclice;
 use App\Models\Vacancy;
 
@@ -14,7 +15,7 @@ class OtcliceController extends Controller
      */
     public function index()
     {
-        $otclice = Otclice::paginate(5);
+        $otclice = OtcliceResource::collection(Otclice::paginate(5));
         return inertia("otclice/index", ['otclice' => $otclice]);
     }
 
@@ -67,6 +68,6 @@ class OtcliceController extends Controller
      */
     public function destroy(Otclice $otclice)
     {
-        //
+        $otclice->delete();
     }
 }

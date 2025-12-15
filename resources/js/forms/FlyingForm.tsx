@@ -1,11 +1,12 @@
 import { InertiaFormProps, Link, useForm } from "@inertiajs/react";
-import { FormEvent } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { HttpMethod } from "../helper/enum";
 import { Flying, FlyingFormProps } from "../interface";
 import { Ruble } from "../constants/Ruble";
 import { route } from "ziggy-js";
 import Back from "../components/ui/Back";
+import { FileUploader } from "react-drag-drop-files";
 
 export default function FlyingForm({
     method,
@@ -13,13 +14,18 @@ export default function FlyingForm({
     textbutton = "Создать полёт",
     title = "",
     description = "",
+    old_image = undefined,
     price = undefined,
+    image = undefined,
 }: FlyingFormProps) {
     const form = useForm({
         title,
         description,
         price,
+        image,
     });
+
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
 
     function submit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -28,14 +34,37 @@ export default function FlyingForm({
                 form.post(url);
                 break;
             case HttpMethod.PUT:
-                form.put(url);
+                // form.put(url);
+                form.post(`${url}?_method=PUT`);
                 break;
-            default:
-                throw new Error("Undefined HttpMethod");
         }
     }
+
+    function generateTempUrl() {
+        if (form.data.image) setImageUrl(URL.createObjectURL(form.data.image));
+    }
+
+    useEffect(() => {
+        generateTempUrl();
+        console.log(form.data.image);
+    }, [form.data.image]);
+
     return (
         <Form className="m-3 bg-form" onSubmit={submit}>
+            {imageUrl || old_image ? (
+                <div className="mb-3">
+                    <p>Фото:</p>
+                    {imageUrl ? (
+                        <img width={300} src={imageUrl} alt={title} />
+                    ) : (
+                        old_image && (
+                            <img width={300} src={old_image} alt={title} />
+                        )
+                    )}
+                </div>
+            ) : (
+                <p>Картинка отсуствует</p>
+            )}
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Заголовок</Form.Label>
                 <Form.Control
@@ -44,7 +73,9 @@ export default function FlyingForm({
                     onChange={(e) => form.setData("title", e.target.value)}
                     value={form.data.title}
                 />
-                {form.errors.title && <p>{form.errors.title}</p>}
+                {form.errors.title && (
+                    <p className="text-danger">{form.errors.title}</p>
+                )}
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -59,7 +90,7 @@ export default function FlyingForm({
                     value={form.data.description}
                 />
                 {form.errors.description && (
-                    <p className="">{form.errors.description}</p>
+                    <p className="text-danger">{form.errors.description}</p>
                 )}
             </Form.Group>
             <InputGroup className="">
@@ -74,7 +105,23 @@ export default function FlyingForm({
                     value={form.data.price}
                 />
             </InputGroup>
-            {form.errors.price && <p className="red">{form.errors.price}</p>}
+            {form.errors.price && (
+                <p className="text-danger">{form.errors.price}</p>
+            )}
+
+            <div className="mb-3 mt-3">
+                <FileUploader
+                    label="Загрузите изображение вакансии"
+                    handleChange={(e) => form.setData("image", e)}
+                    uploadedLabel={`Image successfull loaded! ${form.data.image?.name}`}
+                    types={["jpg", "jpeg", "png"]}
+                    multiple={false}
+                />
+                {form.errors.image && (
+                    <p className="text-danger">{form.errors.image}</p>
+                )}
+            </div>
+
             <div className="mt-3">
                 <Button variant="primary" type="submit">
                     {textbutton}

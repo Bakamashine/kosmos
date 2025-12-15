@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Services\IImageService;
 use App\Http\Repository\FlyingRepository;
 use App\Http\Requests\StoreFlyingRequest;
 use App\Http\Requests\UpdateFlyingRequest;
@@ -9,6 +10,13 @@ use App\Models\Flying;
 
 class FlyingController extends Controller
 {
+    private int $width = 286;
+    private int $height = 169;
+
+    public function __construct(
+        protected IImageService $imageService
+    ) {
+    }
     /**
      * Display a listing of the resource.
      */
@@ -16,6 +24,12 @@ class FlyingController extends Controller
     {
         $flying = FlyingRepository::Get();
         return inertia("flying/index", ['flying' => $flying]);
+    }
+
+    public function indexUser()
+    {
+        $flying = FlyingRepository::Get();
+        return inertia("flying/indexuser", ['flying' => $flying]);
     }
 
     /**
@@ -31,7 +45,14 @@ class FlyingController extends Controller
      */
     public function store(StoreFlyingRequest $request)
     {
-        Flying::create($request->all());
+        // Flying::create($request->all());
+        // return redirect()->route("flying.index");
+
+
+        $flying = new Flying($request->only(['title', 'description', 'price']));
+        if ($request->hasFile("image"))
+            $flying->image = $this->imageService->OptimizedAndUpload($request, "image", "flying", $this->width, $this->height);
+        $flying->save();
         return redirect()->route("flying.index");
     }
 
@@ -56,7 +77,17 @@ class FlyingController extends Controller
      */
     public function update(UpdateFlyingRequest $request, Flying $flying)
     {
-        $flying->update($request->all());
+        // $flying = new Flying($request->only(['title', 'description', 'price']));
+        // $flying->image = $this->imageService->OptimizedAndUpload($request, "image", "flying", $this->width, $this->height);
+        // $flying->save();
+
+        $flying->title = $request->title;
+        $flying->description = $request->description;
+        $flying->price = $request->price;
+        if ($request->hasFile("image")) {
+            $flying->image = $this->imageService->OptimizedAndUpload($request, "image", "flying", $this->width, $this->height);
+        }
+        $flying->save();
         return redirect()->route("flying.index");
     }
 

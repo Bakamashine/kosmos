@@ -49,6 +49,14 @@ function Header() {
                             <Nav className="m-2">
                                 <Link
                                     className="btn btn-dark"
+                                    href={`/flying/view`}
+                                >
+                                    Полёты
+                                </Link>
+                            </Nav>
+                            <Nav className="m-2">
+                                <Link
+                                    className="btn btn-dark"
                                     href={route("vakancies.index")}
                                 >
                                     Вакансии

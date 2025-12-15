@@ -1,9 +1,9 @@
 import React, { JSX } from "react";
-import { OrderPagUniqual, Pag } from "../../interface";
+import { OrderPagCollection, Pag, PagCollection } from "../../interface";
 import { Pagination } from "react-bootstrap";
 import { router } from "@inertiajs/react";
 
-function PaginateOrder({ item }: { item: OrderPagUniqual }) {
+function PaginateCollection({ item }: { item: PagCollection }) {
     function onClickPage(value: number) {
         // router.get(item.links[value].url);
         router.get(item.meta.links[value].url);
@@ -55,4 +55,4 @@ function PaginateOrder({ item }: { item: OrderPagUniqual }) {
     );
 }
 
-export default PaginateOrder;
+export default PaginateCollection;

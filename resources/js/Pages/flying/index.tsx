@@ -23,12 +23,17 @@ export default function ManagementFlying() {
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Price</th>
+                                <th>Image</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {flying.data.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.id}</td>
+                            {flying.data.map((item) => (
+                                <tr key={item.id}>
+                                    <td>
+                                        <Link href={`/flying/${item.id}`}>
+                                            {item.id}
+                                        </Link>
+                                    </td>
                                     <td>
                                         {item.title}
                                         <br />
@@ -54,6 +59,17 @@ export default function ManagementFlying() {
                                     <td>{item.description}</td>
                                     <td>
                                         {item.price} {Ruble}
+                                    </td>
+                                    <td>
+                                        {item.image ? (
+                                            <img
+                                                src={item.image}
+                                                width={100}
+                                                height={100}
+                                            />
+                                        ) : (
+                                            <p>-</p>
+                                        )}
                                     </td>
                                 </tr>
                             ))}

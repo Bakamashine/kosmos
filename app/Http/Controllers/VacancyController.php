@@ -50,7 +50,6 @@ class VacancyController extends Controller
     public function store(StoreVacancyRequest $request)
     {
         $vac = new Vacancy($request->only(['title', 'description', 'payment']));
-        // $vac->image = UploadImage::UploadStatic($request);
         $vac->image = $this->imageService->OptimizedAndUpload($request, "image", "vacancy", $this->width, $this->height);
         $vac->save();
         return redirect()->route("vacancy.management");

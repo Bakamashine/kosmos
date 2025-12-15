@@ -34,6 +34,8 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
         ->name("order")
         ->group(function () {
             Route::post("", 'store')->name(".store");
+            Route::get("/{flying}/create", "create")->name(".create");
+
             Route::patch("/{order}", 'update')->name(".update");
             Route::get("/mobile", 'indexMobile')->name(".indexMobile");
             Route::delete("/{order}", "destroy")->name(".destroy");
@@ -92,7 +94,20 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::get("/destroyed", 'destroyed')->name(".destroyed");
                 Route::get("{vacancy}", "show")->name(".show");
             });
-        Route::resource('flying', FlyingController::class);
+        // Route::get("/flying/view", [FlyingController::class, 'indexuser'])->name("flying.indexuser");
+        // Route::resource('flying', FlyingController::class);
+
+        Route::name("flying.")
+            ->prefix("flying")
+            ->controller(FlyingController::class)
+            ->group(function () {
+                Route::get("", "index")->name("index");
+                Route::get("/create", "create")->name("create");
+                Route::get("/{flying}/edit", 'edit')->name("edit");
+                Route::post("", "store")->name("store");
+                Route::put("/{flying}/update", "update")->name("update");
+                Route::delete("/{flying}", "destroy")->name("destroy");
+            });
 
         Route::name("otclice")
             ->prefix("otclice")
@@ -101,6 +116,7 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
                 Route::get("", "index")->name(".index");
                 Route::delete("/{otclice}/destroy", "destroy")->name(".destroy");
                 Route::patch("/{otclice}/update", 'update')->name(".update");
+                Route::delete("/{otclice}", "destroy")->name(".destroy");
             });
     });
 
@@ -114,4 +130,6 @@ Route::middleware(["auth", BannedUser::class])->group(function () {
 });
 
 
+Route::get("/flying/view", [FlyingController::class, 'indexuser'])->name("flying.indexuser");
+Route::get("/flying/{flying}", [FlyingController::class, "show"])->name("flying.show");
 Route::get("/news/{news}", [NewsController::class, 'show'])->name("news.show");

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Flying;
 use App\Models\Order;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 
@@ -137,6 +138,11 @@ Breadcrumbs::for("order.show", function (Trail $trail, Order $order) {
     $trail->push("Заявка (детально)", route("order.show", $order));
 });
 
+Breadcrumbs::for("order.create", function (Trail $trail, Flying $flying) {
+    $trail->parent("flying.indexuser");
+    $trail->push("Создание заявки", route("order.create", $flying));
+});
+
 /*
 |--------------------------------------------------------------------------
 | Vacancies (Admin)
@@ -179,6 +185,10 @@ Breadcrumbs::for("vacancy.destroyed", function (Trail $trail) {
 |--------------------------------------------------------------------------
 */
 
+Breadcrumbs::for("flying.indexuser", function (Trail $trail) {
+    $trail->parent("main");
+    $trail->push("Полёты", route("flying.indexuser"));
+});
 Breadcrumbs::for('flying.index', function (Trail $trail) {
     $trail->parent('admin');
     $trail->push('Полеты', route('flying.index'));
@@ -195,7 +205,10 @@ Breadcrumbs::for('flying.edit', function (Trail $trail, $flying) {
 });
 
 Breadcrumbs::for('flying.show', function (Trail $trail, $flying) {
-    $trail->parent('flying.index');
+    if (Auth::user()->role_id !== 1) {
+        $trail->parent("flying.indexuser");
+    } else
+        $trail->parent('flying.index');
     $trail->push('Просмотр', route('flying.show', $flying));
 });
 

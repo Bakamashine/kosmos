@@ -35,6 +35,11 @@ export default function ShowFlying() {
                     Редактировать
                 </Link>
             )}
+            {user && (
+                <Link href={`/order/${flying.id}/create`} className="d-block">
+                    Создать заявку
+                </Link>
+            )}
             {/* <Link method="delete" className="btn btn-danger" href={route("flying.destroy", {flying: flying.id})}>Удалить</Link> */}
         </Layout>
     );
